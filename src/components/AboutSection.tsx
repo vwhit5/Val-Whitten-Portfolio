@@ -32,7 +32,7 @@ const AboutSection: React.FC = () => {
               <div className="absolute -inset-4 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 rounded-3xl blur-lg opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
               <div className="relative bg-gray-900/50 backdrop-blur-sm p-6 rounded-3xl border border-gray-700 group-hover:border-blue-500/50 transition-all duration-500">
                 <img
-                  src="./DSC02478.jpeg"
+                  src="/DSC02478.jpeg"
                   alt="Val Whitten"
                   className="w-64 h-80 lg:w-72 lg:h-96 object-cover rounded-2xl shadow-2xl"
                 />
