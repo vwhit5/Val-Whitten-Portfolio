@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Val Whitten - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .animate-bounce {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, rgb(17, 24, 39) 0%, rgb(31, 41, 55) 30%, rgb(17, 24, 39) 60%, rgb(0, 0, 0) 100%);
+        }
+        
+        .bg-parallax-1 {
+            position: fixed;
+            width: 24rem;
+            height: 24rem;
+            background: rgba(37, 99, 235, 0.05);
+            border-radius: 50%;
+            filter: blur(3rem);
+            left: 10%;
+            top: 20%;
+            pointer-events: none;
+        }
+        
+        .bg-parallax-2 {
+            position: fixed;
+            width: 18rem;
+            height: 18rem;
+            background: rgba(147, 51, 234, 0.05);
+            border-radius: 50%;
+            filter: blur(3rem);
+            right: 15%;
+            bottom: 30%;
+            pointer-events: none;
+        }
+        
+        .nav-bg {
+            background: rgba(17, 24, 39, 0.95);
+            backdrop-filter: blur(12px);
+        }
+        
+        .job-transition {
+            transition: all 0.7s ease-out;
+        }
+        
+        .project-card {
+            scroll-snap-align: start;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .project-card:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="min-h-screen text-white overflow-x-hidden gradient-bg">
+    <!-- Animated Background Elements -->
+    <div class="bg-parallax-1" id="parallax1"></div>
+    <div class="bg-parallax-2" id="parallax2"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 transition-all duration-500 nav-bg" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold tracking-wider text-white">
+                    VAL WHITTEN
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex space-x-8">
+                    <button onclick="scrollToSection('journey')" class="text-white hover:text-blue-400 transition-all duration-300">JOURNEY</button>
+                    <button onclick="scrollToSection('projects')" class="text-white hover:text-blue-400 transition-all duration-300">PROJECTS</button>
+                    <button onclick="scrollToSection('about')" class="text-white hover:text-blue-400 transition-all duration-300">ABOUT ME</button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button onclick="toggleMobileMenu()" class="text-white p-2">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-4">
+                    <button onclick="showContact()" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        CONTACT
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobileMenu" class="md:hidden mt-4 pb-4 border-t border-gray-700 hidden">
+                <div class="flex flex-col space-y-2 pt-4">
+                    <button onclick="scrollToSection('journey')" class="text-left text-white hover:text-blue-400 transition-colors py-2">JOURNEY</button>
+                    <button onclick="scrollToSection('projects')" class="text-left text-white hover:text-blue-400 transition-colors py-2">PROJECTS</button>
+                    <button onclick="scrollToSection('about')" class="text-left text-white hover:text-blue-400 transition-colors py-2">ABOUT ME</button>
+                    <button onclick="showContact()" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg mt-4 self-start">CONTACT</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section - Job Journey -->
+    <section id="journey" class="min-h-screen flex flex-col justify-center items-center px-6 relative">
+        <div class="max-w-6xl mx-auto w-full text-center">
+            <div class="mb-16">
+                <h2 class="text-4xl md:text-6xl font-bold mb-8 text-white">
+                    EVERY JOB TAUGHT ME SOMETHING
+                </h2>
+            </div>
+            
+            <div class="job-transition" id="jobDisplay">
+                <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 text-white" style="font-weight: 700; letter-spacing: -0.02em; line-height: 0.9;">
+                    <span class="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent" id="jobTitle">
+                        LEGAL INTERN
+                    </span>
+                </h1>
+                <p class="text-base sm:text-lg md:text-xl font-light tracking-wide text-gray-400 text-center mb-8" style="font-weight: 300; letter-spacing: 0.05em;" id="jobEmployer">
+                    Moncure & Barnicle
+                </p>
+            </div>
+
+            <div class="mt-8 flex flex-col items-center space-y-4">
+                <div class="text-xs font-medium tracking-wider text-gray-500" id="jobCounter">
+                    01 / 20
+                </div>
+                
+                <div class="w-48 h-1 bg-gray-800 rounded-full overflow-hidden">
+                    <div class="h-full transition-all duration-500 ease-out bg-gradient-to-r from-blue-600 to-purple-600 rounded-full" id="progressBar" style="width: 5%;"></div>
+                </div>
+            </div>
+
+            <div class="mt-20 animate-bounce">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" class="mx-auto text-gray-400">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transition Section -->
+    <section class="py-32 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-blue-900/10 to-transparent"></div>
+        
+        <div class="max-w-6xl mx-auto px-6 text-center relative z-10">
+            <div class="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight space-y-8 text-white">
+                <div class="transition-all duration-1000 ease-out opacity-0 translate-y-12" id="line1">
+                    Each of these taught me
+                </div>
+                <div class="bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent transition-all duration-1000 ease-out opacity-0 translate-y-12" id="line2">
+                    skills and industry knowledge
+                </div>
+                <div class="transition-all duration-1000 ease-out opacity-0 translate-y-12" id="line3">
+                    I've applied to do projects that
+                </div>
+                <div class="text-blue-400 font-extrabold transition-all duration-1000 ease-out opacity-0 translate-y-12" id="line4">
+                    built something impactful
+                </div>
+            </div>
+
+            <div class="mt-20 animate-bounce">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" class="mx-auto text-gray-400">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white">
+                    CHECK OUT MY CLIENTS
+                </h1>
+                <p class="text-xl text-gray-300 max-w-4xl mx-auto">
+                    <span class="font-semibold text-blue-600">Real-world consulting work</span> 
+                    <span class="text-white"> for nonprofits, student housing, Indigenous artisans, and mentorship programs.</span>
+                </p>
+            </div>
+
+            <div class="w-full">
+                <div class="overflow-x-auto pb-6 scrollbar-hide" id="projectContainer">
+                    <div class="flex space-x-6 px-2 min-w-max" style="scroll-snap-type: x mandatory;" id="projectCards">
+                        <!-- Project cards will be inserted here by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Project Navigation -->
+                <div class="flex justify-center items-center mt-8 space-x-6">
+                    <div class="transition-all duration-300 text-gray-600" id="leftArrow">
+                        <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                    </div>
+                    
+                    <div class="flex space-x-2" id="projectDots">
+                        <!-- Dots will be inserted here by JavaScript -->
+                    </div>
+                    
+                    <div class="transition-all duration-300 text-gray-600" id="rightArrow">
+                        <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="flex justify-center mt-16">
+                    <div class="animate-bounce">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" class="text-gray-400">
+                            <path d="M7 13l5 5 5-5M7 6l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 relative">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-4xl md:text-6xl font-bold mb-12 text-white">ABOUT VAL</h2>
+            
+            <p class="text-xl mb-12 text-gray-300 max-w-3xl">
+                Strategy consultant. First-generation. Built to navigate systems, not just study them.
+            </p>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+                <!-- Photo -->
+                <div class="flex flex-col items-center lg:items-start">
+                    <div class="relative group mb-6">
+                        <div class="absolute -inset-4 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 rounded-3xl blur-lg opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
+                        <div class="relative bg-gray-900/50 backdrop-blur-sm p-6 rounded-3xl border border-gray-700 group-hover:border-blue-500/50 transition-all duration-500">
+                            <img 
+                                src="https://images.unsplash.com/photo-1494790108755-2616b612b5bc?w=400&h=500&fit=crop&crop=face" 
+                                alt="Val Whitten" 
+                                class="w-64 h-80 lg:w-72 lg:h-96 object-cover rounded-2xl shadow-2xl"
+                            />
+                        </div>
+                    </div>
+                    <div class="text-center text-white text-sm font-light flex items-center space-x-2">
+                        <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                        <span>Los Angeles, CA</span>
+                    </div>
+                </div>
+
+                <!-- Skills -->
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-bold text-white mb-6">Expertise & Skills</h3>
+                    <div class="space-y-4">
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-4 py-2 bg-gray-800/50 backdrop-blur-sm rounded-full text-sm border border-gray-700 hover:border-blue-500 hover:bg-gray-700/50 transition-all duration-300 text-white cursor-default">Management Consulting</span>
+                            <span class="px-4 py-2 bg-gray-800/50 backdrop-blur-sm rounded-full text-sm border border-gray-700 hover:border-blue-500 hover:bg-gray-700/50 transition-all duration-300 text-white cursor-default">Emerging Markets</span>
+                            <span class="px-4 py-2 bg-gray-800/50 backdrop-blur-sm rounded-full text-sm border border-gray-700 hover:border-blue-500 hover:bg-gray-700/50 transition-all duration-300 text-white cursor-default">Consumer Strategy</span>
+                        </div>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-4 py-2 bg-gray-800/50 backdrop-blur-sm rounded-full text-sm border border-gray-700 hover:border-blue-500 hover:bg-gray-700/50 transition-all duration-300 text-white cursor-default">Behavioral Economics</span>
+                            <span class="px-4 py-2 bg-gray-800/50 backdrop-blur-sm rounded-full text-sm border border-gray-700 hover:border-blue-500 hover:bg-gray-700/50 transition-all duration-300 text-white cursor-default">Real Estate</span>
+                            <span class="px-4 py-2 bg-gray-800/50 backdrop-blur-sm rounded-full text-sm border border-gray-700 hover:border-blue-500 hover:bg-gray-700/50 transition-all duration-300 text-white cursor-default">Law</span>
+                        </div>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-4 py-2 bg-gray-800/50 backdrop-blur-sm rounded-full text-sm border border-gray-700 hover:border-blue-500 hover:bg-gray-700/50 transition-all duration-300 text-white cursor-default">Tableau</span>
+                            <span class="px-4 py-2 bg-gray-800/50 backdrop-blur-sm rounded-full text-sm border border-gray-700 hover:border-blue-500 hover:bg-gray-700/50 transition-all duration-300 text-white cursor-default">Salesforce</span>
+                            <span class="px-4 py-2 bg-gray-800/50 backdrop-blur-sm rounded-full text-sm border border-gray-700 hover:border-blue-500 hover:bg-gray-700/50 transition-all duration-300 text-white cursor-default">Advanced Excel</span>
+                        </div>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-4 py-2 bg-gray-800/50 backdrop-blur-sm rounded-full text-sm border border-gray-700 hover:border-blue-500 hover:bg-gray-700/50 transition-all duration-300 text-white cursor-default">IBM Business Analyst Certificate</span>
+                            <span class="px-4 py-2 bg-gray-800/50 backdrop-blur-sm rounded-full text-sm border border-gray-700 hover:border-blue-500 hover:bg-gray-700/50 transition-all duration-300 text-white cursor-default">Bloomberg Market Concepts</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center p-6 z-50 hidden">
+        <div class="max-w-lg w-full rounded-2xl shadow-2xl bg-white/95 backdrop-blur-sm">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <h2 class="text-3xl font-bold text-gray-900">Let's Connect</h2>
+                    <button onclick="hideContact()" class="p-3 rounded-full hover:bg-gray-100 transition-all duration-300 text-gray-500 hover:text-gray-700">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="space-y-4">
+                    <a href="mailto:vwhitten@usc.edu" class="flex items-center space-x-3 p-4 rounded-xl hover:bg-gray-100 transition-all duration-300 text-gray-900 group">
+                        <div class="p-2 rounded-lg bg-blue-100 group-hover:bg-blue-200 transition-colors">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="text-blue-600">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <span class="font-medium">vwhitten@usc.edu</span>
+                    </a>
+                    <a href="https://linkedin.com/in/valeriewhitten" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-3 p-4 rounded-xl hover:bg-gray-100 transition-all duration-300 text-gray-900 group">
+                        <div class="p-2 rounded-lg bg-blue-100 group-hover:bg-blue-200 transition-colors">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" class="text-blue-600">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </div>
+                        <span class="font-medium">LinkedIn Profile</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <div class="flex justify-center space-x-12">
+                <a href="https://linkedin.com/in/valeriewhitten" class="text-2xl font-semibold hover:text-blue-400 transition-colors text-white relative group">
+                    LinkedIn
+                </a>
+                <a href="/resume.pdf" class="text-2xl font-semibold hover:text-blue-400 transition-colors text-white relative group">
+                    Resume
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Job data and carousel functionality
+        const jobs = [
+            { title: "LEGAL INTERN", employer: "Moncure & Barnicle" },
+            { title: "CAFÉ BARISTA", employer: "Maman NYC" },
+            { title: "REAL ESTATE STRATEGY CONSULTANT", employer: "Mosaic Student Housing" },
+            { title: "RESEARCH ASSISTANT", employer: "USC Center for Social and Economic Research" },
+            { title: "CAMP COUNSELOR", employer: "Girl Scouts Camp Blue Bay" },
+            { title: "FINANCE INTERN", employer: "State Farm" },
+            { title: "TRANSCRIPTIONIST", employer: "Rev" },
+            { title: "FOOD SERVER", employer: "Maiz Colombian Restaurant" },
+            { title: "LEASING ASSISTANT", employer: "Hub LA Coliseum" },
+            { title: "STUDENT PROCTOR", employer: "Phillips Exeter Office of Multicultural Affairs" },
+            { title: "SALES AMBASSADOR", employer: "USC Alumni Annual Giving" },
+            { title: "FAIR HOUSING TESTER", employer: "Pine Tree Legal" },
+            { title: "REAL ESTATE INTERN", employer: "Berkshire Hathaway HomeServices" },
+            { title: "FARMERS MARKET SELLER", employer: "Hawthorne Valley Farm" },
+            { title: "GYM PROCTOR", employer: "Phillips Exeter" },
+            { title: "SOCIAL IMPACT CONSULTING INTERN", employer: "Wayuu Taya Foundation" },
+            { title: "CASHIER", employer: "The Corner Market" },
+            { title: "FINANCIAL AID ASSISTANT", employer: "Bowdoin College" },
+            { title: "REAL ESTATE INTERN", employer: "Corcoran Group" },
+            { title: "RACE DAY WORKER", employer: "Seacoast Half Marathon" }
+        ];
+
+        // Project data
+        const projects = [
+            {
+                name: "Mosaic Student Communities",
+                category: "Data Analytics",
+                metric: "$200K VALUE DELIVERED/YEAR",
+                description: "Student housing operator managing multiple properties",
+                problem: "Student housing operator needed data-driven approach to reduce tenant turnover and optimize portfolio performance across multiple properties.",
+                action: "Analyzed 750 tenant records, built predictive churn model using demographic and behavioral data, created ROI heatmap for retention interventions across property portfolio.",
+                result: "Projected 20% churn reduction and $50K annual savings. Delivered actionable retention strategies with property-specific recommendations and implementation timeline.",
+                colorClasses: "from-blue-600 to-purple-600"
+            },
+            {
+                name: "Wayuu Taya Foundation",
+                category: "Social Impact",
+                metric: "150% REVENUE GROWTH",
+                description: "Social impact foundation supporting Indigenous Wayuu artisans",
+                problem: "Indigenous Wayuu artisans lacked market research and product positioning strategy to maximize revenue from traditional crafts in global markets.",
+                action: "Conducted comprehensive market analysis, interviewed 30+ artisans, analyzed sales data across 12 product categories, and developed go-to-market strategy focusing on highest-margin offerings.",
+                result: "150% revenue growth across 15+ women entrepreneurs. Established sustainable product pipeline and pricing strategy that honored cultural authenticity while maximizing market impact.",
+                colorClasses: "from-green-600 to-teal-600"
+            },
+            {
+                name: "Latino Business Student Association",
+                category: "Mentorship",
+                metric: "40% ENGAGEMENT BOOST",
+                description: "Student organization for Latino business professionals",
+                problem: "Student mentorship program had low engagement rates and no systematic approach to measuring success or optimizing mentor-mentee relationships.",
+                action: "Built comprehensive KPI framework, redesigned matching algorithm based on career goals and experience, implemented tracking system for engagement metrics.",
+                result: "40% improvement in engagement rates. Successfully matched 20+ underclassmen with targeted consulting prep mentors. Program became model for other professional organizations.",
+                colorClasses: "from-orange-600 to-red-600"
+            },
+            {
+                name: "Challenged Athlete Foundation",
+                category: "Strategy",
+                metric: "3X GROWTH POTENTIAL",
+                description: "Nonprofit supporting athletes with physical challenges",
+                problem: "Nonprofit needed strategic direction for expanding impact while maintaining operational efficiency in competitive fundraising environment.",
+                action: "Benchmarked 11 similar nonprofits, analyzed 65 events across impact metrics, conducted stakeholder interviews, and identified white space opportunities in target demographics.",
+                result: "Identified underserved youth market (ages 18–22) with 3x growth potential. Delivered strategic roadmap with specific program recommendations and resource allocation strategy.",
+                colorClasses: "from-purple-600 to-pink-600"
+            },
+            {
+                name: "Mental Health American LA",
+                category: "Market Research",
+                metric: "35% MARKET RECOVERY",
+                description: "Mental health advocacy and support organization",
+                problem: "Local bakery experiencing declining sales with no clear understanding of customer preferences or market gaps in competitive landscape.",
+                action: "Analyzed 6 months of sales data, conducted 50+ customer surveys, benchmarked 8 competing bakeries, and identified specific product gaps in dietary accommodation offerings.",
+                result: "Discovered 35% market loss from lack of non-dairy options. Delivered actionable product development roadmap with projected 25% revenue increase within 6 months.",
+                colorClasses: "from-indigo-600 to-blue-600"
+            }
+        ];
+
+        let currentJob = 0;
+        let currentProject = 0;
+        let isTransitioning = false;
+        let mouseX = 0, mouseY = 0;
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeJobCarousel();
+            initializeProjects();
+            initializeScrollAnimations();
+            initializeParallax();
+        });
+
+        // Job carousel functions
+        function initializeJobCarousel() {
+            updateJobDisplay();
+            setInterval(cycleJob, 2500);
+        }
+
+        function cycleJob() {
+            if (isTransitioning) return;
+            
+            isTransitioning = true;
+            const jobDisplay = document.getElementById('jobDisplay');
+            jobDisplay.style.opacity = '0';
+            jobDisplay.style.transform = 'translateY(8px) scale(0.95)';
+            
+            setTimeout(() => {
+                currentJob = (currentJob + 1) % jobs.length;
+                updateJobDisplay();
+                jobDisplay.style.opacity = '1';
+                jobDisplay.style.transform = 'translateY(0) scale(1)';
+                isTransitioning = false;
+            }, 300);
+        }
+
+        function updateJobDisplay() {
+            const job = jobs[currentJob];
+            document.getElementById('jobTitle').textContent = job.title;
+            document.getElementById('jobEmployer').textContent = job.employer;
+            document.getElementById('jobCounter').textContent = 
+                `${String(currentJob + 1).padStart(2, '0')} / ${String(jobs.length).padStart(2, '0')}`;
+            document.getElementById('progressBar').style.width = `${((currentJob + 1) / jobs.length) * 100}%`;
+        }
+
+        // Project functions
+        function initializeProjects() {
+            renderProjectCards();
+            renderProjectDots();
+        }
+
+        function renderProjectCards() {
+            const container = document.getElementById('projectCards');
+            container.innerHTML = projects.map((project, index) => `
+               <div class="flex-none w-72 h-96 rounded-3xl overflow-hidden cursor-pointer transition-all duration-500 hover:scale-105 hover:shadow-2xl bg-white/95 backdrop-blur-sm group project-card"
+                    onclick="openProjectModal(${index})">
+                   <div class="h-full p-5 flex flex-col relative">
+                       <div class="flex items-center justify-between mb-6">
+                           <div class="flex items-center space-x-2">
+                               <div class="p-3 rounded-xl bg-gradient-to-r ${project.colorClasses} text-white">
+                                   <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                                   </svg>
+                               </div>
+                               <span class="px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-700">
+                                   ${project.category}
+                               </span>
+                           </div>
+                           <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="text-gray-400 group-hover:text-gray-600 transition-colors">
+                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                           </svg>
+                       </div>
+                       <div class="flex-1 flex flex-col">
+                           <h3 class="text-2xl font-bold mb-4 text-gray-900 group-hover:text-gray-700 transition-colors">
+                               ${project.name}
+                           </h3>
+                           <div class="mb-4">
+                               <span class="inline-block bg-gradient-to-r ${project.colorClasses} text-white px-4 py-2 rounded-full text-xs font-bold shadow-lg">
+                                   ${project.metric}
+                               </span>
+                           </div>
+                           <p class="text-sm leading-relaxed mb-6 text-gray-600 flex-1">
+                               ${project.description}
+                           </p>
+                           <div class="mt-auto">
+                               <div class="text-sm font-medium text-blue-600 flex items-center">
+                                   Click to read full case study 
+                                   <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="ml-1">
+                                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                   </svg>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           `).join('');
+       }
+
+       function renderProjectDots() {
+           const container = document.getElementById('projectDots');
+           container.innerHTML = projects.map((_, index) => `
+               <div class="h-2 rounded-full transition-all duration-500 ${
+                   index === currentProject 
+                       ? 'bg-gradient-to-r from-blue-600 to-purple-600 w-8' 
+                       : 'bg-gray-600 w-2'
+               }"></div>
+           `).join('');
+       }
+
+       // Navigation functions
+       function scrollToSection(id) {
+           document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+           document.getElementById('mobileMenu').classList.add('hidden');
+       }
+
+       function toggleMobileMenu() {
+           const menu = document.getElementById('mobileMenu');
+           menu.classList.toggle('hidden');
+       }
+
+       function showContact() {
+           document.getElementById('contactModal').classList.remove('hidden');
+       }
+
+       function hideContact() {
+           document.getElementById('contactModal').classList.add('hidden');
+       }
+
+       function openProjectModal(index) {
+           // For now, just show an alert with project info
+           // You can expand this to show a full modal
+           const project = projects[index];
+           alert(`${project.name}\n\nProblem: ${project.problem}\n\nAction: ${project.action}\n\nResult: ${project.result}`);
+       }
+
+       // Scroll animations
+       function initializeScrollAnimations() {
+           window.addEventListener('scroll', () => {
+               const scrollY = window.scrollY;
+               const windowHeight = window.innerHeight;
+               
+               // Animate transition text
+               const scrollProgress = Math.max(0, (scrollY - windowHeight * 0.6) / (windowHeight * 0.4));
+               
+               const lines = ['line1', 'line2', 'line3', 'line4'];
+               lines.forEach((lineId, index) => {
+                   const element = document.getElementById(lineId);
+                   if (scrollProgress > index * 0.25) {
+                       element.style.opacity = '1';
+                       element.style.transform = 'translateY(0)';
+                   }
+               });
+           });
+       }
+
+       // Parallax effects
+       function initializeParallax() {
+           document.addEventListener('mousemove', (e) => {
+               mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+               mouseY = (e.clientY / window.innerHeight) * 2 - 1;
+               
+               const parallax1 = document.getElementById('parallax1');
+               const parallax2 = document.getElementById('parallax2');
+               
+               parallax1.style.transform = `translate(${mouseX * 20}px, ${mouseY * 20}px)`;
+               parallax2.style.transform = `translate(${mouseX * -15}px, ${mouseY * -15}px)`;
+           });
+       }
+   </script>
+</body>
+</html>
