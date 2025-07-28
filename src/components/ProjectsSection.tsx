@@ -107,9 +107,9 @@ const ProjectsSection: React.FC = () => {
     ];
 
     // Different blue shades for each section
-    const colorClass = section === 'problem' ? 'text-blue-1200' : 
+    const colorClass = section === 'problem' ? 'text-blue-1000' : 
                       section === 'action' ? 'text-blue-800' : 
-                      'text-blue-400';
+                      'text-blue-600';
 
     let highlightedText = text;
     keywords.forEach((keyword) => {
