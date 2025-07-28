@@ -107,9 +107,9 @@ const ProjectsSection: React.FC = () => {
     ];
 
     // Different blue shades for each section
-    const colorClass = section === 'problem' ? 'text-blue-600' : 
+    const colorClass = section === 'problem' ? 'text-blue-500' : 
                       section === 'action' ? 'text-blue-700' : 
-                      'text-blue-800';
+                      'text-blue-900';
 
     let highlightedText = text;
     keywords.forEach((keyword) => {
@@ -134,7 +134,7 @@ const ProjectsSection: React.FC = () => {
             CHECK OUT MY CLIENTS
           </h1>
           <p className="text-xl text-gray-300 max-w-4xl mx-auto">
-            <span className="font-semibold text-blue-600">
+            <span className="font-semibold text-blue-500">
               Real-world consulting work
             </span>
             <span className="text-white">
@@ -201,7 +201,7 @@ const ProjectsSection: React.FC = () => {
                       </p>
 
                       <div className="mt-auto">
-                        <div className="text-sm font-medium text-blue-600 flex items-center">
+                        <div className="text-sm font-medium text-blue-500 flex items-center">
                           Click to read full case study
                           <ChevronRight className="w-4 h-4 ml-1" />
                         </div>
