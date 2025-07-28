@@ -21,8 +21,7 @@ const AboutSection: React.FC = () => {
         </h2>
 
         <p className="text-xl mb-12 text-gray-300 max-w-3xl">
-          Strategy consultant. First-generation. Built to navigate systems, not
-          just study them.
+          Strategy consultant. First-generation. Built to navigate systems. 
         </p>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
