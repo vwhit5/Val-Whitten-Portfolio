@@ -135,7 +135,7 @@ const ProjectsSection: React.FC = () => {
             <span className="text-white">
               {" "}
               for nonprofits, student housing, Indigenous artisans, and
-              mentorship programs.
+              multicultural mentorship programs.
             </span>
           </p>
         </div>
