@@ -3,7 +3,7 @@ import { Job, Project } from "../types";
 
 export const jobs: Job[] = [
   { title: "LEGAL INTERN", employer: "Moncure & Barnicle" },
-  { title: "CAFÉ BARISTA", employer: "Maman NYC" },
+  { title: "CAFE BARISTA", employer: "Maman NYC" },
   {
     title: "REAL ESTATE STRATEGY CONSULTANT",
     employer: "Mosaic Student Housing",
@@ -12,7 +12,7 @@ export const jobs: Job[] = [
     title: "RESEARCH ASSISTANT",
     employer: "USC Center for Social and Economic Research",
   },
-  { title: "CAMP COUNSELOR", employer: "Girl Scouts Camp Blue Bay" },
+  { title: "CAMP COUNSELOR", employer: "Girl Scouts Camp" },
   { title: "FINANCE INTERN", employer: "State Farm" },
   { title: "TRANSCRIPTIONIST", employer: "Rev" },
   { title: "FOOD SERVER", employer: "Maiz Colombian Restaurant" },
