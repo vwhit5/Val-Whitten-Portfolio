@@ -64,67 +64,68 @@ const ProjectsSection: React.FC = () => {
   }, [projects.length, lastScrollLeft]);
 
   const highlightText = (text: string, section: 'problem' | 'action' | 'result') => {
-  const keywords = [
-    "data-driven approach",
-    "reduce tenant turnover",
-    "optimize portfolio performance",
-    "market research",
-    "product positioning strategy",
-    "maximize revenue",
-    "low engagement rates",
-    "no systematic approach",
-    "measuring success",
-    "strategic direction",
-    "expanding impact",
-    "maintaining operational efficiency",
-    "declining sales",
-    "no clear understanding",
-    "Analyzed 750 tenant records",
-    "built predictive churn model",
-    "created ROI heatmap",
-    "Conducted comprehensive market analysis",
-    "interviewed 30+ artisans",
-    "developed go-to-market strategy",
-    "Built comprehensive KPI framework",
-    "redesigned matching algorithm",
-    "implemented tracking system",
-    "Benchmarked 11 similar nonprofits",
-    "analyzed 65 events",
-    "conducted stakeholder interviews",
-    "Analyzed 6 months of sales data",
-    "conducted 50+ customer surveys",
-    "benchmarked 8 competing bakeries",
-    "20% churn reduction",
-    "$50K annual savings",
-    "150% revenue growth",
-    "15+ women entrepreneurs",
-    "40% improvement in engagement rates",
-    "20+ underclassmen",
-    "3x growth potential",
-    "underserved youth market",
-    "35% market loss",
-    "25% revenue increase",
-  ];
+    const keywords = [
+      "data-driven approach",
+      "reduce tenant turnover",
+      "optimize portfolio performance",
+      "market research",
+      "product positioning strategy",
+      "maximize revenue",
+      "low engagement rates",
+      "no systematic approach",
+      "measuring success",
+      "strategic direction",
+      "expanding impact",
+      "maintaining operational efficiency",
+      "declining sales",
+      "no clear understanding",
+      "Analyzed 750 tenant records",
+      "built predictive churn model",
+      "created ROI heatmap",
+      "Conducted comprehensive market analysis",
+      "interviewed 30+ artisans",
+      "developed go-to-market strategy",
+      "Built comprehensive KPI framework",
+      "redesigned matching algorithm",
+      "implemented tracking system",
+      "Benchmarked 11 similar nonprofits",
+      "analyzed 65 events",
+      "conducted stakeholder interviews",
+      "Analyzed 6 months of sales data",
+      "conducted 50+ customer surveys",
+      "benchmarked 8 competing bakeries",
+      "20% churn reduction",
+      "$50K annual savings",
+      "150% revenue growth",
+      "15+ women entrepreneurs",
+      "40% improvement in engagement rates",
+      "20+ underclassmen",
+      "3x growth potential",
+      "underserved youth market",
+      "35% market loss",
+      "25% revenue increase",
+    ];
 
-  // Different blue shades for each section
-  const colorClass = section === 'problem' ? 'text-blue-600' : 
-                    section === 'action' ? 'text-blue-700' : 
-                    'text-blue-800';
+    // Different blue shades for each section
+    const colorClass = section === 'problem' ? 'text-blue-600' : 
+                      section === 'action' ? 'text-blue-700' : 
+                      'text-blue-800';
 
-  let highlightedText = text;
-  keywords.forEach((keyword) => {
-    const regex = new RegExp(
-      `(${keyword.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`,
-      "gi"
-    );
-    highlightedText = highlightedText.replace(
-      regex,
-      `<span class="font-semibold ${colorClass}">$1</span>`
-    );
-  });
+    let highlightedText = text;
+    keywords.forEach((keyword) => {
+      const regex = new RegExp(
+        `(${keyword.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`,
+        "gi"
+      );
+      highlightedText = highlightedText.replace(
+        regex,
+        `<span class="font-semibold ${colorClass}">$1</span>`
+      );
+    });
 
-  return highlightedText;
-};
+    return highlightedText;
+  };
+
   return (
     <section id="projects" className="py-20 relative">
       <div className="max-w-7xl mx-auto px-6">
@@ -299,7 +300,8 @@ const ProjectsSection: React.FC = () => {
                 <X size={24} />
               </button>
             </div>
-             {/* Content */}
+
+            {/* Content */}
             <div className="flex-1 overflow-y-auto p-6">
               {!showGraphs ? (
                 <div className="grid md:grid-cols-3 gap-6">
@@ -345,27 +347,24 @@ const ProjectsSection: React.FC = () => {
                     />
                   </div>
                 </div>
-) : (
-  <div className="space-y-6">
-    <h3 className="text-2xl font-bold text-gray-900 text-center">
-      Data Visualizations & Analysis
-    </h3>
+              ) : (
+                <div className="space-y-6">
+                  <h3 className="text-2xl font-bold text-gray-900 text-center">
+                    Data Visualizations & Analysis
+                  </h3>
 
-    <div className="grid md:grid-cols-2 gap-4">
-      <div className="bg-red-50 rounded-lg p-4 border-2 border-red-200">
-        <h4 className="text-lg font-semibold mb-3 text-red-700">
-          Before Metrics
-        </h4>
-        <div className="h-24 bg-gradient-to-br from-red-100 to-red-200 rounded flex items-center justify-center">
-          <span className="text-red-600 font-medium text-sm">
-            Performance Baseline
-          </span>
-        </div>
-      </div>
-      // ... rest of your graph content
-    </div>
-  </div>
-)}
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="bg-red-50 rounded-lg p-4 border-2 border-red-200">
+                      <h4 className="text-lg font-semibold mb-3 text-red-700">
+                        Before Metrics
+                      </h4>
+                      <div className="h-24 bg-gradient-to-br from-red-100 to-red-200 rounded flex items-center justify-center">
+                        <span className="text-red-600 font-medium text-sm">
+                          Performance Baseline
+                        </span>
+                      </div>
+                    </div>
+
                     <div className="bg-green-50 rounded-lg p-4 border-2 border-green-200">
                       <h4 className="text-lg font-semibold mb-3 text-green-700">
                         After Implementation
