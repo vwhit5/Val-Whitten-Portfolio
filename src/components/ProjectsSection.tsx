@@ -299,9 +299,6 @@ const ProjectsSection: React.FC = () => {
                 <X size={24} />
               </button>
             </div>
-
-            {/* Content */}
-            <div className="flex-1 overflow-y-auto p-6">
              {/* Content */}
             <div className="flex-1 overflow-y-auto p-6">
               {!showGraphs ? (
@@ -349,47 +346,6 @@ const ProjectsSection: React.FC = () => {
                   </div>
                 </div>
               ) : (
-                <div className="space-y-6">
-                  <h3 className="text-2xl font-bold text-gray-900 text-center">
-                    Data Visualizations & Analysis
-                  </h3>
-
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="bg-red-50 rounded-lg p-4 border-2 border-red-200">
-                      <h4 className="text-lg font-semibold mb-3 text-red-700">
-                        Before Metrics
-                      </h4>
-                      <div className="h-24 bg-gradient-to-br from-red-100 to-red-200 rounded flex items-center justify-center">
-                        <span className="text-red-600 font-medium text-sm">
-                          Performance Baseline
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="bg-green-50 rounded-lg p-4 border-2 border-green-200">
-                      <h4 className="text-lg font-semibold mb-3 text-green-700">
-                        After Implementation
-                      </h4>
-                      <div className="h-24 bg-gradient-to-br from-green-100 to-green-200 rounded flex items-center justify-center">
-                        <span className="text-green-600 font-medium text-sm">
-                          Results Achieved
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="bg-blue-50 rounded-lg p-4">
-                    <h4 className="text-lg font-semibold mb-3">
-                      Key Performance Indicators Dashboard
-                    </h4>
-                    <div className="h-40 bg-gradient-to-br from-blue-100 to-blue-200 rounded flex items-center justify-center">
-                      <span className="text-blue-600 font-medium">
-                        Comprehensive KPI Overview
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              )}
             </div>
                 <div className="space-y-6">
                   <h3 className="text-2xl font-bold text-gray-900 text-center">
