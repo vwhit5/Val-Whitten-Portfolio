@@ -78,12 +78,6 @@ const Navigation: React.FC<NavigationProps> = ({ onContactClick }) => {
               onClick={() => scrollToSection("journey")}
               className="text-left text-white hover:text-blue-400 transition-colors py-2"
             >
-              JOURNEY
-            </button>
-            <button
-              onClick={() => scrollToSection("projects")}
-              className="text-left text-white hover:text-blue-400 transition-colors py-2"
-            >
               PROJECTS
             </button>
             <button
