@@ -106,10 +106,10 @@ const ProjectsSection: React.FC = () => {
       "25% revenue increase",
     ];
 
-    // Custom blue colors to match your design: Problem (darkest), Action (medium), Result (lightest)
-    const colorClass = section === 'problem' ? 'text-slate-800' : 
-                      section === 'action' ? 'text-blue-500' : 
-                      'text-sky-400';
+    // New blue scheme: Problem (darkest), Action (medium), Result (lightest)
+    const colorClass = section === 'problem' ? 'text-blue-800' : 
+                      section === 'action' ? 'text-blue-600' : 
+                      'text-blue-500';
 
     let highlightedText = text;
     keywords.forEach((keyword) => {
@@ -305,10 +305,10 @@ const ProjectsSection: React.FC = () => {
             <div className="flex-1 overflow-y-auto p-6">
               {!showGraphs ? (
                 <div className="grid md:grid-cols-3 gap-6">
-                  {/* Problem Section - Darkest Blue (Navy) */}
+                  {/* Problem Section - Darkest Blue */}
                   <div className="p-6 rounded-2xl bg-white border border-gray-200">
-                    <div className="w-16 h-1 bg-gradient-to-r from-slate-800 to-slate-900 mb-4 rounded-full" />
-                    <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-slate-800 to-slate-900 bg-clip-text text-transparent">
+                    <div className="w-16 h-1 bg-blue-800 mb-4 rounded-full" />
+                    <h3 className="text-2xl font-bold mb-4 text-blue-800">
                       PROBLEM
                     </h3>
                     <p
@@ -321,8 +321,8 @@ const ProjectsSection: React.FC = () => {
 
                   {/* Action Section - Medium Blue */}
                   <div className="p-6 rounded-2xl bg-white border border-gray-200">
-                    <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-blue-600 mb-4 rounded-full" />
-                    <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent">
+                    <div className="w-16 h-1 bg-blue-600 mb-4 rounded-full" />
+                    <h3 className="text-2xl font-bold mb-4 text-blue-600">
                       ACTION
                     </h3>
                     <p
@@ -333,10 +333,10 @@ const ProjectsSection: React.FC = () => {
                     />
                   </div>
 
-                  {/* Result Section - Lightest Blue (Sky) */}
+                  {/* Result Section - Lightest Blue */}
                   <div className="p-6 rounded-2xl bg-white border border-gray-200">
-                    <div className="w-16 h-1 bg-gradient-to-r from-sky-400 to-sky-500 mb-4 rounded-full" />
-                    <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-sky-400 to-sky-500 bg-clip-text text-transparent">
+                    <div className="w-16 h-1 bg-blue-500 mb-4 rounded-full" />
+                    <h3 className="text-2xl font-bold mb-4 text-blue-500">
                       RESULT
                     </h3>
                     <p
