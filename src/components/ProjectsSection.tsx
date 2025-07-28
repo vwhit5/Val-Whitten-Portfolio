@@ -300,37 +300,20 @@ const ProjectsSection: React.FC = () => {
             <div className="flex-1 overflow-y-auto p-6">
               {!showGraphs ? (
                 <div className="grid md:grid-cols-3 gap-6">
-                  <div className="p-6 rounded-2xl bg-white border border-gray-200">
-                    <div className="w-16 h-1 bg-blue-950 mb-4 rounded-full" />
-                    <h3 className="text-2xl font-bold mb-4 text-blue-950">
-                      PROBLEM
-                    </h3>
-                    <p
-                      className="text-gray-700 leading-relaxed"
-                      dangerouslySetInnerHTML={{
-                        __html: highlightText(selectedProject.problem),
-                      }}
-                    />
-                  </div>
-
-                  <div className="p-6 rounded-2xl bg-white border border-gray-200">
-                    <div className="w-16 h-1 bg-blue-800 mb-4 rounded-full" />
-                    <h3 className="text-2xl font-bold mb-4 text-blue-800">
-                      ACTION
-                    </h3>
-                    <p
-                      className="text-gray-700 leading-relaxed"
-                      dangerouslySetInnerHTML={{
-                        __html: highlightText(selectedProject.action),
-                      }}
-                    />
-                  </div>
-
-                  <div className="p-6 rounded-2xl bg-white border border-gray-200">
-                    <div className="w-16 h-1 bg-blue-600 mb-4 rounded-full" />
-                    <h3 className="text-2xl font-bold mb-4 text-blue-600">
-                      RESULT
-                    </h3>
+  <div className="p-6 rounded-2xl bg-white border border-gray-200">
+    <div className={`w-16 h-1 bg-gradient-to-r ${selectedProject.colorClasses} mb-4 rounded-full opacity-80`} />
+    <h3 className={`text-2xl font-bold mb-4 bg-gradient-to-r ${selectedProject.colorClasses} bg-clip-text text-transparent`}>PROBLEM</h3>
+    // ... rest of problem section
+  
+  <div className="p-6 rounded-2xl bg-white border border-gray-200">
+    <div className={`w-16 h-1 bg-gradient-to-r ${selectedProject.colorClasses} mb-4 rounded-full opacity-90`} />
+    <h3 className={`text-2xl font-bold mb-4 bg-gradient-to-r ${selectedProject.colorClasses} bg-clip-text text-transparent`}>ACTION</h3>
+    // ... rest of action section
+  
+  <div className="p-6 rounded-2xl bg-white border border-gray-200">
+    <div className={`w-16 h-1 bg-gradient-to-r ${selectedProject.colorClasses} mb-4 rounded-full`} />
+    <h3 className={`text-2xl font-bold mb-4 bg-gradient-to-r ${selectedProject.colorClasses} bg-clip-text text-transparent`}>RESULT</h3>
+    // ... rest of result section
                     <p
                       className="text-gray-700 leading-relaxed"
                       dangerouslySetInnerHTML={{
