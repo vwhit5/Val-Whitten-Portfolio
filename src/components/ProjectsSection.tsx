@@ -19,7 +19,6 @@ const ProjectsSection: React.FC = () => {
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
   const [scrollDirection, setScrollDirection] = useState<string | null>(null);
   const [lastScrollLeft, setLastScrollLeft] = useState(0);
-  const [showGraphs, setShowGraphs] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   // Project scroll tracking
@@ -291,10 +290,7 @@ const ProjectsSection: React.FC = () => {
                 </div>
               </div>
               <button
-                onClick={() => {
-                  setSelectedProject(null);
-                  setShowGraphs(false);
-                }}
+                onClick={() => setSelectedProject(null)}
                 className="p-3 rounded-full hover:bg-gray-100 transition-all duration-300 text-gray-500 hover:text-gray-700"
               >
                 <X size={24} />
@@ -303,53 +299,55 @@ const ProjectsSection: React.FC = () => {
 
             {/* Content */}
             <div className="flex-1 overflow-y-auto p-6">
-              {!showGraphs ? (
-                <div className="grid md:grid-cols-3 gap-6">
-                  {/* Problem Section - Darkest Blue */}
-                  <div className="p-6 rounded-2xl bg-white border border-gray-200">
-                    <div className="w-16 h-1 bg-blue-800 mb-4 rounded-full" />
-                    <h3 className="text-2xl font-bold mb-4 text-blue-800">
-                      PROBLEM
-                    </h3>
-                    <p
-                      className="text-gray-700 leading-relaxed"
-                      dangerouslySetInnerHTML={{
-                        __html: highlightText(selectedProject.problem, 'problem'),
-                      }}
-                    />
-                  </div>
-
-                  {/* Action Section - Medium Blue */}
-                  <div className="p-6 rounded-2xl bg-white border border-gray-200">
-                    <div className="w-16 h-1 bg-blue-600 mb-4 rounded-full" />
-                    <h3 className="text-2xl font-bold mb-4 text-blue-600">
-                      ACTION
-                    </h3>
-                    <p
-                      className="text-gray-700 leading-relaxed"
-                      dangerouslySetInnerHTML={{
-                        __html: highlightText(selectedProject.action, 'action'),
-                      }}
-                    />
-                  </div>
-
-                  {/* Result Section - Lightest Blue */}
-                  <div className="p-6 rounded-2xl bg-white border border-gray-200">
-                    <div className="w-16 h-1 bg-blue-500 mb-4 rounded-full" />
-                    <h3 className="text-2xl font-bold mb-4 text-blue-500">
-                      RESULT
-                    </h3>
-                    <p
-                      className="text-gray-700 leading-relaxed"
-                      dangerouslySetInnerHTML={{
-                        __html: highlightText(selectedProject.result, 'result'),
-                      }}
-                    />
-                  </div>
+              <div className="grid md:grid-cols-3 gap-6">
+                {/* Problem Section - Darkest Blue */}
+                <div className="p-6 rounded-2xl bg-white border border-gray-200">
+                  <div className="w-16 h-1 bg-blue-800 mb-4 rounded-full" />
+                  <h3 className="text-2xl font-bold mb-4 text-blue-800">
+                    PROBLEM
+                  </h3>
+                  <p
+                    className="text-gray-700 leading-relaxed"
+                    dangerouslySetInnerHTML={{
+                      __html: highlightText(selectedProject.problem, 'problem'),
+                    }}
+                  />
                 </div>
-              ) : (
-                <div className="space-y-6">
-                  <h3 className="text-2xl font-bold text-gray-900 text-center">
+
+                {/* Action Section - Medium Blue */}
+                <div className="p-6 rounded-2xl bg-white border border-gray-200">
+                  <div className="w-16 h-1 bg-blue-600 mb-4 rounded-full" />
+                  <h3 className="text-2xl font-bold mb-4 text-blue-600">
+                    ACTION
+                  </h3>
+                  <p
+                    className="text-gray-700 leading-relaxed"
+                    dangerouslySetInnerHTML={{
+                      __html: highlightText(selectedProject.action, 'action'),
+                    }}
+                  />
+                </div>
+
+                {/* Result Section - Lightest Blue */}
+                <div className="p-6 rounded-2xl bg-white border border-gray-200">
+                  <div className="w-16 h-1 bg-blue-500 mb-4 rounded-full" />
+                  <h3 className="text-2xl font-bold mb-4 text-blue-500">
+                    RESULT
+                  </h3>
+                  <p
+                    className="text-gray-700 leading-relaxed"
+                    dangerouslySetInnerHTML={{
+                      __html: highlightText(selectedProject.result, 'result'),
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </section>
+  );
 };
 
 export default ProjectsSection;
