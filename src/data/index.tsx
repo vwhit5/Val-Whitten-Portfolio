@@ -43,11 +43,11 @@ export const projects: Project[] = [
     metric: "$200K VALUE DELIVERED/YEAR",
     description: "Student housing operator managing multiple properties",
     problem:
-      "Student housing operator needed data-driven approach to reduce tenant turnover and optimize portfolio performance across multiple properties.",
+      "USC off campus Student housing operator needed data-driven approach to reduce tenant turnover and optimize portfolio performance across multiple properties to attract new tenants.",
     action:
-      "Analyzed 750 tenant records, built predictive churn model using demographic and behavioral data, created ROI heatmap for retention interventions across property portfolio.",
+      "Analyzed 750 previous tenant records, built predictive churn model using demographic and behavioral data on actions that led to higher risk of non renewals, created ROI heatmap for retention interventions through collected data on preffered amenity upgrades across property portfolio.",
     result:
-      "Projected 20% churn reduction and $50K annual savings. Delivered actionable retention strategies with property-specific recommendations and implementation timeline.",
+      "Projected 20% churn reduction and $50K annual savings. Delivered actionable, creative and consumer focused retention strategies with property-specific recommendations and implementation timeline.",
     colorClasses: "from-blue-600 to-purple-600",
   },
   {
