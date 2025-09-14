@@ -57,11 +57,11 @@ export const projects: Project[] = [
     description:
       "Social impact foundation supporting Indigenous Wayuu artisans",
     problem:
-      "Indigenous Wayuu artisans lacked market research and product positioning strategy to maximize revenue from traditional crafts in global markets.",
+      "Indigenous Colombian Wayuu artisans in Medellin lacked business education, market research and product positioning strategy to maximize revenue from traditional crafts in global markets.",
     action:
-      "Conducted comprehensive market analysis, interviewed 30+ artisans, analyzed sales data across 12 product categories, and developed go-to-market strategy focusing on highest-margin offerings.",
+      "Conducted comprehensive market analysis, interviewed 30+ artisans in popular tourist hotspotd, analyzed sales data across 12 product categories, and developed go-to-market strategy focusing on highest-margin offerings while building personal brand storyline to enhance emotional connection to product.",
     result:
-      "150% revenue growth across 15+ women entrepreneurs. Established sustainable product pipeline and pricing strategy that honored cultural authenticity while maximizing market impact.",
+      "150% revenue growth across 15+ women entrepreneurs. Established sustainable product pipeline and pricing strategy that honored cultural authenticity while maximizing international consumer based market impact.",
     colorClasses: "from-green-600 to-teal-600",
   },
   {
@@ -70,11 +70,11 @@ export const projects: Project[] = [
     metric: "40% ENGAGEMENT BOOST",
     description: "Student organization for Latino business professionals",
     problem:
-      "Student mentorship program had low engagement rates and no systematic approach to measuring success or optimizing mentor-mentee relationships.",
+      "Current student mentorship program had low engagement rates and no systematic approach to measuring success or optimizing personal mentor-mentee relationships.",
     action:
-      "Built comprehensive KPI framework, redesigned matching algorithm based on career goals and experience, implemented tracking system for engagement metrics.",
+      "Built comprehensive KPI framework, redesigned matching algorithm based on career goals, cultural similarites and experiences, implemented tracking system for engagement and growth metrics across consulting interview preperation.",
     result:
-      "40% improvement in engagement rates. Successfully matched 20+ underclassmen with targeted consulting prep mentors. Program became model for other professional organizations.",
+      "40% improvement in engagement rates, 100% soft and hard skill growth over the course of program. Successfully matched 20+ underclassmen with targeted consulting prep mentors. Program became model for other professional organizations.",
     colorClasses: "from-orange-600 to-red-600",
   },
   {
@@ -85,9 +85,9 @@ export const projects: Project[] = [
     problem:
       "Nonprofit needed strategic direction for expanding impact while maintaining operational efficiency in competitive fundraising environment.",
     action:
-      "Benchmarked 11 similar nonprofits, analyzed 65 events across impact metrics, conducted stakeholder interviews, and identified white space opportunities in target demographics.",
+      "Benchmarked 11 similar nonprofits, analyzed 65 events across impact metrics, conducted stakeholder interviews, and identified ignored opportunities in target demographics.",
     result:
-      "Identified underserved youth market (ages 18–22) with 3x growth potential. Delivered strategic roadmap with specific program recommendations and resource allocation strategy.",
+      "Identified underserved youth market (ages 18–22) with 3x growth potential. Delivered strategic roadmap with specific program recommendations, marketing strategies and resource allocation.",
     colorClasses: "from-purple-600 to-pink-600",
   },
   {
@@ -96,11 +96,11 @@ export const projects: Project[] = [
     metric: "35% MARKET RECOVERY",
     description: "Mental health advocacy and support organization",
     problem:
-      "Local bakery experiencing declining sales with no clear understanding of customer preferences or market gaps in competitive landscape.",
+      "Local non profit bakery experiencing declining sales with no clear understanding of customer preferences or market gaps in competitive landscape.",
     action:
       "Analyzed 6 months of sales data, conducted 50+ customer surveys, benchmarked 8 competing bakeries, and identified specific product gaps in dietary accommodation offerings.",
     result:
-      "Discovered 35% market loss from lack of non-dairy options. Delivered actionable product development roadmap with projected 25% revenue increase within 6 months.",
+      "Discovered 35% market loss from lack of non-dairy options. Delivered actionable product development roadmap for new produtcs with projected 25% revenue increase within 6 months.",
     colorClasses: "from-indigo-600 to-blue-600",
   },
 ];
