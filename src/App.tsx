@@ -10,6 +10,8 @@ import StrategyDashboard from "./components/StrategyDashboard";
 import TransitionSection from "./components/TransitionSection";
 import type { AppTab } from "./types";
 
+const STRATEGY_UNLOCK_STORAGE_KEY = "strategy-dashboard-unlocked";
+
 function App(): JSX.Element {
   const [showContact, setShowContact] = useState<boolean>(false);
   const [mouseX, setMouseX] = useState<number>(0);
@@ -31,6 +33,32 @@ function App(): JSX.Element {
     return () => document.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const storedUnlockState = window.localStorage.getItem(
+      STRATEGY_UNLOCK_STORAGE_KEY,
+    );
+
+    if (storedUnlockState === "true") {
+      setIsStrategyUnlocked(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    if (isStrategyUnlocked) {
+      window.localStorage.setItem(STRATEGY_UNLOCK_STORAGE_KEY, "true");
+    } else {
+      window.localStorage.removeItem(STRATEGY_UNLOCK_STORAGE_KEY);
+    }
+  }, [isStrategyUnlocked]);
+
   const isPortfolioView = activeTab === "portfolio";
 
   const closePasswordModal = () => {
@@ -40,8 +68,9 @@ function App(): JSX.Element {
 
   const handlePasswordSubmit = (password: string) => {
     if (password === "BildW25") {
+      const nextTab = pendingTab ?? "strategy";
       setIsStrategyUnlocked(true);
-      setActiveTab("strategy");
+      setActiveTab(nextTab);
       closePasswordModal();
       return true;
     }
@@ -60,6 +89,7 @@ function App(): JSX.Element {
       return false;
     }
 
+    setPendingTab(null);
     setActiveTab(tab);
     return true;
   };

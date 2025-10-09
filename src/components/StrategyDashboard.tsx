@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import type { FC } from "react";
 
 type TaskStatus = "Done" | "In Progress" | "Not Started";
@@ -126,11 +127,33 @@ const statusConfig: Record<
 };
 
 const StrategyDashboard: FC = () => {
-  const totalTasks = tasks.length;
-  const doneTasks = tasks.filter((task) => task.status === "Done").length;
-  const inProgressTasks = tasks.filter((task) => task.status === "In Progress").length;
-  const notStartedTasks = tasks.filter((task) => task.status === "Not Started").length;
-  const sortedTasks = [...tasks].sort((a, b) => statusOrder[a.status] - statusOrder[b.status]);
+  const metrics = useMemo(() => {
+    return tasks.reduce(
+      (accumulator, task) => {
+        accumulator.total += 1;
+        accumulator[task.status] += 1;
+        return accumulator;
+      },
+      { total: 0, Done: 0, "In Progress": 0, "Not Started": 0 } as Record<
+        "total" | TaskStatus,
+        number
+      >,
+    );
+  }, []);
+
+  const sortedTasks = useMemo(
+    () =>
+      [...tasks].sort((taskA, taskB) => {
+        const statusDifference = statusOrder[taskA.status] - statusOrder[taskB.status];
+
+        if (statusDifference !== 0) {
+          return statusDifference;
+        }
+
+        return taskA.id - taskB.id;
+      }),
+    [],
+  );
 
   return (
     <section id="strategy" className="relative py-24 bg-gradient-to-br from-slate-50 via-white to-slate-50">
@@ -146,19 +169,19 @@ const StrategyDashboard: FC = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="bg-white rounded-3xl p-6 border border-slate-200/60 shadow-sm transition-all hover:shadow-md">
-                <div className="text-4xl font-bold text-slate-900 mb-1">{totalTasks}</div>
+                <div className="text-4xl font-bold text-slate-900 mb-1">{metrics.total}</div>
                 <div className="text-sm text-slate-500 font-medium">Total Tasks</div>
               </div>
               <div className="bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-3xl p-6 shadow-lg shadow-emerald-500/20 text-white">
-                <div className="text-4xl font-bold mb-1">{doneTasks}</div>
+                <div className="text-4xl font-bold mb-1">{metrics.Done}</div>
                 <div className="text-sm text-emerald-50 font-medium">Completed</div>
               </div>
               <div className="bg-gradient-to-br from-amber-400 to-amber-500 rounded-3xl p-6 shadow-lg shadow-amber-400/20 text-white">
-                <div className="text-4xl font-bold mb-1">{inProgressTasks}</div>
+                <div className="text-4xl font-bold mb-1">{metrics["In Progress"]}</div>
                 <div className="text-sm text-amber-50 font-medium">In Progress</div>
               </div>
               <div className="bg-gradient-to-br from-slate-200 to-slate-300 rounded-3xl p-6 shadow-sm text-slate-700">
-                <div className="text-4xl font-bold mb-1">{notStartedTasks}</div>
+                <div className="text-4xl font-bold mb-1">{metrics["Not Started"]}</div>
                 <div className="text-sm text-slate-600 font-medium">Not Started</div>
               </div>
             </div>
