@@ -10,19 +10,6 @@ type Task = {
 };
 
 const tasks: Task[] = [
-  { id: 1, task: "Call UPS for Avaware key", status: "In Progress", next: "Make the call" },
-  {
-    id: 2,
-    task: "Order Schiller x Bild polos",
-    status: "In Progress",
-    next: "Waiting for sizes from Schilling",
-  },
-  {
-    id: 3,
-    task: "Start form for badge scanners",
-    status: "In Progress",
-    next: "Send email asking about this, get price from Anthony",
-  },
   {
     id: 4,
     task: "Check with booth suppliers",
@@ -30,16 +17,47 @@ const tasks: Task[] = [
     next: "Completed",
   },
   {
-    id: 5,
-    task: "Purchase small booth supplies",
-    status: "In Progress",
-    next: "Identify items not provided by Fern",
-  },
-  {
     id: 6,
     task: "Figure out catering estimates",
     status: "Done",
     next: "Completed",
+  },
+  {
+    id: 14,
+    task: "Get insurance for DHI",
+    status: "Done",
+    next: "Completed",
+  },
+  {
+    id: 3,
+    task: "Start form for badge scanners",
+    status: "Done",
+    next: "Completed",
+  },
+  {
+    id: 15,
+    task: "Sign up tickets for employees DHI",
+    status: "Done",
+    next: "Completed",
+  },
+  {
+    id: 11,
+    task: "Create dashboard for Roop & Puneet",
+    status: "Done",
+    next: "Completed",
+  },
+  { id: 1, task: "Call UPS for Avaware key", status: "In Progress", next: "Make the call" },
+  {
+    id: 2,
+    task: "Order Schiller x Bild polos",
+    status: "In Progress",
+    next: "Waiting for sizes from Schiller",
+  },
+  {
+    id: 5,
+    task: "Purchase small booth supplies",
+    status: "In Progress",
+    next: "Identify items not provided by Fern",
   },
   {
     id: 7,
@@ -57,19 +75,13 @@ const tasks: Task[] = [
     id: 9,
     task: "Bild.ai 3D product for showcase",
     status: "In Progress",
-    next: "Find 3D printing service",
+    next: "Draft final rendering of 3D print for Puneet",
   },
   {
     id: 10,
     task: "Create 3 billboard ideas",
     status: "In Progress",
-    next: "Brainstorm concepts",
-  },
-  {
-    id: 11,
-    task: "Create dashboard for Roop & Puneet",
-    status: "In Progress",
-    next: "Ongoing updates",
+    next: "Finalize ideas doc before meeting Monday",
   },
   {
     id: 12,
@@ -83,21 +95,9 @@ const tasks: Task[] = [
     status: "In Progress",
     next: "Waiting for syllabus confirmation (Puneet flying Sunday)",
   },
-  {
-    id: 14,
-    task: "Get insurance for DHI",
-    status: "Done",
-    next: "Completed",
-  },
-  {
-    id: 15,
-    task: "Sign up tickets for employees DHI",
-    status: "In Progress",
-    next: "Registration process",
-  },
 ];
 
-const statusConfig: Record<
+const statusConfig: Record
   TaskStatus,
   { badgeClasses: string; dotClasses: string; label: string }
 > = {
