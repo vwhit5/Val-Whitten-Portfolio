@@ -97,7 +97,7 @@ const tasks: Task[] = [
   },
 ];
 
-const statusConfig: Record
+const statusConfig: Record <
   TaskStatus,
   { badgeClasses: string; dotClasses: string; label: string }
 > = {
