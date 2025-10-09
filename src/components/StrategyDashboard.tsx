@@ -98,7 +98,7 @@ const tasks: Task[] = [
 ];
 
 const statusConfig: Record
-  TaskStatus,
+     TaskStatus,
   { badgeClasses: string; dotClasses: string; label: string }
 > = {
   Done: {
