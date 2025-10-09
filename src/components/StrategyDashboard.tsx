@@ -210,4 +210,4 @@ const StrategyDashboard: FC = () => {
   );
 };
 
-export default StrategyDashboard; 
+export default StrategyDashboard;
