@@ -46,7 +46,24 @@ const tasks: Task[] = [
     status: "Done",
     next: "Completed",
   },
-  { id: 1, task: "Call UPS for Avaware key", status: "In Progress", next: "Make the call" },
+  {
+    id: 10,
+    task: "Create billboard ideas",
+    status: "Done",
+    next: "Completed",
+  },
+  {
+    id: 13,
+    task: "Order my ticket",
+    status: "Done",
+    next: "Completed",
+  },
+  { 
+    id: 1, 
+    task: "Pickup Avaware key", 
+    status: "In Progress", 
+    next: "Follow up with Puneet" 
+  },
   {
     id: 2,
     task: "Order Schiller x Bild polos",
@@ -69,7 +86,7 @@ const tasks: Task[] = [
     id: 8,
     task: "Order name tags",
     status: "In Progress",
-    next: "Waiting for revision response",
+    next: "Waiting for second revision response",
   },
   {
     id: 9,
@@ -78,26 +95,20 @@ const tasks: Task[] = [
     next: "Draft final rendering of 3D print for Puneet",
   },
   {
-    id: 10,
-    task: "Create 3 billboard ideas",
-    status: "In Progress",
-    next: "Finalize ideas doc before meeting Monday",
-  },
-  {
     id: 12,
     task: "Order Roop and Owen tickets",
     status: "In Progress",
     next: "Waiting for info",
   },
   {
-    id: 13,
-    task: "Order my ticket",
+    id: 16,
+    task: "Upload insurance",
     status: "In Progress",
-    next: "Waiting for syllabus confirmation (Puneet flying Sunday)",
+    next: "Waiting for final policy to be sent by company",
   },
 ];
 
-const statusConfig: Record <
+const statusConfig: Record<
   TaskStatus,
   { badgeClasses: string; dotClasses: string; label: string }
 > = {
