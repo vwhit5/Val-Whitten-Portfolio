@@ -72,13 +72,13 @@ const tasks: Task[] = [
   },
   {
     id: 11,
-    task: "Purchase small booth supplies",
+    task: "Buy small booth supplies",
     status: "In Progress",
     next: "Identify items not provided by Fern",
   },
   {
     id: 12,
-    task: "Mockup Final Booth",
+    task: "Mockup + buy Final Booth",
     status: "In Progress",
     next: "Get confirmation from Fern + design stand up sign",
   },
