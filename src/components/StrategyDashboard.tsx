@@ -84,15 +84,15 @@ const tasks: Task[] = [
   },
   {
     id: 13,
-    task: "Order 250 logo items",
+    task: "Order logo items",
     status: "In Progress",
-    next: "Find under $1 items",
+    next: "waiting for approval to purchase",
   },
   {
     id: 14,
     task: "Order name tags",
     status: "In Progress",
-    next: "Waiting for second revision response",
+    next: "Waiting for second revision response - then will order Monday",
   },
   {
     id: 15,
@@ -103,20 +103,20 @@ const tasks: Task[] = [
   {
     id: 16,
     task: "Order Owen tickets",
-    status: "In Progress",
-    next: "Waiting for info",
+    status: "Done",
+    next: "Completed",
   },
   {
     id: 17,
     task: "Buy behaviroal data setup",
     status: "In Progress",
-    next: "Decide if full company set up or finding software to integrate with our own camera is better",
+    next: "Decide if full company set up or finding software to integrate with our own camera is better - meeting Monday",
   },
   {
     id: 18,
     task: "Upload insurance",
     status: "In Progress",
-    next: "Waiting for final policy to be sent by company",
+    next: "Waiting for final policy to be sent by company - follow up if not sent by Wed",
   },
 ];
 
