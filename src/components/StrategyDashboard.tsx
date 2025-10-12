@@ -42,13 +42,13 @@ const tasks: Task[] = [
   },
   {
     id: 6,
-    task: "Create dashboard for Roop & Puneet",
+    task: "Create task dashboard",
     status: "Done",
     next: "Completed",
   },
   {
     id: 7,
-    task: "Create billboard ideas",
+    task: "Create billboard Vision Doc",
     status: "Done",
     next: "Completed",
   },
@@ -97,12 +97,12 @@ const tasks: Task[] = [
   {
     id: 15,
     task: "Bild.ai 3D product for showcase",
-    status: "In Progress",
-    next: "Draft final rendering of 3D print for Puneet",
+    status: "Done",
+    next: "Completed",
   },
   {
     id: 16,
-    task: "Order Roop and Owen tickets",
+    task: "Order Owen tickets",
     status: "In Progress",
     next: "Waiting for info",
   },
