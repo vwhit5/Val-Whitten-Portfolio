@@ -114,6 +114,12 @@ const tasks: Task[] = [
   },
   {
     id: 18,
+    task: "Review Market Size",
+    status: "In Progress",
+    next: "Waiting to finish Conference Tasks/Ordering",
+  },
+  {
+    id: 19,
     task: "Upload insurance",
     status: "In Progress",
     next: "Waiting for final policy to be sent by company - follow up if not sent by Wed",
