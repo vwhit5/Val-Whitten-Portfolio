@@ -30,9 +30,9 @@ const tasks: Task[] = [
   },
   {
     id: 4,
-    task: "Start form for badge scanners",
-    status: "Done",
-    next: "Completed",
+    task: "Badge Scanners",
+    status: "In Progress",
+    next: "Email company for app access",
   },
   {
     id: 5,
@@ -78,9 +78,9 @@ const tasks: Task[] = [
   },
   {
     id: 12,
-    task: "Mockup + buy Final Booth",
+    task: "Mockup Final Booth",
     status: "In Progress",
-    next: "Get confirmation from Fern + design stand up sign",
+    next: "Waiting for Fern's final rendering",
   },
   {
     id: 13,
