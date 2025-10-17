@@ -86,8 +86,14 @@ type Task = {
     next: "Waiting for final policy to be sent by company - follow up if not sent by Wed",
   },
   {
-    id: 14,
+    id: 13,
     task: "Make quick AI knowledge survey for ipads",
+    status: "In Progress",
+    next: "Do other things first - low priority",
+  },
+{
+    id: 14,
+    task: "Outreach to List from Puneet",
     status: "In Progress",
     next: "Do other things first - low priority",
   },
