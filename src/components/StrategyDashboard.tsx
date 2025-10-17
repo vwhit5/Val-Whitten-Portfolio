@@ -36,7 +36,7 @@ const tasks: Task[] = [
   },
   {
     id: 5,
-    task: "Sign up tickets for employees DHI",
+    task: "Make quick AI knowledge survey for ipads",
     status: "Done",
     next: "Completed",
   },
