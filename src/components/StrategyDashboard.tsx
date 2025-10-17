@@ -9,7 +9,10 @@ type Task = {
   next: string;
 };
 
-const tasks: Task[] = [
+
+    
+    
+    const tasks: Task[] = [
   {
     id: 1,
     task: "Design Smaller Printed Material",
@@ -24,105 +27,99 @@ const tasks: Task[] = [
   },
   {
     id: 3,
-    task: "Get insurance for DHI",
-    status: "Done",
-    next: "Completed",
-  },
-  {
-    id: 4,
     task: "Badge Scanners",
     status: "In Progress",
     next: "Email company for app access",
   },
-  {
-    id: 5,
-    task: "Make quick AI knowledge survey for ipads",
-    status: "Done",
-    next: "Completed",
-  },
-  {
-    id: 6,
-    task: "Create task dashboard",
-    status: "Done",
-    next: "Completed",
-  },
-  {
-    id: 7,
-    task: "Create billboard Vision Doc",
-    status: "Done",
-    next: "Completed",
-  },
-  {
-    id: 8,
-    task: "Order my ticket",
-    status: "Done",
-    next: "Completed",
-  },
   { 
-    id: 9, 
-    task: "Bild 3D Product", 
+    id: 4, 
+    task: "Bild 3D Product for showcase", 
     status: "In Progress", 
     next: "Ask Johnathan to mockup and get quote from online for printing" 
   },
   {
-    id: 10,
+    id: 5,
     task: "Order Schiller x Bild polos",
     status: "In Progress",
     next: "Waiting for sizes (and names)from Schiller",
   },
   {
-    id: 11,
+    id: 6,
     task: "Buy small booth supplies",
     status: "In Progress",
     next: "Identify items not provided by Fern",
   },
   {
-    id: 12,
+    id: 7,
     task: "Mockup Final Booth",
     status: "In Progress",
     next: "Waiting for Fern's final rendering",
   },
   {
-    id: 13,
+    id: 8,
     task: "Order logo items",
     status: "In Progress",
     next: "waiting for approval to purchase",
   },
   {
-    id: 14,
+    id: 9,
     task: "Order name tags",
     status: "In Progress",
     next: "Waiting for second revision response - then will order Monday",
   },
   {
-    id: 15,
-    task: "Bild.ai 3D product for showcase",
-    status: "Done",
-    next: "Completed",
-  },
-  {
-    id: 16,
-    task: "Order Owen tickets",
-    status: "Done",
-    next: "Completed",
-  },
-  {
-    id: 17,
+    id: 10,
     task: "Buy behavioral data setup",
     status: "In Progress",
     next: "Decide if full company set up or finding software to integrate with our own camera is better - meeting Monday",
   },
   {
-    id: 18,
+    id: 11,
     task: "Review Market Size",
     status: "In Progress",
     next: "Waiting to finish Conference Tasks/Ordering",
   },
   {
-    id: 19,
+    id: 12,
     task: "Upload insurance",
     status: "In Progress",
     next: "Waiting for final policy to be sent by company - follow up if not sent by Wed",
+  },
+  {
+    id: 13,
+    task: "Get insurance for DHI",
+    status: "Done",
+    next: "Completed",
+  },
+  {
+    id: 14,
+    task: "Make quick AI knowledge survey for ipads",
+    status: "Done",
+    next: "Completed",
+  },
+  {
+    id: 15,
+    task: "Create task dashboard",
+    status: "Done",
+    next: "Completed",
+  },
+  {
+    id: 16,
+    task: "Create billboard Vision Doc",
+    status: "Done",
+    next: "Completed",
+  },
+  {
+    id: 17,
+    task: "Order my ticket",
+    status: "Done",
+    next: "Completed",
+  },
+  {
+    id: 18,
+    task: "Order Owen tickets",
+    status: "Done",
+    next: "Completed",
   },
 ];
 
