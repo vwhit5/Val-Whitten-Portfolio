@@ -12,15 +12,15 @@ type Task = {
 const tasks: Task[] = [
   {
     id: 1,
-    task: "Check with booth suppliers",
-    status: "Done",
-    next: "Completed",
+    task: "Design Smaller Printed Material",
+    status: "In Progress",
+    next: "Need to complete the standing banner first",
   },
   {
     id: 2,
-    task: "Figure out catering estimates",
-    status: "Done",
-    next: "Completed",
+    task: "Keynote Slides Draft",
+    status: "In Progress",
+    next: "Waiting for Roop to make edits",
   },
   {
     id: 3,
@@ -60,15 +60,15 @@ const tasks: Task[] = [
   },
   { 
     id: 9, 
-    task: "Pickup Avaware key", 
+    task: "Bild 3D Product", 
     status: "In Progress", 
-    next: "Follow up with Puneet" 
+    next: "Ask Johnathan to mockup and get quote from online for printing" 
   },
   {
     id: 10,
     task: "Order Schiller x Bild polos",
     status: "In Progress",
-    next: "Waiting for sizes from Schiller",
+    next: "Waiting for sizes (and names)from Schiller",
   },
   {
     id: 11,
@@ -108,7 +108,7 @@ const tasks: Task[] = [
   },
   {
     id: 17,
-    task: "Buy behaviroal data setup",
+    task: "Buy behavioral data setup",
     status: "In Progress",
     next: "Decide if full company set up or finding software to integrate with our own camera is better - meeting Monday",
   },
