@@ -86,40 +86,10 @@ type Task = {
     next: "Waiting for final policy to be sent by company - follow up if not sent by Wed",
   },
   {
-    id: 13,
-    task: "Get insurance for DHI",
-    status: "Done",
-    next: "Completed",
-  },
-  {
     id: 14,
     task: "Make quick AI knowledge survey for ipads",
-    status: "Done",
-    next: "Completed",
-  },
-  {
-    id: 15,
-    task: "Create task dashboard",
-    status: "Done",
-    next: "Completed",
-  },
-  {
-    id: 16,
-    task: "Create billboard Vision Doc",
-    status: "Done",
-    next: "Completed",
-  },
-  {
-    id: 17,
-    task: "Order my ticket",
-    status: "Done",
-    next: "Completed",
-  },
-  {
-    id: 18,
-    task: "Order Owen tickets",
-    status: "Done",
-    next: "Completed",
+    status: "In Progress",
+    next: "Do other things first - low priority",
   },
 ];
 
