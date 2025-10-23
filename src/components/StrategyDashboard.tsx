@@ -64,14 +64,14 @@ type Task = {
   {
     id: 9,
     task: "Order name tags",
-    status: "In Progress",
-    next: "Waiting for second revision response - then will order Monday",
+    status: "Done",
+    next: "Completed",
   },
   {
     id: 10,
     task: "Buy behavioral data setup",
     status: "In Progress",
-    next: "Decide if full company set up or finding software to integrate with our own camera is better - meeting Monday",
+    next: "Do other things first- low priority",
   },
   {
     id: 11,
@@ -87,7 +87,7 @@ type Task = {
   },
   {
     id: 13,
-    task: "Make quick AI knowledge survey for ipads",
+    task: "Order Business Cards",
     status: "In Progress",
     next: "Do other things first - low priority",
   },
@@ -95,7 +95,7 @@ type Task = {
     id: 14,
     task: "Outreach to List from Puneet",
     status: "In Progress",
-    next: "Do other things first - low priority",
+    next: "Waiting for instructions on how to reach out via linkedIn",
   },
 ];
 
