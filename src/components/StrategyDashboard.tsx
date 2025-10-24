@@ -34,8 +34,8 @@ type Task = {
   { 
     id: 4, 
     task: "Bild 3D Product for showcase", 
-    status: "In Progress", 
-    next: "Ask Johnathan to mockup and get quote from online for printing" 
+    status: "Done", 
+    next: "Completed" 
   },
   {
     id: 5,
@@ -82,14 +82,14 @@ type Task = {
   {
     id: 12,
     task: "Upload insurance",
-    status: "In Progress",
-    next: "Waiting for final policy to be sent by company - follow up if not sent by Wed",
+    status: "Done",
+    next: "Completed",
   },
   {
     id: 13,
     task: "Order Business Cards",
     status: "In Progress",
-    next: "Do other things first - low priority",
+    next: "Do other things first",
   },
 {
     id: 14,
