@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import { type FC, useState } from "react";
 
 type TaskStatus = "Done" | "In Progress" | "Not Started";
 
@@ -7,6 +7,7 @@ type Task = {
   task: string;
   status: TaskStatus;
   next: string;
+  dueDate?: string;
 };
 
 
@@ -15,91 +16,243 @@ type Task = {
     const tasks: Task[] = [
   {
     id: 1,
-    task: "Design Smaller Printed Material",
+    task: "Finalize Brochures + Business Cards",
     status: "In Progress",
-    next: "Need to complete the standing banner first",
+    next: "Waiting on Roop + Puneet Final Approval",
+    dueDate: "11/3",
   },
   {
     id: 2,
-    task: "Keynote Slides Draft",
+    task: "Finalize Schiller x Bild Polo",
     status: "In Progress",
-    next: "Waiting for Roop to make edits",
+    next: "Waiting on Puneet Final Approval",
+    dueDate: "11/3",
   },
   {
     id: 3,
-    task: "Badge Scanners",
+    task: "Call Badge Scanner people",
     status: "In Progress",
-    next: "Email company for app access",
+    next: "Call Monday when they open",
+    dueDate: "11/3",
   },
-  { 
-    id: 4, 
-    task: "Bild 3D Product for showcase", 
-    status: "Done", 
-    next: "Completed" 
+  {
+    id: 4,
+    task: "Email/Call for 3D Product",
+    status: "In Progress",
+    next: "Email/call Monday when they open",
+    dueDate: "11/3",
   },
   {
     id: 5,
-    task: "Order Schiller x Bild polos",
+    task: "Texas Company Outreach",
     status: "In Progress",
-    next: "Waiting for sizes (and names)from Schiller",
+    next: "Finish top of deck DHI tasks first",
+    dueDate: "TBD",
   },
   {
     id: 6,
-    task: "Buy small booth supplies",
+    task: "Behavioral Data Setup Write Up",
     status: "In Progress",
-    next: "Identify items not provided by Fern",
+    next: "Complete after DHI",
+    dueDate: "TBD",
   },
   {
     id: 7,
-    task: "Mockup Final Booth",
+    task: "Review Market Size",
     status: "In Progress",
-    next: "Waiting for Fern's final rendering",
+    next: "Complete after DHI",
+    dueDate: "TBD",
   },
   {
     id: 8,
-    task: "Order logo items",
+    task: "Outreach to List from Puneet",
     status: "In Progress",
-    next: "waiting for approval to purchase",
+    next: "Waiting for response from Puneet on how to reach out",
+    dueDate: "TBD",
   },
   {
     id: 9,
-    task: "Order name tags",
+    task: "Brand + Messaging System",
     status: "Done",
-    next: "Completed",
+    next: "Built the transition between core message and logo to unify visual and conceptual flow",
   },
   {
     id: 10,
-    task: "Buy behavioral data setup",
-    status: "In Progress",
-    next: "Do other things first- low priority",
+    task: "Booth Compliance Review",
+    status: "Done",
+    next: "Identified sightline and banner restrictions in DHI code and corrected layout before fabrication",
   },
   {
     id: 11,
-    task: "Review Market Size",
-    status: "In Progress",
-    next: "Waiting to finish Conference Tasks/Ordering",
+    task: "Electrical Planning + Power Coordination",
+    status: "Done",
+    next: "Planned power, lighting, and scanner placement with vendors for proper flow and functionality",
   },
   {
     id: 12,
-    task: "Upload insurance",
+    task: "Five-Senses Booth Experience + Lighting + Professionalism",
     status: "Done",
-    next: "Completed",
+    next: "Designed sensory engagement using sound, visuals, touch, and lighting; added name-tag standards to reinforce professionalism and trust",
   },
   {
     id: 13,
-    task: "Order Business Cards",
-    status: "In Progress",
-    next: "Do other things first",
+    task: "Branded Apparel + Identity",
+    status: "Done",
+    next: "Created Schiller × Bild polos, logo assets, and name tags for consistent brand presence",
   },
-{
+  {
     id: 14,
-    task: "Outreach to List from Puneet",
-    status: "In Progress",
-    next: "Waiting for instructions on how to reach out via linkedIn",
+    task: "Monster Sponsorship Plan",
+    status: "Done",
+    next: "Built co-branding strategy to drive foot traffic and activation momentum",
+  },
+  {
+    id: 15,
+    task: "Insurance Compliance Check",
+    status: "Done",
+    next: "Verified that all booth components and activations met event insurance requirements",
+  },
+  {
+    id: 16,
+    task: "Division 8 Market Sizing",
+    status: "Done",
+    next: "Completed TAM/SAM analysis for U.S. Division 8 contractors and distributors",
+  },
+  {
+    id: 17,
+    task: "Custom Engagement Concepts",
+    status: "Done",
+    next: "Developed hard-claw machine, logo engraving, and VR demo concepts to attract visitors",
+  },
+  {
+    id: 18,
+    task: "Exhibitor Listing Recovery",
+    status: "Done",
+    next: "Fixed DHI exhibitor portal issue to reactivate our booth listing and search visibility",
+  },
+  {
+    id: 19,
+    task: "Behavioral Analytics Planning",
+    status: "Done",
+    next: "Designed booth data plan comparing camera-based and software-based behavior tracking",
+  },
+  {
+    id: 20,
+    task: "Keynote Development",
+    status: "Done",
+    next: "Worked with Roop on slide flow and messaging for AI in Division 8 presentation",
+  },
+  {
+    id: 21,
+    task: "Print + Asset Finalization",
+    status: "Done",
+    next: "Delivered final banners, print files, and mockups for Fern's production process",
+  },
+  {
+    id: 22,
+    task: "3D Product Displays",
+    status: "Done",
+    next: "Managed 3D product showcase mockups and vendor quote coordination with Johnathan",
+  },
+  {
+    id: 23,
+    task: "Logistics + Timeline Tracking",
+    status: "Done",
+    next: "Tracked shipments and production timelines with Fern, Schiller, and Monster for on-time setup",
+  },
+  {
+    id: 24,
+    task: "NFC Smart Card Rollout + Auto Contact System",
+    status: "Done",
+    next: "Implemented tap-to-save NFC cards and created an auto-contact card + Bitly landing site for instant profile, materials, and follow-up access",
+  },
+  {
+    id: 25,
+    task: "Badge Scanner Procurement + Enablement",
+    status: "Done",
+    next: "Identified badge scanning as a lead-gen tool, secured access, ensured we had enough devices, and learned system usage for fast booth capture",
+  },
+  {
+    id: 26,
+    task: "Merch Sourcing + Custom Design",
+    status: "Done",
+    next: "Identified cheapest, fastest, and most reliable merch options and custom-designed branded products",
+  },
+  {
+    id: 27,
+    task: "Contractor-First Positioning Strategy",
+    status: "Done",
+    next: "Developed messaging grounded in real contractor, estimator, and distributor workflows",
+  },
+  {
+    id: 28,
+    task: "Booth Code Learning + TV / Mount Layout",
+    status: "Done",
+    next: "Learned booth codes and rules; designed full TV placement, mounting, and spatial interaction flow",
+  },
+  {
+    id: 29,
+    task: "Full Booth Design + Mockups",
+    status: "Done",
+    next: "Created complete booth layout renders and digital walkthroughs to test engagement flow and sightlines",
+  },
+  {
+    id: 30,
+    task: "Booth Graphic System Design",
+    status: "Done",
+    next: "Designed every booth graphic including banners, walls, message architecture, and product panels",
+  },
+  {
+    id: 31,
+    task: "Times Square Billboard Creative",
+    status: "Done",
+    next: "Designed Times Square billboard concepts and the main transition hero slide for brand reveal",
+  },
+  {
+    id: 32,
+    task: "Keynote First Draft + Collateral",
+    status: "Done",
+    next: "Created the first draft of keynote slides, brochure language, and speaker notes for Roop to finalize",
+  },
+  {
+    id: 33,
+    task: "Complete Electrical Ordering + Setup Execution",
+    status: "Done",
+    next: "Ordered all electrical components and coordinated final booth power installation and wiring setup",
+  },
+  {
+    id: 34,
+    task: "Stand-Up Banner Design + Delivery",
+    status: "Done",
+    next: "Designed stand-up banner including message hierarchy, visual layout, and final production files",
+  },
+  {
+    id: 35,
+    task: "Booth Data + Conversion Tracking",
+    status: "Done",
+    next: "Built early tracking system for dwell time, engagement, and conversion triggers",
+  },
+  {
+    id: 36,
+    task: "Behavioral Motivation Strategy",
+    status: "Done",
+    next: "Identified subtle motivators influencing contractors and applied them to booth design and interactions",
+  },
+  {
+    id: 37,
+    task: "Travel Coordination + Lodging Logistics",
+    status: "Done",
+    next: "Ordered conference tickets for team, secured extra lodging, and tracked travel and accommodations logistics",
+  },
+  {
+    id: 38,
+    task: "LinkedIn Outreach + DHI Engagement Messaging",
+    status: "Done",
+    next: "Created LinkedIn outreach scripts and public posts inviting DHI attendees, driving booth traffic and brand awareness",
   },
 ];
 
-const statusConfig: Record<
+const statusConfig: Record
   TaskStatus,
   { badgeClasses: string; dotClasses: string; label: string }
 > = {
@@ -122,10 +275,15 @@ const statusConfig: Record<
 };
 
 const StrategyDashboard: FC = () => {
+  const [filter, setFilter] = useState<"inProgress" | "done">("inProgress");
+  
   const totalTasks = tasks.length;
   const doneTasks = tasks.filter((task) => task.status === "Done").length;
   const inProgressTasks = tasks.filter((task) => task.status === "In Progress").length;
-  const notStartedTasks = tasks.filter((task) => task.status === "Not Started").length;
+  
+  const filteredTasks = filter === "done" 
+    ? tasks.filter((task) => task.status === "Done")
+    : tasks.filter((task) => task.status === "In Progress");
 
   return (
     <section id="strategy" className="relative py-24 bg-gradient-to-br from-slate-50 via-white to-slate-50">
@@ -139,7 +297,7 @@ const StrategyDashboard: FC = () => {
               <p className="text-slate-500 text-lg">Bild.ai Project Management</p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
               <div className="bg-white rounded-3xl p-6 border border-slate-200/60 shadow-sm transition-all hover:shadow-md">
                 <div className="text-4xl font-bold text-slate-900 mb-1">{totalTasks}</div>
                 <div className="text-sm text-slate-500 font-medium">Total Tasks</div>
@@ -152,16 +310,35 @@ const StrategyDashboard: FC = () => {
                 <div className="text-4xl font-bold mb-1">{inProgressTasks}</div>
                 <div className="text-sm text-amber-50 font-medium">In Progress</div>
               </div>
-              <div className="bg-gradient-to-br from-slate-200 to-slate-300 rounded-3xl p-6 shadow-sm text-slate-700">
-                <div className="text-4xl font-bold mb-1">{notStartedTasks}</div>
-                <div className="text-sm text-slate-600 font-medium">Not Started</div>
-              </div>
+            </div>
+
+            <div className="flex gap-3">
+              <button
+                onClick={() => setFilter("inProgress")}
+                className={`px-6 py-3 rounded-2xl font-semibold transition-all ${
+                  filter === "inProgress"
+                    ? "bg-amber-500 text-white shadow-lg"
+                    : "bg-white text-slate-600 border border-slate-200 hover:border-slate-300"
+                }`}
+              >
+                In Progress
+              </button>
+              <button
+                onClick={() => setFilter("done")}
+                className={`px-6 py-3 rounded-2xl font-semibold transition-all ${
+                  filter === "done"
+                    ? "bg-emerald-600 text-white shadow-lg"
+                    : "bg-white text-slate-600 border border-slate-200 hover:border-slate-300"
+                }`}
+              >
+                Completed
+              </button>
             </div>
           </div>
 
           <div className="px-6 sm:px-10 py-10">
             <div className="space-y-4">
-              {tasks.map((task) => {
+              {filteredTasks.map((task) => {
                 const config = statusConfig[task.status];
 
                 return (
@@ -180,13 +357,23 @@ const StrategyDashboard: FC = () => {
                             {task.task}
                           </h3>
 
-                          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4 flex-wrap">
-                            <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold ${config.badgeClasses}`}>
-                              <div className={`w-2 h-2 rounded-full ${config.dotClasses}`} />
-                              {config.label}
+                          <div className="flex flex-col gap-3">
+                            <div className="flex items-center gap-3">
+                              <div className={`flex-shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold ${config.badgeClasses}`}>
+                                <div className={`w-1.5 h-1.5 rounded-full ${config.dotClasses}`} />
+                                {config.label}
+                              </div>
+                              {task.status === "In Progress" && task.dueDate && (
+                                <div className="flex-shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200">
+                                  <svg className="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                  </svg>
+                                  Due: {task.dueDate}
+                                </div>
+                              )}
                             </div>
                             {task.status !== "Done" && (
-                              <div className="flex items-start gap-2 flex-1 min-w-0">
+                              <div className="flex items-start gap-2">
                                 <span className="text-slate-400 font-medium text-sm whitespace-nowrap">Next:</span>
                                 <span className="text-slate-600 text-sm leading-relaxed">{task.next}</span>
                               </div>
