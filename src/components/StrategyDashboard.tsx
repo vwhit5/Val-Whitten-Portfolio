@@ -365,12 +365,16 @@ const StrategyDashboard: FC = () => {
                                 </div>
                               )}
                             </div>
-                            {task.status !== "Done" && (
-                              <div className="flex items-start gap-2">
-                                <span className="text-slate-400 font-medium text-sm whitespace-nowrap">Next:</span>
+                            <div className="flex items-start gap-2">
+                              {task.status === "Done" ? (
                                 <span className="text-slate-600 text-sm leading-relaxed">{task.next}</span>
-                              </div>
-                            )}
+                              ) : (
+                                <>
+                                  <span className="text-slate-400 font-medium text-sm whitespace-nowrap">Next:</span>
+                                  <span className="text-slate-600 text-sm leading-relaxed">{task.next}</span>
+                                </>
+                              )}
+                            </div>
                           </div>
                         </div>
                       </div>
