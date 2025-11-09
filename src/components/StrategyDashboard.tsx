@@ -13,83 +13,97 @@ type Task = {
 const tasks: Task[] = [
   {
     id: 1,
-    task: "Finalize Brochures + Business Cards",
+    task: "Design Email Campaign",
     status: "In Progress",
-    next: "Waiting on Roop + Puneet Final Approval",
-    dueDate: "11/3",
+    next: "Waiting for approval from Roop",
+    dueDate: "11/11",
   },
   {
     id: 2,
-    task: "Finalize Schiller x Bild Polo",
+    task: "Review Market Size",
     status: "In Progress",
-    next: "Waiting on Puneet Final Approval",
-    dueDate: "11/3",
+    next: "Complete after DHI",
+    dueDate: "11/13",
   },
   {
     id: 3,
-    task: "Call Badge Scanner people",
+    task: "LinkedIn Post for Billboard",
     status: "In Progress",
-    next: "Call Monday when they open",
-    dueDate: "11/3",
+    next: "Write draft",
+    dueDate: "11/14",
   },
   {
     id: 4,
-    task: "Email/Call for 3D Product",
-    status: "In Progress",
-    next: "Email/call Monday when they open",
-    dueDate: "11/3",
-  },
-  {
-    id: 5,
     task: "Texas Company Outreach",
     status: "In Progress",
     next: "Finish top of deck DHI tasks first",
     dueDate: "TBD",
   },
   {
-    id: 6,
+    id: 5,
     task: "Behavioral Data Setup Write Up",
     status: "In Progress",
     next: "Complete after DHI",
     dueDate: "TBD",
   },
   {
-    id: 7,
-    task: "Review Market Size",
-    status: "In Progress",
-    next: "Complete after DHI",
-    dueDate: "TBD",
-  },
-  {
-    id: 8,
+    id: 6,
     task: "Outreach to List from Puneet",
     status: "In Progress",
     next: "Waiting for response from Puneet on how to reach out",
     dueDate: "TBD",
   },
   {
+    id: 7,
+    task: "Create Branding Sheet",
+    status: "In Progress",
+    next: "Gather all materials",
+    dueDate: "TBD",
+  },
+  {
+    id: 8,
+    task: "Monster Branding Strategy",
+    status: "In Progress",
+    next: "Draft emails + find contacts",
+    dueDate: "TBD",
+  },
+  {
+    id: 9,
+    task: "Organize Circle Back Meetings",
+    status: "In Progress",
+    next: "Waiting for shared file",
+    dueDate: "TBD",
+  },
+  {
+    id: 10,
+    task: "Articles in Big Papers",
+    status: "In Progress",
+    next: "Outreach",
+    dueDate: "TBD",
+  },
+  {
     id: 1,
-    task: "Brand + Messaging System",
+    task: "Finalize Brochures + Business Cards",
     status: "Done",
-    next: "Built the transition between core message and logo to unify visual and conceptual flow",
+    next: "Received Roop + Puneet final approval and completed production",
   },
   {
     id: 2,
-    task: "Booth Compliance Review",
+    task: "Finalize Schiller x Bild Polo",
     status: "Done",
-    next: "Identified sightline and banner restrictions in DHI code and corrected layout before fabrication",
+    next: "Received Puneet final approval and completed production",
   },
   {
     id: 3,
-    task: "Electrical Planning + Power Coordination",
+    task: "Call Badge Scanner people",
     status: "Done",
-    next: "Planned power, lighting, and scanner placement with vendors for proper flow and functionality",
+    next: "Called and secured badge scanner setup for event",
   },
   {
     id: 4,
-    task: "Five-Senses Booth Experience + Lighting + Professionalism",
+    task: "Email/Call for 3D Product",
     status: "Done",
-    next: "Designed sensory engagement using sound, visuals, touch, and lighting; added name-tag standards to reinforce professionalism and trust",
+    next: "Contacted vendor and confirmed 3D product delivery",
   },
   {
     id: 5,
@@ -331,18 +345,19 @@ const StrategyDashboard: FC = () => {
 
           <div className="px-6 sm:px-10 py-10">
             <div className="space-y-4">
-              {filteredTasks.map((task) => {
+              {filteredTasks.map((task, index) => {
                 const config = statusConfig[task.status];
+                const displayId = index + 1;
 
                 return (
                   <div
-                    key={task.id}
+                    key={`${task.status}-${index}`}
                     className="group bg-white rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-200/60 overflow-hidden hover:border-slate-300"
                   >
                     <div className="p-7">
                       <div className="flex flex-col sm:flex-row sm:items-start gap-6">
                         <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-slate-100 to-slate-200 rounded-2xl flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
-                          <span className="text-slate-700 font-bold text-xl">{task.id}</span>
+                          <span className="text-slate-700 font-bold text-xl">{displayId}</span>
                         </div>
 
                         <div className="flex-grow min-w-0">
