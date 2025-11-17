@@ -12,13 +12,6 @@ type Task = {
 
 const tasks: Task[] = [
   {
-    id: 2,
-    task: "Review Market Size",
-    status: "In Progress",
-    next: "Complete after DHI",
-    dueDate: "11/13",
-  },
-  {
     id: 9,
     task: "Organize Circle Back Meetings",
     status: "In Progress",
@@ -26,24 +19,10 @@ const tasks: Task[] = [
     dueDate: "11/17",
   },
   {
-    id: 5,
-    task: "Behavioral Data Setup Write Up",
-    status: "In Progress",
-    next: "Complete after DHI",
-    dueDate: "11/18",
-  },
-  {
-    id: 4,
-    task: "Texas Company Outreach",
-    status: "In Progress",
-    next: "Finish top of deck DHI tasks first",
-    dueDate: "TBD",
-  },
-  {
     id: 7,
     task: "Create Branding Sheet",
     status: "In Progress",
-    next: "Gather all materials",
+    next: "Created layout",
     dueDate: "TBD",
   },
   {
@@ -54,10 +33,45 @@ const tasks: Task[] = [
     dueDate: "TBD",
   },
   {
+    id: 2,
+    task: "Review Market Size",
+    status: "In Progress",
+    next: "Complete after DHI",
+    dueDate: "11/24",
+  },
+  {
+    id: 5,
+    task: "Behavioral Data Setup Write Up",
+    status: "In Progress",
+    next: "Complete after DHI",
+    dueDate: "11/25",
+  },
+  {
     id: 10,
-    task: "Articles in Big Papers",
+    task: "Articles in Blogs/News Outlets",
     status: "In Progress",
     next: "Outreach",
+    dueDate: "TBD",
+  },
+  {
+    id: 37,
+    task: "Case Studies",
+    status: "In Progress",
+    next: "Develop customer success stories",
+    dueDate: "TBD",
+  },
+  {
+    id: 38,
+    task: "Testimonials",
+    status: "In Progress",
+    next: "Collect and format customer testimonials",
+    dueDate: "TBD",
+  },
+  {
+    id: 39,
+    task: "Side by Side Comparison Doc",
+    status: "In Progress",
+    next: "Create competitive comparison document",
     dueDate: "TBD",
   },
   {
