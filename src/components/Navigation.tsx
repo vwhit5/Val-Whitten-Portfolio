@@ -88,7 +88,7 @@ const Navigation: React.FC<NavigationProps> = ({
                   onClick={goToStrategy}
                   className="text-white hover:text-blue-400 transition-all duration-300"
                 >
-                  STRATEGY &amp; GTM
+                  BILD AI STRATEGY &amp; GTM
                 </button>
               </>
             ) : (
@@ -156,7 +156,7 @@ const Navigation: React.FC<NavigationProps> = ({
                   onClick={goToStrategy}
                   className="text-left text-white hover:text-blue-400 transition-colors py-2"
                 >
-                  STRATEGY &amp; GTM
+                  BILD AI STRATEGY &amp; GTM
                 </button>
               </>
             ) : (
