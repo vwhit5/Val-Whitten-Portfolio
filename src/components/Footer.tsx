@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
           </a>
           {/* Link to Google Drive Resume */}
           <a
-            href="https://drive.google.com/file/d/1hbYd0GEU-DvSh4f9mKsTuVaUGpeew1f2/view?usp=sharing"
+            href="https://drive.google.com/file/d/1VHm9S3Z3f-YK0xZ_o6iGSMpg9lebNzvM/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="text-2xl font-semibold hover:text-blue-400 transition-colors text-white relative group"
