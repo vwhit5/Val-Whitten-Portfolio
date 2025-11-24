@@ -99,7 +99,7 @@ const StrategyDashboard: FC = () => {
 
           <div className="px-6 sm:px-10 py-8 border-t border-slate-200/60 bg-white/80">
             <p className="text-center text-slate-400 text-sm font-medium">
-              Bild.ai Task Management System x Val Whitten
+              Bild AI Task Management System x Val Whitten
             </p>
           </div>
         </div>
