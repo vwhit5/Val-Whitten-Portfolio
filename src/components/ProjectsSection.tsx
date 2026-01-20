@@ -1,5 +1,6 @@
 import { ChevronLeft, ChevronRight, ExternalLink, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import React from "react";
 import { getProjectIcon, projects } from "../data";
 
 interface SelectedProject {
@@ -20,7 +21,6 @@ const ProjectsSection: React.FC = () => {
   const [lastScrollLeft, setLastScrollLeft] = useState(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  // Project scroll tracking
   useEffect(() => {
     const handleProjectScroll = () => {
       if (scrollContainerRef.current) {
@@ -104,7 +104,6 @@ const ProjectsSection: React.FC = () => {
       "25% revenue increase",
     ];
 
-    // New blue scheme: Problem (darkest), Action (medium), Result (lightest)
     const colorClass = section === 'problem' ? 'text-blue-800' :
                       section === 'action' ? 'text-blue-600' :
                       'text-blue-500';
@@ -124,6 +123,21 @@ const ProjectsSection: React.FC = () => {
     return highlightedText;
   };
 
+  if (!projects || projects.length === 0) {
+    return (
+      <section id="projects" className="py-20 relative">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
+              CHECK OUT MY CLIENTS
+            </h1>
+            <p className="text-gray-400">Loading projects...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id="projects" className="py-20 relative">
       <div className="max-w-7xl mx-auto px-6">
@@ -135,12 +149,8 @@ const ProjectsSection: React.FC = () => {
             <span className="font-semibold text-blue-500">
               Real-world consulting work
             </span>
-            <span className="text-white">
-              {" "}
-              (*){" "}
-            </span>
-            for nonprofits, student housing, Indigenous artisans, and
-            multicultural mentorship programs.
+            <span className="text-white"> (*) </span>
+            for nonprofits, student housing, Indigenous artisans, and multicultural mentorship programs.
           </p>
         </div>
 
@@ -166,7 +176,6 @@ const ProjectsSection: React.FC = () => {
                   onClick={() => setSelectedProject(project)}
                 >
                   <div className="h-full p-5 flex flex-col relative">
-                    {/* Header */}
                     <div className="flex items-center justify-between mb-6">
                       <div className="flex items-center space-x-2">
                         <div
@@ -181,7 +190,6 @@ const ProjectsSection: React.FC = () => {
                       <ExternalLink className="w-5 h-5 text-gray-400 group-hover:text-gray-600 transition-colors" />
                     </div>
 
-                    {/* Content */}
                     <div className="flex-1 flex flex-col">
                       <h3 className="text-2xl font-bold mb-4 text-gray-900 group-hover:text-gray-700 transition-colors">
                         {project.name}
@@ -189,7 +197,7 @@ const ProjectsSection: React.FC = () => {
 
                       <div className="mb-4">
                         <span
-                          className={`inline-block bg-gradient-to-r ${project.colorClasses} text-white px-4 py-2 rounded-full text-xs font-bold shadow-lg`}
+                          className={`inline-block bg-gradient-to-r ${project.colorClasses} text-white px-4 py-2 rounded-full text-xs font-bold shadow-lg uppercase`}
                         >
                           {project.metric}
                         </span>
@@ -212,17 +220,17 @@ const ProjectsSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Project Navigation */}
           <div className="flex justify-center items-center mt-8 space-x-6">
-            <div
+            <button
               className={`transition-all duration-300 ${
                 scrollDirection === "left"
                   ? "text-blue-400 scale-125"
                   : "text-gray-600"
               }`}
+              aria-label="Previous projects"
             >
               <ChevronLeft size={28} />
-            </div>
+            </button>
 
             <div className="flex space-x-2">
               {projects.map((_, index) => (
@@ -237,23 +245,22 @@ const ProjectsSection: React.FC = () => {
               ))}
             </div>
 
-            <div
+            <button
               className={`transition-all duration-300 ${
                 scrollDirection === "right"
                   ? "text-blue-400 scale-125"
                   : "text-gray-600"
               }`}
+              aria-label="Next projects"
             >
               <ChevronRight size={28} />
-            </div>
+            </button>
           </div>
         </div>
 
-        {/* Project Modal */}
         {selectedProject && (
           <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 z-50">
             <div className="max-w-6xl w-full rounded-2xl shadow-2xl bg-white/95 backdrop-blur-sm flex flex-col max-h-[90vh]">
-              {/* Header */}
               <div className="flex-shrink-0 p-6 border-b border-gray-200/50 flex justify-between items-center">
                 <div className="flex items-center space-x-3">
                   <div
@@ -276,10 +283,8 @@ const ProjectsSection: React.FC = () => {
                 </button>
               </div>
 
-              {/* Content */}
               <div className="flex-1 overflow-y-auto p-6">
                 <div className="space-y-6">
-                  {/* Problem Section - Darkest Blue */}
                   <div className="p-6 rounded-2xl bg-white border border-gray-200">
                     <div className="w-16 h-1 bg-blue-800 mb-4 rounded-full" />
                     <h3 className="text-2xl font-bold mb-4 text-blue-800">
@@ -293,7 +298,6 @@ const ProjectsSection: React.FC = () => {
                     />
                   </div>
 
-                  {/* Action Section - Medium Blue */}
                   <div className="p-6 rounded-2xl bg-white border border-gray-200">
                     <div className="w-16 h-1 bg-blue-600 mb-4 rounded-full" />
                     <h3 className="text-2xl font-bold mb-4 text-blue-600">
@@ -307,7 +311,6 @@ const ProjectsSection: React.FC = () => {
                     />
                   </div>
 
-                  {/* Result Section - Lightest Blue */}
                   <div className="p-6 rounded-2xl bg-white border border-gray-200">
                     <div className="w-16 h-1 bg-blue-500 mb-4 rounded-full" />
                     <h3 className="text-2xl font-bold mb-4 text-blue-500">
