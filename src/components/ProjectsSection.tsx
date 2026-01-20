@@ -98,7 +98,7 @@ const ProjectsSection: React.FC = () => {
       "150% revenue growth",
       "15+ women entrepreneurs",
       "40% improvement in engagement rates",
-      "20+ underclassmen",
+      "Securing 20+ underclassmen",
       "3x growth potential",
       "underserved youth market",
       "35% market loss",
@@ -113,12 +113,12 @@ const ProjectsSection: React.FC = () => {
     let highlightedText = text;
     keywords.forEach((keyword) => {
       const regex = new RegExp(
-        `(${keyword.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`,
+        `(${keyword.replace(/[.*+?^${}()|[\\]\]/g, "\\$&")})`,
         "gi"
       );
       highlightedText = highlightedText.replace(
         regex,
-        `<span class="font-semibold ${colorClass}">$1</span>`
+        `<span class=\"font-semibold ${colorClass}\">$1</span>`
       );
     });
 
@@ -219,7 +219,7 @@ const ProjectsSection: React.FC = () => {
                 scrollDirection === "left"
                   ? "text-blue-400 scale-125"
                   : "text-gray-600"
-              }`}
+              }"
             >
               <ChevronLeft size={28} />
             </div>
@@ -242,7 +242,7 @@ const ProjectsSection: React.FC = () => {
                 scrollDirection === "right"
                   ? "text-blue-400 scale-125"
                   : "text-gray-600"
-              }`}
+              }"
             >
               <ChevronRight size={28} />
             </div>
