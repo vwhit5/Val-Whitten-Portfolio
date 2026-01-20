@@ -149,7 +149,7 @@ const ProjectsSection: React.FC = () => {
             <span className="font-semibold text-blue-500">
               Real-world consulting work
             </span>
-            <span className="text-white"> (*) </span>
+            <span className="text-white"> </span>
             for nonprofits, student housing, Indigenous artisans, and multicultural mentorship programs.
           </p>
         </div>
