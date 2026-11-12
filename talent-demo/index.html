@@ -109,7 +109,7 @@
       margin-top: 8px;
     }
     label { display: block; font-size: 0.92rem; font-weight: 650; margin: 12px 0 6px; }
-    input[type="text"], input[type="number"], input:not([type="file"]) {
+    input[type="text"], input[type="number"], input:not([type="file"]), textarea {
       width: 100%;
       max-width: 100%;
       border: 1px solid #cacace;
@@ -117,6 +117,11 @@
       padding: 12px;
       background: #fff;
     }
+    textarea { min-height: 160px; resize: vertical; }
+    .locked { background: var(--sand); border-radius: 8px; padding: 10px 12px; }
+    .locked p { margin: 0; }
+    .tiny { min-height: 36px; padding: 6px 10px; font-size: 0.85rem; }
+    .row-actions { display: flex; flex-wrap: wrap; gap: 6px; }
     input[type="file"] { max-width: 100%; width: 100%; font-size: 0.92rem; }
     input[type="file"]::file-selector-button {
       border: 1px solid var(--line);
@@ -126,14 +131,24 @@
       margin-right: 8px;
     }
     .hint { color: var(--muted); font-size: 0.92rem; }
-    .receipt {
-      margin-top: 14px;
-      background: #fffdf8;
-      border: 1px dashed #d8d2c8;
+    .receipt-photo {
+      display: block;
+      width: 150px;
+      max-width: 100%;
+      height: auto;
+      border: 1px solid var(--line);
       border-radius: 8px;
-      padding: 14px 16px;
+      background: #fffdf8;
     }
-    .receipt strong { display: block; color: var(--orange); }
+    .thumb {
+      width: 44px;
+      height: 58px;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 1px solid var(--line);
+      display: block;
+      background: #fffdf8;
+    }
     pre.note {
       white-space: pre-wrap;
       overflow-wrap: anywhere;
@@ -184,7 +199,7 @@
     .rows { display: grid; gap: 8px; margin-top: 12px; }
     .rowcard {
       display: grid;
-      grid-template-columns: 1.1fr 1.5fr 0.7fr 0.8fr 0.7fr;
+      grid-template-columns: 52px 0.7fr 0.8fr 1.4fr 0.8fr;
       gap: 8px;
       align-items: center;
       border: 1px solid var(--line);
@@ -193,7 +208,33 @@
       min-width: 0;
     }
     .rowcard b { display: block; font-size: 0.75rem; font-weight: 650; color: var(--muted); }
-    .rowcard span { overflow-wrap: anywhere; }
+    .rowcard span { overflow-wrap: anywhere; min-width: 0; }
+    .mail {
+      display: grid;
+      grid-template-columns: minmax(0, 250px) minmax(0, 1fr);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 8px;
+      background: #fff;
+    }
+    .mail-side { background: var(--sand); padding: 12px; min-width: 0; }
+    .mail-folder { margin: 0 0 8px; font-size: 0.82rem; font-weight: 650; color: var(--muted); }
+    .mail-row {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: #fff;
+      border-left: 3px solid var(--orange);
+      padding: 10px 12px;
+      min-width: 0;
+    }
+    .mail-row strong, .mail-row span, .mail-row em { display: block; overflow-wrap: anywhere; }
+    .mail-row span, .mail-row em { font-style: normal; color: var(--muted); font-size: 0.86rem; font-weight: 400; }
+    .mail-open { padding: 16px 18px 8px; min-width: 0; }
+    .mail-open h2 { font-family: ui-sans-serif, system-ui, sans-serif; font-size: 1.25rem; letter-spacing: -0.02em; font-weight: 650; }
+    .mail-meta { color: var(--muted); font-size: 0.92rem; overflow-wrap: anywhere; }
+    .mail-body p { margin: 0 0 12px; }
     .status { display: inline-block; border-radius: 999px; padding: 3px 8px; font-size: 0.82rem; font-weight: 650; }
     .status.pending { background: var(--amber-bg); color: var(--amber); }
     .status.approved { background: var(--blue-bg); color: var(--blue); }
@@ -234,7 +275,9 @@
       .nav-group { width: 100%; margin: 0; }
       .hub-nav span { display: inline; padding: 0; }
       .nav-active { box-shadow: none; }
-      .rowcard { grid-template-columns: 1fr 1fr; }
+      .rowcard { grid-template-columns: 52px minmax(0, 1fr); }
+      .row-actions { grid-column: 1 / -1; }
+      .mail { grid-template-columns: 1fr; }
       .wrap { padding: 18px 16px 160px; }
     }
   </style>
@@ -242,7 +285,6 @@
 <body>
   <div class="side-banner" id="banner" hidden></div>
   <div class="wrap">
-    <p class="label" id="official-label">Unofficial proposal by Val Whitten, not an incident.io product.</p>
     <div id="stage" aria-live="polite"></div>
   </div>
   <div class="bar" id="bar" hidden>
@@ -262,22 +304,35 @@
   <script>
     const SAMPLE = {
       name: "Jordan Example",
+      first: "Jordan",
       date: "2026-11-02",
       paypal: "demo.candidate@example.com",
       venmo: "@demo-candidate",
-      partner: "talent.partner@example.com"
+      inbox: "jordan.example@example.com",
+      recruiter: "Sam",
+      recruiterFrom: "Sam from incident.io Talent",
+      recruiterEmail: "talent@example.com",
+      subject: "Thank you for spending the day with us",
+      onsite: "Nov 2, 2026 · San Francisco",
+      interviewers: ["@Mina", "@Luis"]
     };
+
+    const FINALISTS = [
+      { id: "jordan", first: "Jordan", name: "Jordan Example", email: "jordan.example@example.com" },
+      { id: "riley", first: "Riley", name: "Riley Moss", email: "riley.moss@example.com" },
+      { id: "alex", first: "Alex", name: "Alex Preview", email: "alex.preview@example.com" }
+    ];
 
     const STEPS = [
       { id: "welcome", part: 0, side: "none" },
       { id: "receipt", part: 1, side: "candidate" },
-      { id: "payout", part: 1, side: "candidate" },
       { id: "late", part: 1, side: "candidate" },
-      { id: "thanks", part: 1, side: "candidate" },
       { id: "transition", part: 0, side: "switch" },
       { id: "admin", part: 2, side: "team" },
       { id: "queue", part: 2, side: "team" },
       { id: "slack", part: 2, side: "team" },
+      { id: "compose", part: 2, side: "team" },
+      { id: "inbox", part: 0, side: "candidate" },
       { id: "close", part: 0, side: "none" }
     ];
 
@@ -292,14 +347,26 @@
       step: 0,
       amount: "18.50",
       method: "paypal",
+      handles: { paypal: SAMPLE.paypal, venmo: SAMPLE.venmo },
       eta: 10,
       why: "The train is delayed",
       reimbursement: true,
       lateNotes: true,
       gift: true,
       provider: "tremendous",
-      giftAmount: "25"
+      giftAmount: "25",
+      reminder: true,
+      finalist: "jordan",
+      noteOverride: "",
+      sentNote: "",
+      submitted: false,
+      thanksSent: false,
+      photoUrl: ""
     };
+
+    function currentFinalist() {
+      return FINALISTS.find((person) => person.id === state.finalist) || FINALISTS[0];
+    }
 
     const stage = document.getElementById("stage");
     const bar = document.getElementById("bar");
@@ -322,27 +389,41 @@
     }
 
     function handle() {
-      return state.method === "venmo" ? SAMPLE.venmo : SAMPLE.paypal;
+      return state.handles[state.method] || "";
     }
 
     function methodLabel() {
       return state.method === "venmo" ? "Venmo" : "PayPal";
     }
 
-    function emailText() {
-      return [
-        "Hello,",
-        "",
-        "Please find my parking receipt attached for reimbursement.",
-        "",
-        "Name: " + SAMPLE.name,
-        "Receipt date: " + SAMPLE.date,
-        "Amount: USD " + money(state.amount),
-        "Payout: " + methodLabel() + " " + handle(),
-        "",
-        "Thank you,",
-        SAMPLE.name
-      ].join("\n");
+    function sampleReceiptSrc(amount) {
+      const total = money(amount);
+      const svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 230"><rect width="180" height="230" fill="#fffdf8"/><rect x="1" y="1" width="178" height="228" fill="none" stroke="#e4e4e7"/><text x="90" y="36" text-anchor="middle" font-family="ui-sans-serif,sans-serif" font-size="13" fill="#161618">PARKING</text><text x="90" y="56" text-anchor="middle" font-family="ui-sans-serif,sans-serif" font-size="11" fill="#5f5f68">Synthetic sample</text><text x="90" y="78" text-anchor="middle" font-family="ui-sans-serif,sans-serif" font-size="11" fill="#5f5f68">Not a real charge</text><text x="20" y="120" font-family="ui-sans-serif,sans-serif" font-size="12" fill="#161618">Date</text><text x="160" y="120" text-anchor="end" font-family="ui-sans-serif,sans-serif" font-size="12" fill="#161618">' + SAMPLE.date + '</text><text x="20" y="148" font-family="ui-sans-serif,sans-serif" font-size="12" fill="#161618">Garage</text><text x="160" y="148" text-anchor="end" font-family="ui-sans-serif,sans-serif" font-size="12" fill="#161618">2nd Street</text><text x="20" y="186" font-family="ui-sans-serif,sans-serif" font-size="16" fill="#161618">Total</text><text x="160" y="186" text-anchor="end" font-family="ui-sans-serif,sans-serif" font-size="16" fill="#f25533">$' + total + '</text></svg>';
+      return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+    }
+
+    function thanksParagraphs() {
+      const person = currentFinalist();
+      const amount = money(state.giftAmount).replace(/\.00$/, "");
+      const lines = [
+        person.first + ",",
+        "Thank you for spending the day with us. The team genuinely enjoyed meeting you.",
+        "Your take-home was clear and specific. That stayed with us after you left.",
+        "It was a close call and we are sorry this role is not the right match."
+      ];
+      if (state.gift) lines.push("We would like to send you a $" + amount + " gift card through " + providerLabel() + ". It is simply a thank-you.");
+      lines.push("Please stay in touch if you would like to. When a role opens that fits what you want we would be glad to hear from you.");
+      lines.push(SAMPLE.recruiter);
+      return lines;
+    }
+
+    function noteText() {
+      return state.sentNote || state.noteOverride || thanksParagraphs().join("\n\n");
+    }
+
+    function reminderText() {
+      if (!state.reminder) return "Reminders are off. A candidate would not get a nudge.";
+      return "Hi Jordan. If you have a parking receipt from the onsite you can upload it on your page. It only takes a minute.\n\nSam";
     }
 
     function lateText() {
@@ -351,35 +432,21 @@
       return lines.join("\n");
     }
 
-    function thanksText() {
-      const lines = [
-        "Dear Jordan,",
-        "",
-        "Thank you for the time you gave this process. We enjoyed meeting you and we are sorry this role is not the right match. We hope you will apply again when another opening fits.",
-        "",
-        "One thing we wanted you to hear. The take-home was clear and specific."
-      ];
-      if (state.gift) {
-        lines.push("", "As a thank-you we would send a $" + money(state.giftAmount).replace(/\.00$/, "") + " gift card through " + providerLabel() + ". It has no strings attached.");
-      }
-      lines.push("", "With appreciation,", "The recruiting team");
-      return lines.join("\n");
-    }
-
     function slackLateText() {
       if (!state.lateNotes) return "Late notes are turned off so this would not post.";
-      return SAMPLE.name + " is running late for the onsite.\n" + (state.why || "No reason added") + "\nETA about " + state.eta + " minutes.";
+      return SAMPLE.name + " is running late for the onsite.\n" + (state.why || "No reason added") + "\nETA about " + state.eta + " minutes.\n" + SAMPLE.interviewers.join(" ");
     }
 
     function slackReceiptText() {
       if (!state.reimbursement) return "Parking reimbursement is turned off so a receipt would not post.";
-      return SAMPLE.name + " submitted a parking receipt.\nUSD " + money(state.amount) + " via " + methodLabel() + ".\nHandle: " + handle();
+      return SAMPLE.name + " uploaded a parking receipt on the page.\nUSD " + money(state.amount) + " via " + methodLabel() + ".\nHandle: " + handle();
     }
 
     function livePreviewText() {
       const lines = [
-        state.reimbursement ? "Parking reimbursement is on. A candidate can add a receipt." : "Parking reimbursement is off. The candidate page hides the receipt.",
-        state.lateNotes ? "Late notes are on. A candidate can send one to Slack." : "Late notes are off. The candidate page hides the late note.",
+        state.reimbursement ? "Parking reimbursement is on. A candidate uploads a receipt on the page." : "Parking reimbursement is off. The candidate page hides the receipt.",
+        state.reminder ? "A reminder goes out if no receipt arrives the day after the onsite." : "The receipt reminder is off.",
+        state.lateNotes ? "Late notes are on. A note pings " + SAMPLE.interviewers.join(" and ") + " in the thread." : "Late notes are off. Interviewers would not be pinged.",
         state.gift
           ? "Gift is on. The thank-you includes a $" + money(state.giftAmount).replace(/\.00$/, "") + " card through " + providerLabel() + "."
           : "Gift is off. The thank-you note has no gift card."
@@ -407,12 +474,10 @@
       if (!state.reimbursement) {
         return '<div class="panel"><p>Parking reimbursement is turned off in Talent tools. A candidate would not see this section.</p></div>';
       }
-      return '<div class="panel"><label for="receipt-file">Receipt</label><input id="receipt-file" type="file" accept="image/*,.pdf"><p class="hint" id="file-name">No file chosen. A synthetic sample is shown below. The file stays in this browser.</p><label for="amount">Amount in USD</label><input id="amount" inputmode="decimal" value="' + esc(state.amount) + '"><div class="receipt" aria-label="Synthetic sample receipt"><strong>Synthetic sample</strong><p>Not a real parking charge.</p><p>Date: ' + SAMPLE.date + '</p><p>Total: $<span id="receipt-total">' + money(state.amount) + '</span></p><p>Garage under the building at 85 2nd Street.</p></div></div>';
-    }
-
-    function payoutBody() {
       const paypal = state.method === "paypal";
-      return '<div class="panel"><div class="row"><button class="choice" type="button" data-method="paypal" aria-pressed="' + paypal + '">PayPal</button><button class="choice" type="button" data-method="venmo" aria-pressed="' + (!paypal) + '">Venmo</button></div><p><strong>' + methodLabel() + ' handle:</strong> ' + esc(handle()) + '</p><p class="hint">This is a fake handle. Do not type a real account.</p><pre class="note" id="email-preview"></pre><div class="row" style="margin-top:12px"><button class="cta" type="button" id="download">Download draft email (.eml)</button></div><p class="hint">The file is a draft on this device. It is not sent.</p></div>';
+      const src = state.photoUrl || sampleReceiptSrc(state.amount);
+      const note = state.submitted ? '<p id="submit-note">Submitted. The Talent team will reimburse you.</p>' : '<p id="submit-note" hidden>Submitted. The Talent team will reimburse you.</p>';
+      return '<div class="panel"><div class="locked"><p>' + esc(SAMPLE.name) + '</p><p>Your onsite: ' + esc(SAMPLE.onsite) + '</p></div><label for="receipt-file">Receipt photo</label><img class="receipt-photo" id="receipt-photo" alt="Synthetic sample parking receipt" src="' + src + '"><p class="hint" id="file-name">A sample photo is already here. You can replace it. It stays in this browser.</p><input id="receipt-file" type="file" accept="image/*"><label for="amount">Amount in USD</label><input id="amount" inputmode="decimal" value="' + esc(state.amount) + '"><label>Pay with</label><div class="row"><button class="choice" type="button" data-method="paypal" aria-pressed="' + paypal + '">PayPal</button><button class="choice" type="button" data-method="venmo" aria-pressed="' + (!paypal) + '">Venmo</button></div><label for="handle">' + methodLabel() + ' handle</label><input id="handle" type="text" value="' + esc(handle()) + '"><p class="hint">A sample handle is filled in. Do not type a real account.</p><div class="row" style="margin-top:14px"><button class="cta" type="button" id="submit-receipt">Submit</button></div>' + note + '</div>';
     }
 
     function lateBody() {
@@ -424,36 +489,56 @@
     }
 
     function thanksBody() {
-      return '<div class="panel"><pre class="note" id="thanks-preview"></pre></div>';
+      return thanksParagraphs().map((line) => '<p>' + esc(line) + '</p>').join("");
     }
 
-    function switchRow(id, on, title, detail) {
-      return '<div class="toggle"><div><p>' + title + '</p><small>' + detail + '</small></div><button class="switch" type="button" id="' + id + '" aria-pressed="' + on + '" aria-label="' + title + '"><span class="knob"></span></button></div>';
+    function composeBody() {
+      const person = currentFinalist();
+      const tremendous = state.provider === "tremendous";
+      const picks = FINALISTS.map((person) => '<button class="choice" type="button" data-finalist="' + person.id + '" aria-pressed="' + (state.finalist === person.id) + '">' + esc(person.name) + '</button>').join("");
+      return '<div class="panel"><label>Finalist</label><div class="row">' + picks + '</div>' +
+        switchRow("gift", state.gift, "Include the $25 gift", "Adds the gift card line to the note.") +
+        '<label>Gift provider</label><div class="row"><button class="choice" type="button" data-provider="tremendous" aria-pressed="' + tremendous + '">Tremendous</button><button class="choice" type="button" data-provider="perfectgift" aria-pressed="' + (!tremendous) + '">PerfectGift.com</button></div>' +
+        '<p><strong>To</strong> ' + esc(person.name) + ' &lt;' + esc(person.email) + '&gt;</p><p><strong>From</strong> ' + esc(SAMPLE.recruiterFrom) + ' &lt;' + esc(SAMPLE.recruiterEmail) + '&gt;</p><p><strong>Subject</strong> ' + esc(SAMPLE.subject) + '</p><label for="note-text">Note</label><textarea id="note-text"></textarea><div class="row" style="margin-top:12px"><button class="cta" type="button" id="send-thanks">Send</button></div><p class="hint">Send opens their inbox on the next screen. Nothing leaves this page.</p></div>';
+    }
+
+    function inboxBody() {
+      const person = state.sentTo || currentFinalist();
+      const paragraphs = (state.sentNote || noteText()).split(/\n{2,}/).map((line) => line.trim()).filter(Boolean).map((line) => '<p>' + esc(line) + '</p>').join("");
+      return '<div class="mail"><div class="mail-side"><p class="mail-folder">Inbox</p><div class="mail-row"><strong>' + esc(SAMPLE.recruiterFrom) + '</strong><span>&lt;' + esc(SAMPLE.recruiterEmail) + '&gt;</span><em>' + esc(SAMPLE.subject) + '</em></div></div><article class="mail-open"><p class="mail-meta">From ' + esc(SAMPLE.recruiterFrom) + ' &lt;' + esc(SAMPLE.recruiterEmail) + '&gt;<br>To ' + esc(person.name) + ' &lt;' + esc(person.email) + '&gt;</p><h2>' + esc(SAMPLE.subject) + '</h2><div class="mail-body" id="inbox-body">' + paragraphs + '</div></article></div>';
+    }
+
+    function switchRow(key, on, title, detail) {
+      return '<div class="toggle"><div><p>' + title + '</p><small>' + detail + '</small></div><button class="switch" type="button" data-toggle="' + key + '" aria-pressed="' + on + '" aria-label="' + title + '"><span class="knob"></span></button></div>';
     }
 
     function adminBody() {
       const tremendous = state.provider === "tremendous";
       return '<div class="panel">' +
-        switchRow("toggle-reimburse", state.reimbursement, "Enable parking reimbursement", "Shows the receipt section on the candidate page.") +
-        switchRow("toggle-late", state.lateNotes, "Enable late notes", "Shows the late note and lets it post to Slack.") +
-        switchRow("toggle-gift", state.gift, "Enable thank-you gift", "Adds the gift sentence to the thank-you note.") +
-        '<label>Gift provider</label><div class="row"><button class="choice" type="button" data-provider="tremendous" aria-pressed="' + tremendous + '">Tremendous</button><button class="choice" type="button" data-provider="perfectgift" aria-pressed="' + (!tremendous) + '">PerfectGift.com</button></div><p class="hint">Both are available for internal use.</p><label for="gift-amount">Gift amount</label><input id="gift-amount" inputmode="decimal" value="' + esc(state.giftAmount) + '"><p class="hint">The proposed amount is $25.</p><pre class="note" id="live-preview"></pre></div>';
+        switchRow("reimbursement", state.reimbursement, "Enable parking reimbursement", "Shows the receipt form on the candidate page.") +
+        switchRow("reminder", state.reminder, "Send a reminder if no receipt after 1 day", "A short note goes to the candidate the day after the onsite.") +
+        switchRow("lateNotes", state.lateNotes, "Enable late notes", "A late note pings that day's interviewers by @mention in the thread.") +
+        switchRow("gift", state.gift, "Enable thank-you gift", "Adds the gift sentence to the thank-you note.") +
+        '<label>Gift provider</label><div class="row"><button class="choice" type="button" data-provider="tremendous" aria-pressed="' + tremendous + '">Tremendous</button><button class="choice" type="button" data-provider="perfectgift" aria-pressed="' + (!tremendous) + '">PerfectGift.com</button></div><p class="hint">Both are available for internal use.</p><label for="gift-amount">Gift amount</label><input id="gift-amount" inputmode="decimal" value="' + esc(state.giftAmount) + '"><p class="hint">The proposed amount is $25.</p><pre class="note" id="reminder-preview"></pre><pre class="note" id="live-preview"></pre></div>';
     }
 
     function queueBody() {
       const note = state.reimbursement
         ? ""
         : '<p>Parking reimbursement is off so new receipts would not arrive. The rows below are sample history.</p>';
-      const cards = SUBMISSIONS.map((row) => '<div class="rowcard"><span><b>Candidate</b>' + esc(row.name) + '</span><span><b>Payout handle</b>' + esc(row.handle) + '</span><span><b>Amount</b>$' + esc(row.amount) + '</span><span><b>Method</b>' + esc(row.method) + '</span><span><b>Status</b><span class="status ' + row.status + '">' + row.status + '</span></span></div>').join("");
+      const cards = SUBMISSIONS.map((row, index) => {
+        const label = row.status === "approved" ? "Approved" : row.status === "paid" ? "Paid" : "Pending";
+        return '<div class="rowcard"><img class="thumb" alt="Receipt photo for ' + esc(row.name) + '" src="' + sampleReceiptSrc(row.amount) + '"><span><b>Amount</b>$' + esc(row.amount) + '</span><span><b>Method</b>' + esc(row.method) + '</span><span><b>Handle</b>' + esc(row.name) + ' · ' + esc(row.handle) + '</span><span><b>Status</b><span class="status ' + row.status + '">' + label + '</span></span><div class="row-actions"><button class="ghost tiny" type="button" data-approve="' + index + '"' + (row.status === "pending" ? "" : " disabled") + '>Approve</button><button class="ghost tiny" type="button" data-paid="' + index + '"' + (row.status === "approved" ? "" : " disabled") + '>Mark paid</button></div></div>';
+      }).join("");
       return note + '<div class="rows">' + cards + '</div>';
     }
 
     function slackBody() {
-      return '<div class="slack"><header>#onsite-candidates<small>Placeholder channel. Not posted.</small></header><article class="msg' + (state.lateNotes ? "" : " off") + '"><strong>Late note</strong><pre class="note" id="slack-late"></pre></article><article class="msg' + (state.reimbursement ? "" : " off") + '"><strong>Receipt submitted</strong><pre class="note" id="slack-receipt"></pre></article></div>';
+      return '<div class="slack"><header>Thread · Nov 2 onsite<small>Pings ' + esc(SAMPLE.interviewers.join(" and ")) + '. Not a channel blast. Not posted.</small></header><article class="msg' + (state.lateNotes ? "" : " off") + '"><strong>Late note</strong><pre class="note" id="slack-late"></pre></article><article class="msg' + (state.reimbursement ? "" : " off") + '"><strong>Receipt uploaded</strong><pre class="note" id="slack-receipt"></pre></article></div>';
     }
 
     function welcome() {
-      return '<section data-step="welcome"><h1>A candidate-experience proposal</h1><div class="byline">' + arrow() + '<p class="name hand">by Val Whitten</p></div><p>A final interview in San Francisco still asks people to save a parking receipt and email it by hand. This proposal puts that on one page with a late note and a warmer close.</p><p>Part 1 is the page a candidate would use. Part 2 is what the Talent team would see behind it.</p><div class="row"><button class="cta big" type="button" id="start">Start the tour</button><button class="ghost" type="button" id="skip">Skip tour and explore freely</button></div></section>';
+      return '<section data-step="welcome"><h1>A candidate-experience proposal</h1><div class="byline">' + arrow() + '<p class="name hand">by Val Whitten</p></div><p>A final interview in San Francisco still asks people to save a parking receipt and pass it along by hand. This proposal lets a candidate upload the receipt on the page with a late note and a warmer close.</p><p>Part 1 is the page a candidate would use. Part 2 is what the Talent team would see behind it.</p><div class="row"><button class="cta big" type="button" id="start">Start the tour</button><button class="ghost" type="button" id="skip">Skip tour and explore freely</button></div></section>';
     }
 
     function transition() {
@@ -461,33 +546,30 @@
     }
 
     function closeScreen() {
-      return '<section data-step="close"><h1>The proposal</h1><p>Here is what this page recommends.</p><div class="panel"><ul><li>Both Tremendous and PerfectGift.com are available for internal use.</li><li>The thank-you gift is $25.</li><li>Late notes post to Slack.</li><li>The candidate\'s PayPal or Venmo handle is included in the reimbursement email so the recruiter can pay right away.</li></ul></div><p>Nothing on this page sends email, pays anyone or saves what you see.</p><div class="row"><button class="cta big" type="button" id="explore">Look through it freely</button><button class="ghost" type="button" id="restart">Restart the tour</button></div></section>';
+      return '<section data-step="close"><h1>The proposal</h1><p>Here is what this page recommends.</p><div class="panel"><ul><li>The candidate enters their PayPal or Venmo handle on the form, so the team can pay right away.</li><li>The team can approve a receipt and mark it paid from the queue.</li><li>A reminder can go out if no receipt arrives the day after the onsite.</li><li>Late notes ping that day\'s interviewers in a thread.</li><li>Sam can send a thank-you note to a finalist\'s inbox.</li><li>Both Tremendous and PerfectGift.com are available for internal use.</li><li>The thank-you gift is $25.</li></ul></div><p>Nothing on this page is sent, paid or saved.</p><div class="row"><button class="cta big" type="button" id="explore">Look through it freely</button><button class="ghost" type="button" id="restart">Restart the tour</button></div></section>';
     }
 
     function stepBody(id) {
       if (id === "receipt") {
-        return '<p class="for-team">This is the page a candidate would open for a final interview in San Francisco.</p>' + candidateShell("Final interview in San Francisco", "The office is on the 7th floor at 85 2nd Street. If you park for the interview you can add the receipt here instead of emailing it by hand.", receiptBody());
-      }
-      if (id === "payout") {
-        return '<p class="for-team">The candidate picks PayPal or Venmo. The handle is included in the reimbursement email so you can pay right away.</p>' + candidateShell("How should we pay you back", "Choose PayPal or Venmo. The sample handle is already filled in.", payoutBody());
+        return '<p class="for-team">The name and date are filled in from the onsite so the team does not match receipts to people.</p>' + candidateShell("Final interview in San Francisco", "The office is on the 7th floor at 85 2nd Street. Upload a photo of your parking receipt and tell us where to send the reimbursement.", receiptBody());
       }
       if (id === "late") {
         return '<p class="for-team">The candidate can say they are running late from this same page.</p>' + candidateShell("Running late", "Tell the team why and when you expect to arrive.", lateBody());
       }
-      if (id === "thanks") {
-        const lede = state.gift
-          ? "The note below is what we would send. The gift has no strings attached."
-          : "The note below is what we would send. The gift is turned off so it does not mention a card.";
-        return '<p class="for-team">This is the note a finalist would receive if they are not moving forward. The proposed gift is $25.</p>' + candidateShell("A thank-you if you are not moving forward", lede, thanksBody());
+      if (id === "compose") {
+        return '<p class="for-team">Sam picks a finalist and sends a thank-you note. The next screen is that person\'s inbox.</p>' + teamShell("Send a thank-you note", "The note is filled in and you can edit it. Nothing leaves this page.", composeBody());
+      }
+      if (id === "inbox") {
+        return '<p class="for-team">This is Jordan\'s inbox after Sam sends the note.</p>' + inboxBody();
       }
       if (id === "admin") {
         return '<p class="for-team">These are the switches the Talent team would use.</p>' + teamShell("Settings", "Turn a piece off to hide it on the candidate page. Both gift providers are available. The proposed gift amount is $25.", adminBody());
       }
       if (id === "queue") {
-        return '<p class="for-team">Submitted receipts would show up here with a status and a payout handle.</p>' + teamShell("Receipt submissions", "These three rows are synthetic samples.", queueBody());
+        return '<p class="for-team">Submitted receipts land here with the photo, the amount, the method, the handle and the status.</p>' + teamShell("Receipt submissions", "These three rows are synthetic samples.", queueBody());
       }
       if (id === "slack") {
-        return '<p class="for-team">A late note and a receipt would each post into Slack.</p>' + teamShell("Slack", "The channel name is a placeholder. Nothing here is posted.", slackBody());
+        return '<p class="for-team">A late note pings that day\'s interviewers in a thread. A receipt notice sits with it.</p>' + teamShell("Slack", "This is a thread with the interviewers. Nothing here is posted.", slackBody());
       }
       return "";
     }
@@ -495,66 +577,98 @@
     function explore() {
       const blocks = [
         ["candidate", "receipt"],
-        ["candidate", "payout"],
         ["candidate", "late"],
-        ["candidate", "thanks"],
         ["team", "admin"],
         ["team", "queue"],
-        ["team", "slack"]
+        ["team", "slack"],
+        ["team", "compose"],
+        ["candidate", "inbox"]
       ].map(([side, id]) => '<section class="block" data-block="' + id + '"><p class="badge-inline ' + side + '">' + (side === "candidate" ? "CANDIDATE VIEW" : "INCIDENT.IO TEAM VIEW") + '</p>' + stepBody(id) + '</section>').join("");
       return '<section data-step="explore"><h1>Every part on one page</h1><p>Sample data is filled in. The switches change the candidate previews and the Slack messages.</p><p><button class="ghost" type="button" id="restart">Restart the tour</button></p></section>' + blocks;
     }
 
     function paintPreviews(root) {
-      const email = root.querySelector("#email-preview");
-      if (email) email.textContent = emailText();
       const late = root.querySelector("#late-preview");
       if (late) late.textContent = lateText();
-      const thanks = root.querySelector("#thanks-preview");
-      if (thanks) thanks.textContent = thanksText();
       const live = root.querySelector("#live-preview");
       if (live) live.textContent = livePreviewText();
-      const total = root.querySelector("#receipt-total");
-      if (total) total.textContent = money(state.amount);
+      const reminder = root.querySelector("#reminder-preview");
+      if (reminder) reminder.textContent = reminderText();
       const slackLate = root.querySelector("#slack-late");
       if (slackLate) slackLate.textContent = slackLateText();
       const slackReceipt = root.querySelector("#slack-receipt");
       if (slackReceipt) slackReceipt.textContent = slackReceiptText();
-      root.querySelectorAll("#email-preview").forEach ? null : null;
+      const note = root.querySelector("#note-text");
+      if (note && document.activeElement !== note) note.value = state.noteOverride || thanksParagraphs().join("\n\n");
+      const photo = root.querySelector("#receipt-photo");
+      if (photo && !state.photoUrl) photo.src = sampleReceiptSrc(state.amount);
     }
 
     function paintAllPreviews() {
-      document.querySelectorAll("#email-preview, #late-preview, #thanks-preview").forEach((node) => {
-        if (node.id === "email-preview") node.textContent = emailText();
-        if (node.id === "late-preview") node.textContent = lateText();
-        if (node.id === "thanks-preview") node.textContent = thanksText();
-      });
       paintPreviews(stage);
     }
 
     function bind(root) {
       const file = root.querySelector("#receipt-file");
       if (file) file.addEventListener("change", () => {
-        const chosen = file.files && file.files[0] ? file.files[0].name : "";
+        const chosen = file.files && file.files[0];
         const slot = root.querySelector("#file-name");
-        if (slot) slot.textContent = chosen ? chosen + " stays in this browser." : "No file chosen. A synthetic sample is shown below. The file stays in this browser.";
+        if (!chosen) {
+          if (slot) slot.textContent = "A sample photo is already here. You can replace it. It stays in this browser.";
+          return;
+        }
+        if (chosen.type.indexOf("image/") === 0) {
+          if (state.photoUrl) URL.revokeObjectURL(state.photoUrl);
+          state.photoUrl = URL.createObjectURL(chosen);
+          const img = root.querySelector("#receipt-photo");
+          if (img) img.src = state.photoUrl;
+        }
+        if (slot) slot.textContent = chosen.name + " stays in this browser.";
       });
       const amount = root.querySelector("#amount");
       if (amount) amount.addEventListener("input", () => { state.amount = amount.value; paintAllPreviews(); });
+      const handleInput = root.querySelector("#handle");
+      if (handleInput) handleInput.addEventListener("input", () => { state.handles[state.method] = handleInput.value; paintAllPreviews(); });
       const why = root.querySelector("#why");
       if (why) why.addEventListener("input", () => { state.why = why.value; paintAllPreviews(); });
       const giftAmount = root.querySelector("#gift-amount");
-      if (giftAmount) giftAmount.addEventListener("input", () => { state.giftAmount = giftAmount.value; paintAllPreviews(); });
+      if (giftAmount) giftAmount.addEventListener("input", () => { state.giftAmount = giftAmount.value; state.noteOverride = ""; paintAllPreviews(); });
+      const note = root.querySelector("#note-text");
+      if (note) note.addEventListener("input", () => { state.noteOverride = note.value; });
       root.querySelectorAll("[data-method]").forEach((button) => button.addEventListener("click", () => { state.method = button.getAttribute("data-method"); render(); }));
       root.querySelectorAll("[data-eta]").forEach((button) => button.addEventListener("click", () => { state.eta = Number(button.getAttribute("data-eta")); render(); }));
-      root.querySelectorAll("[data-provider]").forEach((button) => button.addEventListener("click", () => { state.provider = button.getAttribute("data-provider"); render(); }));
-      [["toggle-reimburse", "reimbursement"], ["toggle-late", "lateNotes"], ["toggle-gift", "gift"]].forEach(([id, key]) => {
-        const button = root.querySelector("#" + id);
-        if (!button) return;
-        button.addEventListener("click", () => { state[key] = !state[key]; render(); });
+      root.querySelectorAll("[data-provider]").forEach((button) => button.addEventListener("click", () => { state.provider = button.getAttribute("data-provider"); state.noteOverride = ""; render(); }));
+      root.querySelectorAll("[data-finalist]").forEach((button) => button.addEventListener("click", () => { state.finalist = button.getAttribute("data-finalist"); state.noteOverride = ""; render(); }));
+      root.querySelectorAll("[data-toggle]").forEach((button) => button.addEventListener("click", () => {
+        const key = button.getAttribute("data-toggle");
+        state[key] = !state[key];
+        if (key === "gift") state.noteOverride = "";
+        render();
+      }));
+      root.querySelectorAll("[data-approve]").forEach((button) => button.addEventListener("click", () => {
+        const row = SUBMISSIONS[Number(button.getAttribute("data-approve"))];
+        if (row && row.status === "pending") { row.status = "approved"; render(); }
+      }));
+      root.querySelectorAll("[data-paid]").forEach((button) => button.addEventListener("click", () => {
+        const row = SUBMISSIONS[Number(button.getAttribute("data-paid"))];
+        if (row && row.status === "approved") { row.status = "paid"; render(); }
+      }));
+      const submit = root.querySelector("#submit-receipt");
+      if (submit) submit.addEventListener("click", () => {
+        state.submitted = true;
+        const confirm = root.querySelector("#submit-note");
+        if (confirm) confirm.hidden = false;
       });
-      const download = root.querySelector("#download");
-      if (download) download.addEventListener("click", downloadEml);
+      const send = root.querySelector("#send-thanks");
+      if (send) send.addEventListener("click", () => {
+        const field = root.querySelector("#note-text");
+        state.sentNote = field ? field.value : thanksParagraphs().join("\n\n");
+        state.sentTo = currentFinalist();
+        state.thanksSent = true;
+        state.mode = "tour";
+        state.step = STEPS.findIndex((item) => item.id === "inbox");
+        render();
+      });
       const start = root.querySelector("#start");
       if (start) start.addEventListener("click", () => { state.mode = "tour"; state.step = 1; render(); });
       const skip = root.querySelector("#skip");
@@ -575,7 +689,8 @@
       } else if (step.side === "candidate") {
         banner.hidden = false;
         banner.className = "side-banner candidate";
-        banner.innerHTML = '<span class="badge">CANDIDATE VIEW</span><span>Part 1 · Candidate</span>';
+        const extra = step.id === "inbox" ? "Their inbox" : "Part 1 · Candidate";
+        banner.innerHTML = '<span class="badge">CANDIDATE VIEW</span><span>' + extra + '</span>';
       } else if (step.side === "team") {
         banner.hidden = false;
         banner.className = "side-banner team";
@@ -587,18 +702,19 @@
       } else {
         banner.hidden = true;
       }
-      const part1Index = Math.max(0, Math.min(4, state.step));
-      const part2Index = state.step < 6 ? 0 : Math.min(3, state.step - 5);
-      document.getElementById("fill1").style.width = (part1Index / 4 * 100) + "%";
-      document.getElementById("fill2").style.width = (part2Index / 3 * 100) + "%";
+      const part1Index = state.step <= 0 ? 0 : Math.min(2, state.step);
+      const part2Index = state.step < 4 ? 0 : Math.min(4, state.step - 3);
+      document.getElementById("fill1").style.width = (part1Index / 2 * 100) + "%";
+      document.getElementById("fill2").style.width = (part2Index / 4 * 100) + "%";
       document.getElementById("part1").classList.toggle("is-current", touring && step.part === 1);
-      document.getElementById("part1").classList.toggle("is-done", touring && state.step > 4);
+      document.getElementById("part1").classList.toggle("is-done", touring && state.step > 2);
       document.getElementById("part2").classList.toggle("is-current", touring && step.part === 2);
-      document.getElementById("part2").classList.toggle("is-done", touring && state.step > 8);
+      document.getElementById("part2").classList.toggle("is-done", touring && state.step > 7);
       let label = "";
-      if (step.part === 1) label = "Part 1 · Candidate · Step " + state.step + " of 4";
-      else if (step.part === 2) label = "Part 2 · Team · Step " + (state.step - 5) + " of 3";
+      if (step.part === 1) label = "Part 1 · Candidate · Step " + state.step + " of 2";
+      else if (step.part === 2) label = "Part 2 · Team · Step " + (state.step - 3) + " of 4";
       else if (step.id === "transition") label = "Between Part 1 Candidate and Part 2 Team";
+      else if (step.id === "inbox") label = "Candidate inbox";
       else if (step.id === "close") label = "Part 1 Candidate and Part 2 Team";
       document.getElementById("stepnum").textContent = label;
       document.getElementById("back").disabled = state.step === 0;
@@ -638,26 +754,6 @@
       state.mode = "explore";
       render();
     });
-
-    function downloadEml() {
-      const eml = [
-        "To: " + SAMPLE.partner,
-        "Subject: Parking receipt - Jordan Example - 2026-11-02",
-        "MIME-Version: 1.0",
-        "X-Unsent: 1",
-        "Content-Type: text/plain; charset=utf-8",
-        "",
-        emailText()
-      ].join("\r\n");
-      const url = URL.createObjectURL(new Blob([eml], { type: "message/rfc822" }));
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "parking-receipt-draft.eml";
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      setTimeout(() => URL.revokeObjectURL(url), 1000);
-    }
 
     render();
   </script>
