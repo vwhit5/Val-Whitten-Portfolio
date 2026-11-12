@@ -4,140 +4,245 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
-  <title>Final interview SF resources</title>
+  <title>A candidate-experience proposal</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%23f25533'/%3E%3C/svg%3E">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&family=Newsreader:opsz,wght@6..72,500&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    /* Kalam Bold subset. Copyright 2014 The Kalam Project Authors. SIL Open Font License 1.1. */
+    @font-face {
+      font-family: Kalam;
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url("data:font/woff2;base64,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") format("woff2");
+    }
     :root {
-      --bg: #f7f5f2;
       --ink: #161618;
-      --muted: #5f5f68;
-      --line: #e6e1da;
+      --muted: rgba(22, 22, 24, 0.66);
+      --line: #e4e4e7;
       --orange: #f25533;
-      --sand: #f1ebe2;
-      --card: #fff;
+      --soft: #fef1ef;
+      --sand: #f7f7f8;
+      --green: #187f65;
+      --green-bg: #d8f8f0;
+      --blue: #0229ff;
+      --blue-bg: #dbe9fe;
+      --amber: #854d0e;
+      --amber-bg: #fef9c3;
     }
     * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; }
+    html, body { margin: 0; padding: 0; background: #fff; color: var(--ink); }
     body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: "Source Sans 3", "Segoe UI", sans-serif;
-      font-size: 17px;
-      line-height: 1.5;
+      font-family: ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+      font-size: 18px;
+      line-height: 1.45;
     }
-    h1, h2, .serif { font-family: Newsreader, Georgia, serif; font-weight: 500; letter-spacing: -0.02em; }
-    .hand { font-family: Kalam, "Segoe Print", cursive; }
-    button, input, select, textarea { font: inherit; }
+    h1, h2, .serif { font-family: "Iowan Old Style", Palatino, "Palatino Linotype", "Liberation Serif", Georgia, serif; font-weight: 400; letter-spacing: -0.03em; }
+    h1 { font-size: clamp(2.15rem, 6vw, 3.6rem); line-height: 1.05; margin: 0 0 12px; }
+    h2 { font-size: clamp(1.7rem, 3vw, 2.05rem); line-height: 1.15; margin: 0 0 10px; color: var(--ink); }
+    p { margin: 0 0 14px; }
+    button, input { font: inherit; color: inherit; }
     button { cursor: pointer; }
-    .wrap { max-width: 920px; margin: 0 auto; padding: 28px 20px 120px; }
-    .brand { display: flex; align-items: center; gap: 10px; color: var(--orange); }
-    .brand svg { width: 22px; height: 28px; flex: none; }
-    .brand span { font-size: 1.55rem; line-height: 1; }
-    .label {
-      margin: 14px 0 0;
-      color: var(--muted);
-      font-size: 0.95rem;
+    .hand { font-family: Kalam, "Segoe Print", cursive; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 22px 20px 150px; }
+    .label { margin: 0 0 18px; color: var(--muted); font-size: 0.92rem; }
+    .side-banner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      width: 100%;
+      padding: 10px 20px;
+      font-size: 0.92rem;
     }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 22px;
-      margin-top: 18px;
+    .side-banner[hidden] { display: none; }
+    .side-banner.candidate { background: var(--orange); color: #fff; }
+    .side-banner.team { background: var(--ink); color: #fff; }
+    .side-banner.between { background: var(--soft); color: var(--ink); border-bottom: 1px solid #f6d2cb; width: 100%; }
+    .badge {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
     }
-    .sand { background: var(--sand); border: 0; }
-    .hotspot {
-      border: 3px solid var(--orange);
-      border-radius: 22px;
-      padding: 18px;
-      margin-top: 18px;
-      background: #fff;
+    .badge-inline {
+      display: inline-block;
+      margin: 0 0 10px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
     }
-    .kicker { color: var(--orange); margin: 0 0 6px; font-size: 0.95rem; }
-    h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.1; margin: 18px 0 10px; }
-    h2 { font-size: clamp(1.7rem, 3vw, 2.2rem); margin: 0 0 8px; }
-    .muted { color: var(--muted); }
+    .badge-inline.candidate { background: var(--orange); color: #fff; }
+    .badge-inline.team { background: var(--ink); color: #fff; }
+    .byline { display: flex; align-items: center; gap: 2px; margin: 0 0 16px; max-width: 100%; }
+    .arrow { width: 138px; height: 68px; flex: none; }
+    .byline .name { margin: 0; font-size: clamp(1.7rem, 6vw, 2.45rem); line-height: 1; }
+    .lede { color: var(--muted); font-size: 1.05rem; }
+    .for-team { font-size: 1rem; }
     .row { display: flex; flex-wrap: wrap; gap: 10px; }
-    .choice, .cta, .ghost {
+    .cta, .ghost, .choice {
       border-radius: 999px;
       min-height: 48px;
       padding: 10px 18px;
       border: 1px solid var(--line);
       background: #fff;
     }
-    .choice[aria-pressed="true"], .cta {
-      background: var(--orange);
-      color: #fff;
-      border-color: var(--orange);
-    }
-    .cta.big { min-height: 56px; padding: 12px 22px; font-size: 1.05rem; }
+    .cta { background: var(--orange); color: #fff; border-color: var(--orange); font-weight: 600; }
+    .cta.big { min-height: 52px; padding: 12px 22px; }
+    .choice[aria-pressed="true"] { background: var(--orange); color: #fff; border-color: var(--orange); }
     .ghost { background: transparent; }
-    pre.note {
-      white-space: pre-wrap;
-      font-family: inherit;
-      margin: 12px 0 0;
-      line-height: 1.55;
+    .hub { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 36px; align-items: start; margin-top: 8px; }
+    .hub-nav { min-width: 0; }
+    .nav-group { margin: 14px 0 6px; color: var(--muted); font-size: 0.86rem; }
+    .hub-nav span { display: block; padding: 6px 0 6px 12px; font-size: 0.95rem; }
+    .nav-active { color: var(--orange); font-weight: 650; box-shadow: inset 2px 0 0 var(--orange); }
+    .proposed { margin: 0 0 8px; color: var(--orange); font-size: 0.86rem; font-weight: 650; }
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 8px;
     }
-    .grid { display: grid; gap: 12px; }
-    @media (min-width: 720px) {
-      .grid.three { grid-template-columns: 1fr 1fr 1fr; }
-      .split { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 16px; align-items: start; }
-    }
-    label { display: block; font-size: 0.92rem; font-weight: 600; margin-bottom: 6px; }
-    input, select, textarea {
+    label { display: block; font-size: 0.92rem; font-weight: 650; margin: 12px 0 6px; }
+    input[type="text"], input[type="number"], input:not([type="file"]) {
       width: 100%;
+      max-width: 100%;
       border: 1px solid #cacace;
-      border-radius: 12px;
+      border-radius: 8px;
       padding: 12px;
       background: #fff;
-      color: var(--ink);
     }
-    textarea { min-height: 90px; }
-    .receipt {
-      background: #fffdf8;
+    input[type="file"] { max-width: 100%; width: 100%; font-size: 0.92rem; }
+    input[type="file"]::file-selector-button {
       border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 16px 18px;
+      background: #fff;
+      border-radius: 999px;
+      padding: 8px 12px;
+      margin-right: 8px;
     }
-    .receipt strong { color: var(--orange); display: block; font-size: 1.15rem; }
-    .slack {
-      background: #161618;
-      color: #f8f5f0;
-      border-radius: 18px;
-      padding: 16px;
+    .hint { color: var(--muted); font-size: 0.92rem; }
+    .receipt {
+      margin-top: 14px;
+      background: #fffdf8;
+      border: 1px dashed #d8d2c8;
+      border-radius: 8px;
+      padding: 14px 16px;
     }
-    .slack small { color: #f67654; letter-spacing: 0.04em; text-transform: uppercase; }
+    .receipt strong { display: block; color: var(--orange); }
+    pre.note {
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      font-family: inherit;
+      margin: 12px 0 0;
+      line-height: 1.5;
+    }
+    .tool { background: var(--sand); border-radius: 12px; padding: 8px; margin-top: 8px; }
+    .tool-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 10px 12px 4px;
+      font-size: 0.92rem;
+    }
+    .tool-body { background: #fff; border-radius: 10px; padding: 18px; }
+    .toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .toggle p { margin: 0; font-weight: 650; }
+    .toggle small { display: block; font-weight: 400; color: var(--muted); }
+    .switch {
+      width: 48px;
+      height: 28px;
+      border: 0;
+      border-radius: 99px;
+      background: #cacace;
+      position: relative;
+      flex: none;
+      padding: 0;
+    }
+    .switch[aria-pressed="true"] { background: var(--orange); }
+    .switch .knob {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #fff;
+    }
+    .switch[aria-pressed="true"] .knob { transform: translateX(20px); }
+    .rows { display: grid; gap: 8px; margin-top: 12px; }
+    .rowcard {
+      display: grid;
+      grid-template-columns: 1.1fr 1.5fr 0.7fr 0.8fr 0.7fr;
+      gap: 8px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 12px;
+      min-width: 0;
+    }
+    .rowcard b { display: block; font-size: 0.75rem; font-weight: 650; color: var(--muted); }
+    .rowcard span { overflow-wrap: anywhere; }
+    .status { display: inline-block; border-radius: 999px; padding: 3px 8px; font-size: 0.82rem; font-weight: 650; }
+    .status.pending { background: var(--amber-bg); color: var(--amber); }
+    .status.approved { background: var(--blue-bg); color: var(--blue); }
+    .status.paid { background: var(--green-bg); color: var(--green); }
+    .slack { background: #1a1d21; color: #f8f5f0; border-radius: 12px; padding: 14px; margin-top: 8px; }
+    .slack header { color: #fff; font-weight: 700; margin-bottom: 10px; }
+    .slack header small { display: block; color: #b9bbbe; font-weight: 400; }
+    .msg { background: #222529; border-radius: 8px; padding: 12px; margin-top: 8px; }
+    .msg strong { color: #f67654; }
+    .msg.off { color: #b9bbbe; }
+    .block { margin-top: 28px; }
     .bar {
       position: fixed;
-      left: 0; right: 0; bottom: 0;
-      background: rgba(247, 245, 242, 0.96);
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.96);
       border-top: 1px solid var(--line);
-      padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+      padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
     }
-    .bar-inner { max-width: 920px; margin: 0 auto; display: flex; gap: 10px; align-items: center; }
-    .progress { flex: 1; }
-    .track { height: 6px; background: #e6e1da; border-radius: 99px; overflow: hidden; }
-    .fill { height: 100%; background: var(--orange); width: 0; }
+    .bar[hidden] { display: none; }
+    .bar-inner { max-width: 1040px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .progress { flex: 1 1 180px; min-width: 0; }
     .stepnum { font-size: 0.82rem; color: var(--muted); margin-bottom: 4px; }
-    .section { margin-top: 28px; }
-    .check { display: flex; gap: 8px; align-items: flex-start; font-weight: 400; }
-    .check input { width: auto; margin-top: 4px; }
-    a { color: var(--orange); }
-    .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+    .parts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .part { min-width: 0; font-size: 0.82rem; }
+    .part em { display: block; font-style: normal; color: var(--muted); font-size: 0.72rem; }
+    .part strong { font-weight: 650; }
+    .part.is-current strong { color: var(--orange); }
+    #part2.is-current strong { color: var(--ink); }
+    .track { height: 4px; background: var(--line); border-radius: 99px; margin-top: 4px; overflow: hidden; }
+    .fill { height: 100%; width: 0; background: var(--orange); }
+    #part2 .fill { background: var(--ink); }
+    :focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+    @media (max-width: 720px) {
+      .hub { grid-template-columns: 1fr; gap: 12px; }
+      .hub-nav { display: flex; flex-wrap: wrap; gap: 6px 12px; }
+      .nav-group { width: 100%; margin: 0; }
+      .hub-nav span { display: inline; padding: 0; }
+      .nav-active { box-shadow: none; }
+      .rowcard { grid-template-columns: 1fr 1fr; }
+      .wrap { padding: 18px 16px 160px; }
+    }
   </style>
 </head>
 <body>
+  <div class="side-banner" id="banner" hidden></div>
   <div class="wrap">
-    <p class="brand">
-      <svg viewBox="0 0 128 163" aria-hidden="true">
-        <path fill="#F25533" fill-rule="evenodd" d="M48.7336 139.642V163C20.7585 156.323 0 131.711 0 102.372C0 85.4557 7.15792 72.0354 18.1053 58.8703C27.1831 47.9534 49.5985 19.0426 56.6543 3.08954C58.3673-0.783473 62.7348-0.633805 64.6182 1.44721C70.6432 8.10421 78.0694 22.6432 80.4983 39.135C80.9932 42.4953 81.1969 45.2388 81.3587 47.4184C81.706 52.0954 81.8604 54.1748 84.2854 54.1748C88.0955 54.1748 90.588 48.3977 91.1358 42.4345C91.4869 38.6136 95.2774 37.3346 97.8914 38.6136C110.463 44.7644 123.292 74.0426 126.393 88.4102C127.366 92.9158 128 97.5719 128 102.372C128 131.646 107.335 156.214 79.4537 162.955V139.642H48.7336ZM64.0002 130.333C73.8316 130.333 81.8016 122.789 81.8016 113.483C81.8016 98.6407 70.8577 88.0345 65.4048 84.8105C65.0364 84.5928 64.8523 84.4839 64.3512 84.4974C63.9843 84.5073 63.4429 84.7369 63.181 84.9935C62.8232 85.3441 62.7283 85.743 62.5387 86.5409C61.5721 90.6065 58.5292 93.5054 55.327 96.556C50.9141 100.76 46.1988 105.252 46.1988 113.483C46.1988 122.789 54.1688 130.333 64.0002 130.333Z"/>
-      </svg>
-      <span class="hand">Final interview SF resources</span>
-    </p>
-    <p class="label" id="official-label">Unofficial candidate-experience proposal by Val Whitten, not an incident.io product.</p>
+    <p class="label" id="official-label">Unofficial proposal by Val Whitten, not an incident.io product.</p>
     <div id="stage" aria-live="polite"></div>
   </div>
   <div class="bar" id="bar" hidden>
@@ -146,7 +251,10 @@
       <button class="ghost" type="button" id="skip-bar">Skip tour</button>
       <div class="progress">
         <div class="stepnum" id="stepnum"></div>
-        <div class="track" aria-hidden="true"><div class="fill" id="fill"></div></div>
+        <div class="parts" aria-hidden="true">
+          <div class="part" id="part1"><em>Part 1</em><strong>Candidate</strong><div class="track"><div class="fill" id="fill1"></div></div></div>
+          <div class="part" id="part2"><em>Part 2</em><strong>Team</strong><div class="track"><div class="fill" id="fill2"></div></div></div>
+        </div>
       </div>
       <button class="cta" type="button" id="next">Next</button>
     </div>
@@ -155,41 +263,73 @@
     const SAMPLE = {
       name: "Jordan Example",
       date: "2026-11-02",
-      amount: "18.50",
-      currency: "USD",
-      method: "paypal",
-      handle: "demo.candidate@example.com",
-      partner: "talent.partner@example.com",
-      why: "The train is delayed",
-      eta: 10,
-      giftName: "Jordan",
-      giftAmount: "25",
-      feedback: "The take-home was clear and specific."
+      paypal: "demo.candidate@example.com",
+      venmo: "@demo-candidate",
+      partner: "talent.partner@example.com"
     };
 
-    const STEPS = ["welcome", "receipt", "draft", "payout", "late", "thanks", "declined", "close"];
+    const STEPS = [
+      { id: "welcome", part: 0, side: "none" },
+      { id: "receipt", part: 1, side: "candidate" },
+      { id: "payout", part: 1, side: "candidate" },
+      { id: "late", part: 1, side: "candidate" },
+      { id: "thanks", part: 1, side: "candidate" },
+      { id: "transition", part: 0, side: "switch" },
+      { id: "admin", part: 2, side: "team" },
+      { id: "queue", part: 2, side: "team" },
+      { id: "slack", part: 2, side: "team" },
+      { id: "close", part: 0, side: "none" }
+    ];
+
+    const SUBMISSIONS = [
+      { name: "Jordan Example", handle: "demo.candidate@example.com", method: "PayPal", amount: "18.50", status: "pending", date: "2026-11-02" },
+      { name: "Sam Sample", handle: "@demo-candidate", method: "Venmo", amount: "22.00", status: "approved", date: "2026-10-28" },
+      { name: "Alex Preview", handle: "demo.alex@example.com", method: "PayPal", amount: "15.00", status: "paid", date: "2026-10-21" }
+    ];
+
     const state = {
       mode: "tour",
       step: 0,
-      amount: SAMPLE.amount,
-      currency: SAMPLE.currency,
-      method: SAMPLE.method,
-      eta: SAMPLE.eta,
-      keepInTouch: false,
-      cadence: "none",
-      includeGift: true
+      amount: "18.50",
+      method: "paypal",
+      eta: 10,
+      why: "The train is delayed",
+      reimbursement: true,
+      lateNotes: true,
+      gift: true,
+      provider: "tremendous",
+      giftAmount: "25"
     };
 
     const stage = document.getElementById("stage");
     const bar = document.getElementById("bar");
+    const banner = document.getElementById("banner");
+    let painted = { mode: "", step: -1 };
 
-    function receiptSvg() {
-      return '<div class="receipt" aria-label="Synthetic sample receipt"><strong>SYNTHETIC SAMPLE</strong><p>Not a real parking charge.</p><p>Date: 2026-11-02<br>Total: $18.50<br>Garage under the building</p></div>';
+    function esc(value) {
+      return String(value).replace(/[&<>"']/g, (ch) => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+      }[ch]));
+    }
+
+    function money(value) {
+      const n = Number(value);
+      return (Number.isFinite(n) ? n : 0).toFixed(2);
+    }
+
+    function providerLabel() {
+      return state.provider === "perfectgift" ? "PerfectGift.com" : "Tremendous";
+    }
+
+    function handle() {
+      return state.method === "venmo" ? SAMPLE.venmo : SAMPLE.paypal;
+    }
+
+    function methodLabel() {
+      return state.method === "venmo" ? "Venmo" : "PayPal";
     }
 
     function emailText() {
-      const method = state.method === "paypal" ? "PayPal" : "Venmo";
-      const handle = state.method === "paypal" ? SAMPLE.handle : "@demo-candidate";
       return [
         "Hello,",
         "",
@@ -197,186 +337,289 @@
         "",
         "Name: " + SAMPLE.name,
         "Receipt date: " + SAMPLE.date,
-        "Amount: " + state.currency + " " + Number(state.amount).toFixed(2),
-        "Payout: " + method + " " + handle,
-        "",
-        "This draft was prepared on this device. It has not been submitted, and it has not been paid.",
+        "Amount: USD " + money(state.amount),
+        "Payout: " + methodLabel() + " " + handle(),
         "",
         "Thank you,",
         SAMPLE.name
       ].join("\n");
     }
 
-    function thanksText() {
-      const lines = [
-        "Dear " + SAMPLE.giftName + ",",
-        "",
-        "Thank you for the time you gave this process. We enjoyed meeting you, and we are sorry this role is not the right match. We hope you will apply again when another opening fits what you want.",
-        "",
-        "One thing we wanted you to hear: " + SAMPLE.feedback
-      ];
-      if (state.includeGift) {
-        lines.push("", "As a thank-you, we would send a gift card for " + SAMPLE.giftAmount + " USD. The gift has no strings attached. Sample figure, not a company decision.");
-      }
-      if (state.keepInTouch) {
-        lines.push("", "If you would like a note when a matching role opens, reply and say so. We will not add you to a list unless you ask.");
-      }
-      lines.push("", "With appreciation,", "The recruiting team");
-      return lines.join("\n");
-    }
-
-    function declinedText() {
-      const lines = [
-        "Dear " + SAMPLE.giftName + ",",
-        "",
-        "Thank you for being direct with us, and for the care you put into the process. We are sorry not to be working together this time. The door is open if you want to talk again."
-      ];
-      if (state.includeGift) {
-        lines.push("", "As a thank-you, we would send a gift card for " + SAMPLE.giftAmount + " USD. The gift has no strings attached, and it does not depend on staying in touch. Sample figure, not a company decision.");
-      }
-      if (state.cadence === "months") {
-        lines.push("", "If you want to hear from us in a few months, reply and say so. We will wait for that reply before getting back in touch.");
-      }
-      if (state.cadence === "roles") {
-        lines.push("", "If you want a note when a matching role opens, tell us the kind of role and when to write. We will not start that until you ask.");
-      }
-      lines.push("", "With appreciation,", "The recruiting team");
-      return lines.join("\n");
-    }
-
     function lateText() {
-      const lines = ["Running late for the onsite.", "Why: " + SAMPLE.why];
+      const lines = ["Running late for the onsite.", "Why: " + (state.why || "No reason added")];
       if (state.eta) lines.push("ETA: about " + state.eta + " minutes");
       return lines.join("\n");
     }
 
-    function panelReceipt() {
-      return '<div data-panel="receipt"><p class="kicker hand">Click here · the receipt</p><h2>One link from the acceptance email</h2><p>The public guide asks candidates to save a parking receipt and email a copy to their Talent Partner. This page would be that link. The sample below is not a real charge, and the photo is not read by OCR.</p><div class="split"><div class="hotspot">' + receiptSvg() + '</div><div class="card"><p><strong>What would be included</strong></p><p id="summary">Receipt: synthetic sample<br>Date: ' + SAMPLE.date + '<br>Amount: ' + state.currency + " " + Number(state.amount).toFixed(2) + '<br>Nothing has been sent or paid.</p><label for="amount">Amount <span class="muted">(already filled)</span></label><input id="amount" inputmode="decimal" value="' + state.amount + '"></div></div></div>';
+    function thanksText() {
+      const lines = [
+        "Dear Jordan,",
+        "",
+        "Thank you for the time you gave this process. We enjoyed meeting you and we are sorry this role is not the right match. We hope you will apply again when another opening fits.",
+        "",
+        "One thing we wanted you to hear. The take-home was clear and specific."
+      ];
+      if (state.gift) {
+        lines.push("", "As a thank-you we would send a $" + money(state.giftAmount).replace(/\.00$/, "") + " gift card through " + providerLabel() + ". It has no strings attached.");
+      }
+      lines.push("", "With appreciation,", "The recruiting team");
+      return lines.join("\n");
     }
 
-    function panelDraft() {
-      return '<div data-panel="draft"><p class="kicker hand">Click here · the email draft</p><h2>A draft, not a sent message</h2><p>The candidate reviews this text, then downloads an unsent email file with the receipt attached. Nothing leaves this page until they send it themselves. A mailto link cannot attach a file, so that path is only a fallback.</p><div class="hotspot"><pre class="note" id="email-preview"></pre><div class="row" style="margin-top:14px"><button class="cta" type="button" id="download">Download draft email (.eml)</button></div><p class="muted">The file uses X-Unsent: 1. Thunderbird often opens that as a draft. Outlook and Gmail in the browser often do not. It is not sent from here.</p></div></div>';
+    function slackLateText() {
+      if (!state.lateNotes) return "Late notes are turned off so this would not post.";
+      return SAMPLE.name + " is running late for the onsite.\n" + (state.why || "No reason added") + "\nETA about " + state.eta + " minutes.";
     }
 
-    function panelPayout() {
+    function slackReceiptText() {
+      if (!state.reimbursement) return "Parking reimbursement is turned off so a receipt would not post.";
+      return SAMPLE.name + " submitted a parking receipt.\nUSD " + money(state.amount) + " via " + methodLabel() + ".\nHandle: " + handle();
+    }
+
+    function livePreviewText() {
+      const lines = [
+        state.reimbursement ? "Parking reimbursement is on. A candidate can add a receipt." : "Parking reimbursement is off. The candidate page hides the receipt.",
+        state.lateNotes ? "Late notes are on. A candidate can send one to Slack." : "Late notes are off. The candidate page hides the late note.",
+        state.gift
+          ? "Gift is on. The thank-you includes a $" + money(state.giftAmount).replace(/\.00$/, "") + " card through " + providerLabel() + "."
+          : "Gift is off. The thank-you note has no gift card."
+      ];
+      return lines.join("\n\n");
+    }
+
+    function arrow() {
+      return '<svg class="arrow" viewBox="0 0 200 96" aria-hidden="true"><text x="0" y="28" fill="#f25533" font-family="Kalam, cursive" font-size="28">hi</text><path d="M8 74 C 40 74, 34 50, 62 54 S 96 86, 124 62 S 162 40, 176 56" fill="none" stroke="#f25533" stroke-width="3.5" stroke-linecap="round"/><path d="M160 44 L188 56 L162 70" fill="none" stroke="#f25533" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    }
+
+    function hubNav() {
+      return '<nav class="hub-nav" aria-label="Proposed Candidate Hub section"><p class="nav-group">Hiring</p><span class="nav-active">Final interview in SF</span><span>How we hire</span><span>FAQs</span><p class="nav-group">Life at incident.io</p><span>SF office</span></nav>';
+    }
+
+    function candidateShell(title, lede, body) {
+      return '<div class="hub">' + hubNav() + '<article><p class="proposed">Proposed addition to the Candidate Hub</p><h2>' + title + '</h2><p class="lede">' + lede + '</p>' + body + '</article></div>';
+    }
+
+    function teamShell(title, lede, body) {
+      return '<div class="tool"><div class="tool-top"><strong>Talent tools</strong><span>Internal</span></div><div class="tool-body"><h2>' + title + '</h2><p class="lede">' + lede + '</p>' + body + '</div></div>';
+    }
+
+    function receiptBody() {
+      if (!state.reimbursement) {
+        return '<div class="panel"><p>Parking reimbursement is turned off in Talent tools. A candidate would not see this section.</p></div>';
+      }
+      return '<div class="panel"><label for="receipt-file">Receipt</label><input id="receipt-file" type="file" accept="image/*,.pdf"><p class="hint" id="file-name">No file chosen. A synthetic sample is shown below. The file stays in this browser.</p><label for="amount">Amount in USD</label><input id="amount" inputmode="decimal" value="' + esc(state.amount) + '"><div class="receipt" aria-label="Synthetic sample receipt"><strong>Synthetic sample</strong><p>Not a real parking charge.</p><p>Date: ' + SAMPLE.date + '</p><p>Total: $<span id="receipt-total">' + money(state.amount) + '</span></p><p>Garage under the building at 85 2nd Street.</p></div></div>';
+    }
+
+    function payoutBody() {
       const paypal = state.method === "paypal";
-      return '<div data-panel="payout"><p class="kicker hand">Click here · payout</p><h2>PayPal or Venmo, as a preference</h2><p>A real version would hand the candidate to the company’s own payout account. These buttons do not open PayPal or Venmo, and they do not move money. The handle is fake.</p><div class="hotspot"><div class="row"><button class="choice" type="button" data-method="paypal" aria-pressed="' + paypal + '">PayPal</button><button class="choice" type="button" data-method="venmo" aria-pressed="' + (!paypal) + '">Venmo</button></div><p id="handle-line" style="margin-top:14px"><strong>' + (paypal ? "PayPal" : "Venmo") + ' handle:</strong> ' + (paypal ? SAMPLE.handle : "@demo-candidate") + '</p><p class="muted">Do not type a real account. No bank or card number is collected.</p></div></div>';
+      return '<div class="panel"><div class="row"><button class="choice" type="button" data-method="paypal" aria-pressed="' + paypal + '">PayPal</button><button class="choice" type="button" data-method="venmo" aria-pressed="' + (!paypal) + '">Venmo</button></div><p><strong>' + methodLabel() + ' handle:</strong> ' + esc(handle()) + '</p><p class="hint">This is a fake handle. Do not type a real account.</p><pre class="note" id="email-preview"></pre><div class="row" style="margin-top:12px"><button class="cta" type="button" id="download">Download draft email (.eml)</button></div><p class="hint">The file is a draft on this device. It is not sent.</p></div>';
     }
 
-    function panelLate() {
+    function lateBody() {
+      if (!state.lateNotes) {
+        return '<div class="panel"><p>Late notes are turned off in Talent tools. A candidate would not see this section.</p></div>';
+      }
       const etas = [5, 10, 15, 30].map((n) => '<button class="choice" type="button" data-eta="' + n + '" aria-pressed="' + (state.eta === n) + '">' + n + ' min</button>').join("");
-      return '<div data-panel="late"><p class="kicker hand">Click here · running late</p><h2>One line for the team</h2><p>On the same page as the receipt. The candidate adds why they are late. This preview is what a Slack message could look like. It is not posted.</p><div class="split"><div class="hotspot"><p><strong>Why:</strong> ' + SAMPLE.why + '</p><div class="row" style="margin-top:10px">' + etas + '</div></div><div class="slack" id="slack"><small>Slack preview · not posted</small><p>#onsite-demo · placeholder channel</p><pre class="note" id="late-preview"></pre></div></div></div>';
+      return '<div class="panel"><label for="why">Why</label><input id="why" type="text" value="' + esc(state.why) + '"><label>How late</label><div class="row">' + etas + '</div><pre class="note" id="late-preview"></pre></div>';
     }
 
-    function panelThanks() {
-      return '<div data-panel="thanks"><p class="kicker hand">Click here · not selected</p><h2>A thank-you that does not depend on a gift</h2><p>For a strong finalist who is not moving forward. The thank-you is always in the note. The $' + SAMPLE.giftAmount + ' figure is a sample so you can see the sentence. No amount has been chosen, and no card is purchased. If the company paid one, it would use its own account at Tremendous or PerfectGift.com. Neither is connected.</p><div class="hotspot"><label class="check"><input type="checkbox" id="keep"> Invite them to ask when a matching role opens. This does not subscribe anyone, and it does not change the thank-you.</label><pre class="note" id="thanks-preview"></pre></div></div>';
+    function thanksBody() {
+      return '<div class="panel"><pre class="note" id="thanks-preview"></pre></div>';
     }
 
-    function panelDeclined() {
-      return '<div data-panel="declined"><p class="kicker hand">Click here · offer declined</p><h2>The door stays open</h2><p>For someone who turned the role down. A gift, if the company later chooses to send one, has no strings and does not depend on staying in touch. The vendor is still undecided.</p><div class="hotspot"><div class="row"><button class="choice" type="button" data-cadence="none" aria-pressed="' + (state.cadence === "none") + '">No cadence</button><button class="choice" type="button" data-cadence="months" aria-pressed="' + (state.cadence === "months") + '">A few months</button><button class="choice" type="button" data-cadence="roles" aria-pressed="' + (state.cadence === "roles") + '">When a role fits</button></div><pre class="note" id="declined-preview"></pre></div></div>';
+    function switchRow(id, on, title, detail) {
+      return '<div class="toggle"><div><p>' + title + '</p><small>' + detail + '</small></div><button class="switch" type="button" id="' + id + '" aria-pressed="' + on + '" aria-label="' + title + '"><span class="knob"></span></button></div>';
+    }
+
+    function adminBody() {
+      const tremendous = state.provider === "tremendous";
+      return '<div class="panel">' +
+        switchRow("toggle-reimburse", state.reimbursement, "Enable parking reimbursement", "Shows the receipt section on the candidate page.") +
+        switchRow("toggle-late", state.lateNotes, "Enable late notes", "Shows the late note and lets it post to Slack.") +
+        switchRow("toggle-gift", state.gift, "Enable thank-you gift", "Adds the gift sentence to the thank-you note.") +
+        '<label>Gift provider</label><div class="row"><button class="choice" type="button" data-provider="tremendous" aria-pressed="' + tremendous + '">Tremendous</button><button class="choice" type="button" data-provider="perfectgift" aria-pressed="' + (!tremendous) + '">PerfectGift.com</button></div><p class="hint">Both are available for internal use.</p><label for="gift-amount">Gift amount</label><input id="gift-amount" inputmode="decimal" value="' + esc(state.giftAmount) + '"><p class="hint">The proposed amount is $25.</p><pre class="note" id="live-preview"></pre></div>';
+    }
+
+    function queueBody() {
+      const note = state.reimbursement
+        ? ""
+        : '<p>Parking reimbursement is off so new receipts would not arrive. The rows below are sample history.</p>';
+      const cards = SUBMISSIONS.map((row) => '<div class="rowcard"><span><b>Candidate</b>' + esc(row.name) + '</span><span><b>Payout handle</b>' + esc(row.handle) + '</span><span><b>Amount</b>$' + esc(row.amount) + '</span><span><b>Method</b>' + esc(row.method) + '</span><span><b>Status</b><span class="status ' + row.status + '">' + row.status + '</span></span></div>').join("");
+      return note + '<div class="rows">' + cards + '</div>';
+    }
+
+    function slackBody() {
+      return '<div class="slack"><header>#onsite-candidates<small>Placeholder channel. Not posted.</small></header><article class="msg' + (state.lateNotes ? "" : " off") + '"><strong>Late note</strong><pre class="note" id="slack-late"></pre></article><article class="msg' + (state.reimbursement ? "" : " off") + '"><strong>Receipt submitted</strong><pre class="note" id="slack-receipt"></pre></article></div>';
     }
 
     function welcome() {
-      return '<section data-step="welcome"><h1>A candidate-experience proposal by Val Whitten</h1><p>A final interview in San Francisco still asks people to save a parking receipt and email it by hand. This is a shorter page for that, plus a late note and a warmer close.</p><div class="card sand"><p>Four short steps show what a candidate would see: add a parking receipt, pick PayPal or Venmo, send a quick running-late note and get a thank-you if they are not moving forward. Everything here is sample data. Nothing is emailed, paid or saved.</p></div><div class="row" style="margin-top:18px"><button class="cta big" type="button" id="start">Start the tour</button><button class="ghost" type="button" id="skip">Skip tour and explore freely</button></div></section>';
+      return '<section data-step="welcome"><h1>A candidate-experience proposal</h1><div class="byline">' + arrow() + '<p class="name hand">by Val Whitten</p></div><p>A final interview in San Francisco still asks people to save a parking receipt and email it by hand. This proposal puts that on one page with a late note and a warmer close.</p><p>Part 1 is the page a candidate would use. Part 2 is what the Talent team would see behind it.</p><div class="row"><button class="cta big" type="button" id="start">Start the tour</button><button class="ghost" type="button" id="skip">Skip tour and explore freely</button></div></section>';
+    }
+
+    function transition() {
+      return '<section data-step="transition"><h1>Now the same flow from the Talent team\'s side</h1><p class="lede">The switches, the receipt queue and the Slack posts are in this part. What you turn on is what the candidate page shows.</p></section>';
     }
 
     function closeScreen() {
-      return '<section data-step="close"><h1>That’s the proposal</h1><p>A candidate would open one link, add a parking receipt, point it at PayPal or Venmo, and tell the team if they are late. A recruiter could close with a thank-you that does not depend on a gift card.</p><div class="card"><p><strong>Still to decide, not decided here</strong></p><ul><li>Tremendous, PerfectGift.com, or neither.</li><li>Whether any gift is offered, and the amount.</li><li>Which Slack channel would see a late note.</li><li>Whether a payout handle belongs in the email the candidate sends.</li></ul></div><div class="row" style="margin-top:18px"><button class="cta big" type="button" id="explore">Look through it freely</button><button class="ghost" type="button" id="restart">Restart the tour</button></div></section>';
+      return '<section data-step="close"><h1>The proposal</h1><p>Here is what this page recommends.</p><div class="panel"><ul><li>Both Tremendous and PerfectGift.com are available for internal use.</li><li>The thank-you gift is $25.</li><li>Late notes post to Slack.</li><li>The candidate\'s PayPal or Venmo handle is included in the reimbursement email so the recruiter can pay right away.</li></ul></div><p>Nothing on this page sends email, pays anyone or saves what you see.</p><div class="row"><button class="cta big" type="button" id="explore">Look through it freely</button><button class="ghost" type="button" id="restart">Restart the tour</button></div></section>';
     }
 
-    function bindCommon(root) {
-      const amount = root.querySelector("#amount");
-      if (amount) {
-        amount.addEventListener("input", () => {
-          state.amount = amount.value || SAMPLE.amount;
-          const summary = root.querySelector("#summary");
-          if (summary) summary.innerHTML = "Receipt: synthetic sample<br>Date: " + SAMPLE.date + "<br>Amount: " + state.currency + " " + (Number(state.amount) || 0).toFixed(2) + "<br>Nothing has been sent or paid.";
-        });
+    function stepBody(id) {
+      if (id === "receipt") {
+        return '<p class="for-team">This is the page a candidate would open for a final interview in San Francisco.</p>' + candidateShell("Final interview in San Francisco", "The office is on the 7th floor at 85 2nd Street. If you park for the interview you can add the receipt here instead of emailing it by hand.", receiptBody());
       }
-      root.querySelectorAll("[data-method]").forEach((button) => {
-        button.addEventListener("click", () => {
-          state.method = button.getAttribute("data-method");
-          render();
-        });
-      });
-      root.querySelectorAll("[data-eta]").forEach((button) => {
-        button.addEventListener("click", () => {
-          state.eta = Number(button.getAttribute("data-eta"));
-          render();
-        });
-      });
-      root.querySelectorAll("[data-cadence]").forEach((button) => {
-        button.addEventListener("click", () => {
-          state.cadence = button.getAttribute("data-cadence");
-          render();
-        });
-      });
-      const keep = root.querySelector("#keep");
-      if (keep) {
-        keep.checked = state.keepInTouch;
-        keep.addEventListener("change", () => {
-          state.keepInTouch = keep.checked;
-          const preview = root.querySelector("#thanks-preview");
-          if (preview) preview.textContent = thanksText();
-        });
+      if (id === "payout") {
+        return '<p class="for-team">The candidate picks PayPal or Venmo. The handle is included in the reimbursement email so you can pay right away.</p>' + candidateShell("How should we pay you back", "Choose PayPal or Venmo. The sample handle is already filled in.", payoutBody());
       }
-      const download = root.querySelector("#download");
-      if (download) download.addEventListener("click", downloadEml);
-      const start = root.querySelector("#start");
-      if (start) start.addEventListener("click", () => { state.mode = "tour"; state.step = 1; render(); });
-      const skip = root.querySelector("#skip");
-      if (skip) skip.addEventListener("click", () => { state.mode = "explore"; render(); });
-      const explore = root.querySelector("#explore");
-      if (explore) explore.addEventListener("click", () => { state.mode = "explore"; render(); });
-      const restart = root.querySelector("#restart");
-      if (restart) restart.addEventListener("click", () => { state.mode = "tour"; state.step = 0; render(); });
+      if (id === "late") {
+        return '<p class="for-team">The candidate can say they are running late from this same page.</p>' + candidateShell("Running late", "Tell the team why and when you expect to arrive.", lateBody());
+      }
+      if (id === "thanks") {
+        const lede = state.gift
+          ? "The note below is what we would send. The gift has no strings attached."
+          : "The note below is what we would send. The gift is turned off so it does not mention a card.";
+        return '<p class="for-team">This is the note a finalist would receive if they are not moving forward. The proposed gift is $25.</p>' + candidateShell("A thank-you if you are not moving forward", lede, thanksBody());
+      }
+      if (id === "admin") {
+        return '<p class="for-team">These are the switches the Talent team would use.</p>' + teamShell("Settings", "Turn a piece off to hide it on the candidate page. Both gift providers are available. The proposed gift amount is $25.", adminBody());
+      }
+      if (id === "queue") {
+        return '<p class="for-team">Submitted receipts would show up here with a status and a payout handle.</p>' + teamShell("Receipt submissions", "These three rows are synthetic samples.", queueBody());
+      }
+      if (id === "slack") {
+        return '<p class="for-team">A late note and a receipt would each post into Slack.</p>' + teamShell("Slack", "The channel name is a placeholder. Nothing here is posted.", slackBody());
+      }
+      return "";
+    }
+
+    function explore() {
+      const blocks = [
+        ["candidate", "receipt"],
+        ["candidate", "payout"],
+        ["candidate", "late"],
+        ["candidate", "thanks"],
+        ["team", "admin"],
+        ["team", "queue"],
+        ["team", "slack"]
+      ].map(([side, id]) => '<section class="block" data-block="' + id + '"><p class="badge-inline ' + side + '">' + (side === "candidate" ? "CANDIDATE VIEW" : "INCIDENT.IO TEAM VIEW") + '</p>' + stepBody(id) + '</section>').join("");
+      return '<section data-step="explore"><h1>Every part on one page</h1><p>Sample data is filled in. The switches change the candidate previews and the Slack messages.</p><p><button class="ghost" type="button" id="restart">Restart the tour</button></p></section>' + blocks;
+    }
+
+    function paintPreviews(root) {
       const email = root.querySelector("#email-preview");
       if (email) email.textContent = emailText();
       const late = root.querySelector("#late-preview");
       if (late) late.textContent = lateText();
       const thanks = root.querySelector("#thanks-preview");
       if (thanks) thanks.textContent = thanksText();
-      const declined = root.querySelector("#declined-preview");
-      if (declined) declined.textContent = declinedText();
+      const live = root.querySelector("#live-preview");
+      if (live) live.textContent = livePreviewText();
+      const total = root.querySelector("#receipt-total");
+      if (total) total.textContent = money(state.amount);
+      const slackLate = root.querySelector("#slack-late");
+      if (slackLate) slackLate.textContent = slackLateText();
+      const slackReceipt = root.querySelector("#slack-receipt");
+      if (slackReceipt) slackReceipt.textContent = slackReceiptText();
+      root.querySelectorAll("#email-preview").forEach ? null : null;
+    }
+
+    function paintAllPreviews() {
+      document.querySelectorAll("#email-preview, #late-preview, #thanks-preview").forEach((node) => {
+        if (node.id === "email-preview") node.textContent = emailText();
+        if (node.id === "late-preview") node.textContent = lateText();
+        if (node.id === "thanks-preview") node.textContent = thanksText();
+      });
+      paintPreviews(stage);
+    }
+
+    function bind(root) {
+      const file = root.querySelector("#receipt-file");
+      if (file) file.addEventListener("change", () => {
+        const chosen = file.files && file.files[0] ? file.files[0].name : "";
+        const slot = root.querySelector("#file-name");
+        if (slot) slot.textContent = chosen ? chosen + " stays in this browser." : "No file chosen. A synthetic sample is shown below. The file stays in this browser.";
+      });
+      const amount = root.querySelector("#amount");
+      if (amount) amount.addEventListener("input", () => { state.amount = amount.value; paintAllPreviews(); });
+      const why = root.querySelector("#why");
+      if (why) why.addEventListener("input", () => { state.why = why.value; paintAllPreviews(); });
+      const giftAmount = root.querySelector("#gift-amount");
+      if (giftAmount) giftAmount.addEventListener("input", () => { state.giftAmount = giftAmount.value; paintAllPreviews(); });
+      root.querySelectorAll("[data-method]").forEach((button) => button.addEventListener("click", () => { state.method = button.getAttribute("data-method"); render(); }));
+      root.querySelectorAll("[data-eta]").forEach((button) => button.addEventListener("click", () => { state.eta = Number(button.getAttribute("data-eta")); render(); }));
+      root.querySelectorAll("[data-provider]").forEach((button) => button.addEventListener("click", () => { state.provider = button.getAttribute("data-provider"); render(); }));
+      [["toggle-reimburse", "reimbursement"], ["toggle-late", "lateNotes"], ["toggle-gift", "gift"]].forEach(([id, key]) => {
+        const button = root.querySelector("#" + id);
+        if (!button) return;
+        button.addEventListener("click", () => { state[key] = !state[key]; render(); });
+      });
+      const download = root.querySelector("#download");
+      if (download) download.addEventListener("click", downloadEml);
+      const start = root.querySelector("#start");
+      if (start) start.addEventListener("click", () => { state.mode = "tour"; state.step = 1; render(); });
+      const skip = root.querySelector("#skip");
+      if (skip) skip.addEventListener("click", () => { state.mode = "explore"; render(); });
+      const exploreBtn = root.querySelector("#explore");
+      if (exploreBtn) exploreBtn.addEventListener("click", () => { state.mode = "explore"; render(); });
+      const restart = root.querySelector("#restart");
+      if (restart) restart.addEventListener("click", () => { state.mode = "tour"; state.step = 0; render(); });
+      paintAllPreviews();
+    }
+
+    function paintChrome() {
+      const step = STEPS[state.step];
+      const touring = state.mode === "tour";
+      bar.hidden = !touring || step.id === "welcome";
+      if (state.mode === "explore") {
+        banner.hidden = true;
+      } else if (step.side === "candidate") {
+        banner.hidden = false;
+        banner.className = "side-banner candidate";
+        banner.innerHTML = '<span class="badge">CANDIDATE VIEW</span><span>Part 1 · Candidate</span>';
+      } else if (step.side === "team") {
+        banner.hidden = false;
+        banner.className = "side-banner team";
+        banner.innerHTML = '<span class="badge">INCIDENT.IO TEAM VIEW</span><span>Part 2 · Team</span>';
+      } else if (step.side === "switch") {
+        banner.hidden = false;
+        banner.className = "side-banner between";
+        banner.innerHTML = '<span class="badge">BETWEEN PARTS</span><span>Part 1 Candidate to Part 2 Team</span>';
+      } else {
+        banner.hidden = true;
+      }
+      const part1Index = Math.max(0, Math.min(4, state.step));
+      const part2Index = state.step < 6 ? 0 : Math.min(3, state.step - 5);
+      document.getElementById("fill1").style.width = (part1Index / 4 * 100) + "%";
+      document.getElementById("fill2").style.width = (part2Index / 3 * 100) + "%";
+      document.getElementById("part1").classList.toggle("is-current", touring && step.part === 1);
+      document.getElementById("part1").classList.toggle("is-done", touring && state.step > 4);
+      document.getElementById("part2").classList.toggle("is-current", touring && step.part === 2);
+      document.getElementById("part2").classList.toggle("is-done", touring && state.step > 8);
+      let label = "";
+      if (step.part === 1) label = "Part 1 · Candidate · Step " + state.step + " of 4";
+      else if (step.part === 2) label = "Part 2 · Team · Step " + (state.step - 5) + " of 3";
+      else if (step.id === "transition") label = "Between Part 1 Candidate and Part 2 Team";
+      else if (step.id === "close") label = "Part 1 Candidate and Part 2 Team";
+      document.getElementById("stepnum").textContent = label;
+      document.getElementById("back").disabled = state.step === 0;
+      const next = document.getElementById("next");
+      next.disabled = state.step === STEPS.length - 1;
+      next.textContent = state.step === STEPS.length - 1 ? "Done" : "Next";
     }
 
     function render() {
-      if (state.mode === "explore") {
-        bar.hidden = true;
-        stage.innerHTML = '<section data-step="explore"><h1>Explore the pieces</h1><p>Same proposal, no guided steps. Sample data is already filled in. Nothing is sent or saved.</p><p><button class="ghost" type="button" id="restart">Restart the tour</button></p></section>'
-          + '<div class="section">' + panelReceipt() + '</div>'
-          + '<div class="section">' + panelDraft() + '</div>'
-          + '<div class="section">' + panelPayout() + '</div>'
-          + '<div class="section">' + panelLate() + '</div>'
-          + '<div class="section">' + panelThanks() + '</div>'
-          + '<div class="section">' + panelDeclined() + '</div>';
-        bindCommon(stage);
-        window.scrollTo(0, 0);
-        return;
-      }
-      const id = STEPS[state.step];
-      const feature = {
-        receipt: panelReceipt,
-        draft: panelDraft,
-        payout: panelPayout,
-        late: panelLate,
-        thanks: panelThanks,
-        declined: panelDeclined
-      };
-      if (id === "welcome") stage.innerHTML = welcome();
-      else if (id === "close") stage.innerHTML = closeScreen();
-      else stage.innerHTML = '<section data-step="' + id + '">' + feature[id]() + '</section>';
-      bindCommon(stage);
-      const touring = state.step > 0 && state.step < STEPS.length - 1;
-      bar.hidden = state.step === 0 || state.step === STEPS.length - 1;
-      document.getElementById("back").disabled = state.step === 0;
-      document.getElementById("next").textContent = state.step === STEPS.length - 1 ? "Done" : "Next";
-      document.getElementById("next").disabled = state.step === STEPS.length - 1;
-      const shown = state.step + 1;
-      document.getElementById("stepnum").textContent = touring || state.step === STEPS.length - 1 ? "Step " + shown + " of " + STEPS.length : "";
-      document.getElementById("fill").style.width = (shown / STEPS.length * 100) + "%";
-      if (state.step === 0) document.getElementById("stepnum").textContent = "";
-      window.scrollTo(0, 0);
+      const changed = painted.mode !== state.mode || painted.step !== state.step;
+      const y = window.scrollY;
+      if (state.mode === "explore") stage.innerHTML = explore();
+      else if (STEPS[state.step].id === "welcome") stage.innerHTML = welcome();
+      else if (STEPS[state.step].id === "transition") stage.innerHTML = transition();
+      else if (STEPS[state.step].id === "close") stage.innerHTML = closeScreen();
+      else stage.innerHTML = '<section data-step="' + STEPS[state.step].id + '">' + stepBody(STEPS[state.step].id) + '</section>';
+      bind(stage);
+      paintChrome();
+      if (changed) window.scrollTo(0, 0);
+      else window.scrollTo(0, y);
+      painted = { mode: state.mode, step: state.step };
     }
 
     document.getElementById("back").addEventListener("click", () => {
@@ -397,31 +640,14 @@
     });
 
     function downloadEml() {
-      const body = emailText();
-      const pdf = buildPdf(["SYNTHETIC SAMPLE RECEIPT", "Not a real parking charge", "Date: 2026-11-02", "Total: $18.50"]);
-      const boundary = "----=_Draft_demo";
       const eml = [
         "To: " + SAMPLE.partner,
         "Subject: Parking receipt - Jordan Example - 2026-11-02",
         "MIME-Version: 1.0",
         "X-Unsent: 1",
-        'Content-Type: multipart/mixed; boundary="' + boundary + '"',
-        "",
-        "--" + boundary,
         "Content-Type: text/plain; charset=utf-8",
-        "Content-Transfer-Encoding: 8bit",
         "",
-        body,
-        "",
-        "--" + boundary,
-        "Content-Type: application/pdf",
-        "Content-Transfer-Encoding: base64",
-        'Content-Disposition: attachment; filename="synthetic-parking-receipt.pdf"',
-        "",
-        toBase64(pdf),
-        "",
-        "--" + boundary + "--",
-        ""
+        emailText()
       ].join("\r\n");
       const url = URL.createObjectURL(new Blob([eml], { type: "message/rfc822" }));
       const a = document.createElement("a");
@@ -431,40 +657,6 @@
       a.click();
       a.remove();
       setTimeout(() => URL.revokeObjectURL(url), 1000);
-    }
-
-    function buildPdf(lines) {
-      const commands = ["BT", "/F1 12 Tf", "50 720 Td"];
-      lines.forEach((line, i) => {
-        if (i) commands.push("0 -18 Td");
-        commands.push("(" + line.replace(/[()\\]/g, "") + ") Tj");
-      });
-      commands.push("ET");
-      const content = commands.join("\n");
-      const objects = [
-        "1 0 obj << /Type /Catalog /Pages 2 0 R >> endobj\n",
-        "2 0 obj << /Type /Pages /Kids [3 0 R] /Count 1 >> endobj\n",
-        "3 0 obj << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >> endobj\n",
-        "4 0 obj << /Length " + content.length + " >> stream\n" + content + "\nendstream\nendobj\n",
-        "5 0 obj << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> endobj\n"
-      ];
-      let body = "%PDF-1.4\n";
-      const offsets = [0];
-      objects.forEach((object) => { offsets.push(body.length); body += object; });
-      const xref = body.length;
-      body += "xref\n0 " + (objects.length + 1) + "\n0000000000 65535 f \n";
-      for (let i = 1; i < offsets.length; i++) body += String(offsets[i]).padStart(10, "0") + " 00000 n \n";
-      body += "trailer << /Size " + (objects.length + 1) + " /Root 1 0 R >>\nstartxref\n" + xref + "\n%%EOF";
-      return new TextEncoder().encode(body);
-    }
-
-    function toBase64(bytes) {
-      let binary = "";
-      const chunk = 0x8000;
-      for (let i = 0; i < bytes.length; i += chunk) {
-        binary += String.fromCharCode.apply(null, bytes.subarray(i, i + chunk));
-      }
-      return btoa(binary).replace(/.{1,76}/g, "$&\r\n");
     }
 
     render();
