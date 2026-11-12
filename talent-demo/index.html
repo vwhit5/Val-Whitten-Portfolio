@@ -82,6 +82,12 @@
     .byline { display: flex; align-items: center; gap: 2px; margin: 0 0 16px; max-width: 100%; }
     .arrow { width: 70px; height: 28px; flex: none; }
     .byline .name { margin: 0; font-size: 1.2rem; line-height: 1; }
+    .problems { display: grid; gap: 12px; margin: 6px 0 18px; }
+    .problem { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin: 0; min-width: 0; }
+    .problem strong { display: block; margin-bottom: 6px; }
+    .problem .num { color: var(--orange); margin-right: 6px; }
+    .problem p { margin: 0; }
+    @media (min-width: 860px) { .problems { grid-template-columns: 1fr 1fr 1fr; } }
     .lede { color: var(--muted); font-size: 1.05rem; }
     .for-team { font-size: 1rem; }
     .row { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -318,9 +324,10 @@
     };
 
     const FINALISTS = [
-      { id: "jordan", first: "Jordan", name: "Jordan Example", email: "jordan.example@example.com" },
-      { id: "riley", first: "Riley", name: "Riley Moss", email: "riley.moss@example.com" },
-      { id: "alex", first: "Alex", name: "Alex Preview", email: "alex.preview@example.com" }
+      { id: "jordan", first: "Jordan", name: "Jordan Example", email: "jordan.example@example.com", kind: "passed" },
+      { id: "riley", first: "Riley", name: "Riley Moss", email: "riley.moss@example.com", kind: "passed" },
+      { id: "casey", first: "Casey", name: "Casey Nguyen", email: "casey.nguyen@example.com", kind: "other" },
+      { id: "alex", first: "Alex", name: "Alex Preview", email: "alex.preview@example.com", kind: "other" }
     ];
 
     const STEPS = [
@@ -357,6 +364,8 @@
       giftAmount: "25",
       reminder: true,
       finalist: "jordan",
+      noteKind: "passed",
+      sentSubject: "",
       noteOverride: "",
       sentNote: "",
       submitted: false,
@@ -364,8 +373,18 @@
       photoUrl: ""
     };
 
+    function peopleForKind() {
+      const kind = state.noteKind === "other" ? "other" : "passed";
+      return FINALISTS.filter((person) => person.kind === kind);
+    }
+
     function currentFinalist() {
-      return FINALISTS.find((person) => person.id === state.finalist) || FINALISTS[0];
+      const people = peopleForKind();
+      return people.find((person) => person.id === state.finalist) || people[0];
+    }
+
+    function subjectLine() {
+      return state.noteKind === "other" ? "Glad we got to meet you" : SAMPLE.subject;
     }
 
     const stage = document.getElementById("stage");
@@ -385,7 +404,27 @@
     }
 
     function providerLabel() {
-      return state.provider === "perfectgift" ? "PerfectGift.com" : "Tremendous";
+      if (state.provider === "perfectgift") return "PerfectGift.com";
+      if (state.provider === "candle") return "Bath & Body Works";
+      return "Tremendous";
+    }
+
+    function providerButtons() {
+      const options = [
+        ["tremendous", "Tremendous"],
+        ["perfectgift", "PerfectGift.com"],
+        ["candle", "Bath & Body Works candle card"]
+      ];
+      return '<div class="row">' + options.map((option) => '<button class="choice" type="button" data-provider="' + option[0] + '" aria-pressed="' + (state.provider === option[0]) + '">' + option[1] + '</button>').join("") + '</div>';
+    }
+
+    function giftLine() {
+      const amount = money(state.giftAmount).replace(/\.00$/, "");
+      if (state.provider === "candle") {
+        return "We'd love to send you a $" + amount + " Bath & Body Works gift card. Pick a candle. Fitting for a team that spends its days putting out fires.";
+      }
+      const closer = state.noteKind === "other" ? " It is a thank-you for your time." : " It is simply a thank-you.";
+      return "We would like to send you a $" + amount + " gift card through " + providerLabel() + "." + closer;
     }
 
     function handle() {
@@ -404,15 +443,18 @@
 
     function thanksParagraphs() {
       const person = currentFinalist();
-      const amount = money(state.giftAmount).replace(/\.00$/, "");
-      const lines = [
-        person.first + ",",
-        "Thank you for spending the day with us. The team genuinely enjoyed meeting you.",
-        "Your take-home was clear and specific. That stayed with us after you left.",
-        "It was a close call and we are sorry this role is not the right match."
-      ];
-      if (state.gift) lines.push("We would like to send you a $" + amount + " gift card through " + providerLabel() + ". It is simply a thank-you.");
-      lines.push("Please stay in touch if you would like to. When a role opens that fits what you want we would be glad to hear from you.");
+      const lines = [person.first + ","];
+      if (state.noteKind === "other") {
+        lines.push("We are genuinely happy for you. Choosing another company is a big step and we are glad you found a place that fits.");
+        lines.push("We are glad we met you. That time together mattered to us.");
+        lines.push("The door here stays open. If you ever want to talk again we would like that.");
+      } else {
+        lines.push("Thank you for spending the day with us. The team genuinely enjoyed meeting you.");
+        lines.push("Your take-home was clear and specific. That stayed with us after you left.");
+        lines.push("It was a close call and we are sorry this role is not the right match.");
+        lines.push("Please stay in touch if you would like to. When a role opens that fits what you want we would be glad to hear from you.");
+      }
+      if (state.gift) lines.push(giftLine());
       lines.push(SAMPLE.recruiter);
       return lines;
     }
@@ -448,7 +490,7 @@
         state.reminder ? "A reminder goes out if no receipt arrives the day after the onsite." : "The receipt reminder is off.",
         state.lateNotes ? "Late notes are on. A note pings " + SAMPLE.interviewers.join(" and ") + " in the thread." : "Late notes are off. Interviewers would not be pinged.",
         state.gift
-          ? "Gift is on. The thank-you includes a $" + money(state.giftAmount).replace(/\.00$/, "") + " card through " + providerLabel() + "."
+          ? "Gift is on. The thank-you includes a $" + money(state.giftAmount).replace(/\.00$/, "") + (state.provider === "candle" ? " Bath & Body Works candle card." : " card through " + providerLabel() + ".")
           : "Gift is off. The thank-you note has no gift card."
       ];
       return lines.join("\n\n");
@@ -494,18 +536,19 @@
 
     function composeBody() {
       const person = currentFinalist();
-      const tremendous = state.provider === "tremendous";
-      const picks = FINALISTS.map((person) => '<button class="choice" type="button" data-finalist="' + person.id + '" aria-pressed="' + (state.finalist === person.id) + '">' + esc(person.name) + '</button>').join("");
-      return '<div class="panel"><label>Finalist</label><div class="row">' + picks + '</div>' +
+      const picks = peopleForKind().map((person) => '<button class="choice" type="button" data-finalist="' + person.id + '" aria-pressed="' + (state.finalist === person.id) + '">' + esc(person.name) + '</button>').join("");
+      const kinds = '<div class="row"><button class="choice" type="button" data-kind="passed" aria-pressed="' + (state.noteKind !== "other") + '">Finalist not moving forward</button><button class="choice" type="button" data-kind="other" aria-pressed="' + (state.noteKind === "other") + '">Chose another company</button></div>';
+      return '<div class="panel"><label>Note type</label>' + kinds + '<label>Finalist</label><div class="row">' + picks + '</div>' +
         switchRow("gift", state.gift, "Include the $25 gift", "Adds the gift card line to the note.") +
-        '<label>Gift provider</label><div class="row"><button class="choice" type="button" data-provider="tremendous" aria-pressed="' + tremendous + '">Tremendous</button><button class="choice" type="button" data-provider="perfectgift" aria-pressed="' + (!tremendous) + '">PerfectGift.com</button></div>' +
-        '<p><strong>To</strong> ' + esc(person.name) + ' &lt;' + esc(person.email) + '&gt;</p><p><strong>From</strong> ' + esc(SAMPLE.recruiterFrom) + ' &lt;' + esc(SAMPLE.recruiterEmail) + '&gt;</p><p><strong>Subject</strong> ' + esc(SAMPLE.subject) + '</p><label for="note-text">Note</label><textarea id="note-text"></textarea><div class="row" style="margin-top:12px"><button class="cta" type="button" id="send-thanks">Send</button></div><p class="hint">Send opens their inbox on the next screen. Nothing leaves this page.</p></div>';
+        '<label>Gift provider</label>' + providerButtons() +
+        '<p><strong>To</strong> ' + esc(person.name) + ' &lt;' + esc(person.email) + '&gt;</p><p><strong>From</strong> ' + esc(SAMPLE.recruiterFrom) + ' &lt;' + esc(SAMPLE.recruiterEmail) + '&gt;</p><p><strong>Subject</strong> ' + esc(subjectLine()) + '</p><label for="note-text">Note</label><textarea id="note-text"></textarea><div class="row" style="margin-top:12px"><button class="cta" type="button" id="send-thanks">Send</button></div><p class="hint">Send opens their inbox on the next screen. Nothing leaves this page.</p></div>';
     }
 
     function inboxBody() {
       const person = state.sentTo || currentFinalist();
+      const subject = state.sentSubject || subjectLine();
       const paragraphs = (state.sentNote || noteText()).split(/\n{2,}/).map((line) => line.trim()).filter(Boolean).map((line) => '<p>' + esc(line) + '</p>').join("");
-      return '<div class="mail"><div class="mail-side"><p class="mail-folder">Inbox</p><div class="mail-row"><strong>' + esc(SAMPLE.recruiterFrom) + '</strong><span>&lt;' + esc(SAMPLE.recruiterEmail) + '&gt;</span><em>' + esc(SAMPLE.subject) + '</em></div></div><article class="mail-open"><p class="mail-meta">From ' + esc(SAMPLE.recruiterFrom) + ' &lt;' + esc(SAMPLE.recruiterEmail) + '&gt;<br>To ' + esc(person.name) + ' &lt;' + esc(person.email) + '&gt;</p><h2>' + esc(SAMPLE.subject) + '</h2><div class="mail-body" id="inbox-body">' + paragraphs + '</div></article></div>';
+      return '<div class="mail"><div class="mail-side"><p class="mail-folder">Inbox</p><div class="mail-row"><strong>' + esc(SAMPLE.recruiterFrom) + '</strong><span>&lt;' + esc(SAMPLE.recruiterEmail) + '&gt;</span><em>' + esc(subject) + '</em></div></div><article class="mail-open"><p class="mail-meta">From ' + esc(SAMPLE.recruiterFrom) + ' &lt;' + esc(SAMPLE.recruiterEmail) + '&gt;<br>To ' + esc(person.name) + ' &lt;' + esc(person.email) + '&gt;</p><h2>' + esc(subject) + '</h2><div class="mail-body" id="inbox-body">' + paragraphs + '</div></article></div>';
     }
 
     function switchRow(key, on, title, detail) {
@@ -513,13 +556,12 @@
     }
 
     function adminBody() {
-      const tremendous = state.provider === "tremendous";
       return '<div class="panel">' +
         switchRow("reimbursement", state.reimbursement, "Enable parking reimbursement", "Shows the receipt form on the candidate page.") +
         switchRow("reminder", state.reminder, "Send a reminder if no receipt after 1 day", "A short note goes to the candidate the day after the onsite.") +
         switchRow("lateNotes", state.lateNotes, "Enable late notes", "A late note pings that day's interviewers by @mention in the thread.") +
         switchRow("gift", state.gift, "Enable thank-you gift", "Adds the gift sentence to the thank-you note.") +
-        '<label>Gift provider</label><div class="row"><button class="choice" type="button" data-provider="tremendous" aria-pressed="' + tremendous + '">Tremendous</button><button class="choice" type="button" data-provider="perfectgift" aria-pressed="' + (!tremendous) + '">PerfectGift.com</button></div><p class="hint">Both are available for internal use.</p><label for="gift-amount">Gift amount</label><input id="gift-amount" inputmode="decimal" value="' + esc(state.giftAmount) + '"><p class="hint">The proposed amount is $25.</p><pre class="note" id="reminder-preview"></pre><pre class="note" id="live-preview"></pre></div>';
+        '<label>Gift provider</label>' + providerButtons() + '<p class="hint">Tremendous, PerfectGift.com and a Bath &amp; Body Works candle card are available.</p><label for="gift-amount">Gift amount</label><input id="gift-amount" inputmode="decimal" value="' + esc(state.giftAmount) + '"><p class="hint">The proposed amount is $25.</p><pre class="note" id="reminder-preview"></pre><pre class="note" id="live-preview"></pre></div>';
     }
 
     function queueBody() {
@@ -538,7 +580,13 @@
     }
 
     function welcome() {
-      return '<section data-step="welcome"><h1>A candidate-experience proposal</h1><div class="byline">' + arrow() + '<p class="name hand">by Val Whitten</p></div><p>A final interview in San Francisco still asks people to save a parking receipt and pass it along by hand. This proposal lets a candidate upload the receipt on the page with a late note and a warmer close.</p><p>Part 1 is the page a candidate would use. Part 2 is what the Talent team would see behind it.</p><div class="row"><button class="cta big" type="button" id="start">Start the tour</button><button class="ghost" type="button" id="skip">Skip tour and explore freely</button></div></section>';
+      const items = [
+        ["Parking receipts", "Candidates at a final interview in San Francisco have to save a parking receipt and email it by hand."],
+        ["Running late", "When a candidate is running late they email in and no one knows unless someone keeps checking Gmail during a busy onsite day."],
+        ["Losing touch", "Finalists who did not get the role can feel the same as people who were never considered. Strong candidates who chose another company drift away. A warm follow-up with a small gift is a signal that the door stays open."]
+      ];
+      const cards = items.map((item, index) => '<article class="problem"><strong><span class="num">' + (index + 1) + '</span>' + item[0] + '</strong><p>' + item[1] + '</p></article>').join("");
+      return '<section data-step="welcome"><h1>A candidate-experience proposal</h1><div class="byline">' + arrow() + '<p class="name hand">by Val Whitten</p></div><div class="problems">' + cards + '</div><p>Part 1 is the page a candidate would use. Part 2 is what the Talent team would see behind it.</p><div class="row"><button class="cta big" type="button" id="start">Start the tour</button><button class="ghost" type="button" id="skip">Skip tour and explore freely</button></div></section>';
     }
 
     function transition() {
@@ -546,7 +594,7 @@
     }
 
     function closeScreen() {
-      return '<section data-step="close"><h1>The proposal</h1><p>Here is what this page recommends.</p><div class="panel"><ul><li>The candidate enters their PayPal or Venmo handle on the form, so the team can pay right away.</li><li>The team can approve a receipt and mark it paid from the queue.</li><li>A reminder can go out if no receipt arrives the day after the onsite.</li><li>Late notes ping that day\'s interviewers in a thread.</li><li>Sam can send a thank-you note to a finalist\'s inbox.</li><li>Both Tremendous and PerfectGift.com are available for internal use.</li><li>The thank-you gift is $25.</li></ul></div><p>Nothing on this page is sent, paid or saved.</p><div class="row"><button class="cta big" type="button" id="explore">Look through it freely</button><button class="ghost" type="button" id="restart">Restart the tour</button></div></section>';
+      return '<section data-step="close"><h1>The proposal</h1><p>Here is what this page recommends.</p><div class="panel"><ul><li>The candidate enters their PayPal or Venmo handle on the form, so the team can pay right away.</li><li>The team can approve a receipt and mark it paid from the queue.</li><li>A reminder can go out if no receipt arrives the day after the onsite.</li><li>Late notes ping that day\'s interviewers in a thread.</li><li>Sam can send a thank-you note to a finalist\'s inbox.</li><li>Tremendous, PerfectGift.com and a Bath &amp; Body Works candle card are available for internal use.</li><li>The thank-you gift is $25.</li></ul></div><p>Nothing on this page is sent, paid or saved.</p><div class="row"><button class="cta big" type="button" id="explore">Look through it freely</button><button class="ghost" type="button" id="restart">Restart the tour</button></div></section>';
     }
 
     function stepBody(id) {
@@ -638,6 +686,13 @@
       root.querySelectorAll("[data-method]").forEach((button) => button.addEventListener("click", () => { state.method = button.getAttribute("data-method"); render(); }));
       root.querySelectorAll("[data-eta]").forEach((button) => button.addEventListener("click", () => { state.eta = Number(button.getAttribute("data-eta")); render(); }));
       root.querySelectorAll("[data-provider]").forEach((button) => button.addEventListener("click", () => { state.provider = button.getAttribute("data-provider"); state.noteOverride = ""; render(); }));
+      root.querySelectorAll("[data-kind]").forEach((button) => button.addEventListener("click", () => {
+        state.noteKind = button.getAttribute("data-kind");
+        const people = peopleForKind();
+        if (!people.some((person) => person.id === state.finalist)) state.finalist = people[0].id;
+        state.noteOverride = "";
+        render();
+      }));
       root.querySelectorAll("[data-finalist]").forEach((button) => button.addEventListener("click", () => { state.finalist = button.getAttribute("data-finalist"); state.noteOverride = ""; render(); }));
       root.querySelectorAll("[data-toggle]").forEach((button) => button.addEventListener("click", () => {
         const key = button.getAttribute("data-toggle");
@@ -663,6 +718,7 @@
       if (send) send.addEventListener("click", () => {
         const field = root.querySelector("#note-text");
         state.sentNote = field ? field.value : thanksParagraphs().join("\n\n");
+        state.sentSubject = subjectLine();
         state.sentTo = currentFinalist();
         state.thanksSent = true;
         state.mode = "tour";
