@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Final interview SF resources</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%23f25533'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&family=Newsreader:opsz,wght@6..72,500&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f5f2;
+      --ink: #161618;
+      --muted: #5f5f68;
+      --line: #e6e1da;
+      --orange: #f25533;
+      --sand: #f1ebe2;
+      --card: #fff;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Source Sans 3", "Segoe UI", sans-serif;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+    h1, h2, .serif { font-family: Newsreader, Georgia, serif; font-weight: 500; letter-spacing: -0.02em; }
+    .hand { font-family: Kalam, "Segoe Print", cursive; }
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; }
+    .wrap { max-width: 920px; margin: 0 auto; padding: 28px 20px 120px; }
+    .brand { display: flex; align-items: center; gap: 10px; color: var(--orange); }
+    .brand svg { width: 22px; height: 28px; flex: none; }
+    .brand span { font-size: 1.55rem; line-height: 1; }
+    .label {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 22px;
+      margin-top: 18px;
+    }
+    .sand { background: var(--sand); border: 0; }
+    .hotspot {
+      border: 3px solid var(--orange);
+      border-radius: 22px;
+      padding: 18px;
+      margin-top: 18px;
+      background: #fff;
+    }
+    .kicker { color: var(--orange); margin: 0 0 6px; font-size: 0.95rem; }
+    h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.1; margin: 18px 0 10px; }
+    h2 { font-size: clamp(1.7rem, 3vw, 2.2rem); margin: 0 0 8px; }
+    .muted { color: var(--muted); }
+    .row { display: flex; flex-wrap: wrap; gap: 10px; }
+    .choice, .cta, .ghost {
+      border-radius: 999px;
+      min-height: 48px;
+      padding: 10px 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+    .choice[aria-pressed="true"], .cta {
+      background: var(--orange);
+      color: #fff;
+      border-color: var(--orange);
+    }
+    .cta.big { min-height: 56px; padding: 12px 22px; font-size: 1.05rem; }
+    .ghost { background: transparent; }
+    pre.note {
+      white-space: pre-wrap;
+      font-family: inherit;
+      margin: 12px 0 0;
+      line-height: 1.55;
+    }
+    .grid { display: grid; gap: 12px; }
+    @media (min-width: 720px) {
+      .grid.three { grid-template-columns: 1fr 1fr 1fr; }
+      .split { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 16px; align-items: start; }
+    }
+    label { display: block; font-size: 0.92rem; font-weight: 600; margin-bottom: 6px; }
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid #cacace;
+      border-radius: 12px;
+      padding: 12px;
+      background: #fff;
+      color: var(--ink);
+    }
+    textarea { min-height: 90px; }
+    .receipt {
+      background: #fffdf8;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px 18px;
+    }
+    .receipt strong { color: var(--orange); display: block; font-size: 1.15rem; }
+    .slack {
+      background: #161618;
+      color: #f8f5f0;
+      border-radius: 18px;
+      padding: 16px;
+    }
+    .slack small { color: #f67654; letter-spacing: 0.04em; text-transform: uppercase; }
+    .bar {
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      background: rgba(247, 245, 242, 0.96);
+      border-top: 1px solid var(--line);
+      padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    }
+    .bar-inner { max-width: 920px; margin: 0 auto; display: flex; gap: 10px; align-items: center; }
+    .progress { flex: 1; }
+    .track { height: 6px; background: #e6e1da; border-radius: 99px; overflow: hidden; }
+    .fill { height: 100%; background: var(--orange); width: 0; }
+    .stepnum { font-size: 0.82rem; color: var(--muted); margin-bottom: 4px; }
+    .section { margin-top: 28px; }
+    .check { display: flex; gap: 8px; align-items: flex-start; font-weight: 400; }
+    .check input { width: auto; margin-top: 4px; }
+    a { color: var(--orange); }
+    .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="brand">
+      <svg viewBox="0 0 128 163" aria-hidden="true">
+        <path fill="#F25533" fill-rule="evenodd" d="M48.7336 139.642V163C20.7585 156.323 0 131.711 0 102.372C0 85.4557 7.15792 72.0354 18.1053 58.8703C27.1831 47.9534 49.5985 19.0426 56.6543 3.08954C58.3673-0.783473 62.7348-0.633805 64.6182 1.44721C70.6432 8.10421 78.0694 22.6432 80.4983 39.135C80.9932 42.4953 81.1969 45.2388 81.3587 47.4184C81.706 52.0954 81.8604 54.1748 84.2854 54.1748C88.0955 54.1748 90.588 48.3977 91.1358 42.4345C91.4869 38.6136 95.2774 37.3346 97.8914 38.6136C110.463 44.7644 123.292 74.0426 126.393 88.4102C127.366 92.9158 128 97.5719 128 102.372C128 131.646 107.335 156.214 79.4537 162.955V139.642H48.7336ZM64.0002 130.333C73.8316 130.333 81.8016 122.789 81.8016 113.483C81.8016 98.6407 70.8577 88.0345 65.4048 84.8105C65.0364 84.5928 64.8523 84.4839 64.3512 84.4974C63.9843 84.5073 63.4429 84.7369 63.181 84.9935C62.8232 85.3441 62.7283 85.743 62.5387 86.5409C61.5721 90.6065 58.5292 93.5054 55.327 96.556C50.9141 100.76 46.1988 105.252 46.1988 113.483C46.1988 122.789 54.1688 130.333 64.0002 130.333Z"/>
+      </svg>
+      <span class="hand">Final interview SF resources</span>
+    </p>
+    <p class="label" id="official-label">Unofficial candidate-experience proposal by Val Whitten, not an incident.io product.</p>
+    <div id="stage" aria-live="polite"></div>
+  </div>
+  <div class="bar" id="bar" hidden>
+    <div class="bar-inner">
+      <button class="ghost" type="button" id="back">Back</button>
+      <button class="ghost" type="button" id="skip-bar">Skip tour</button>
+      <div class="progress">
+        <div class="stepnum" id="stepnum"></div>
+        <div class="track" aria-hidden="true"><div class="fill" id="fill"></div></div>
+      </div>
+      <button class="cta" type="button" id="next">Next</button>
+    </div>
+  </div>
+  <script>
+    const SAMPLE = {
+      name: "Jordan Example",
+      date: "2026-11-02",
+      amount: "18.50",
+      currency: "USD",
+      method: "paypal",
+      handle: "demo.candidate@example.com",
+      partner: "talent.partner@example.com",
+      why: "The train is delayed",
+      eta: 10,
+      giftName: "Jordan",
+      giftAmount: "25",
+      feedback: "The take-home was clear and specific."
+    };
+
+    const STEPS = ["welcome", "receipt", "draft", "payout", "late", "thanks", "declined", "close"];
+    const state = {
+      mode: "tour",
+      step: 0,
+      amount: SAMPLE.amount,
+      currency: SAMPLE.currency,
+      method: SAMPLE.method,
+      eta: SAMPLE.eta,
+      keepInTouch: false,
+      cadence: "none",
+      includeGift: true
+    };
+
+    const stage = document.getElementById("stage");
+    const bar = document.getElementById("bar");
+
+    function receiptSvg() {
+      return '<div class="receipt" aria-label="Synthetic sample receipt"><strong>SYNTHETIC SAMPLE</strong><p>Not a real parking charge.</p><p>Date: 2026-11-02<br>Total: $18.50<br>Garage under the building</p></div>';
+    }
+
+    function emailText() {
+      const method = state.method === "paypal" ? "PayPal" : "Venmo";
+      const handle = state.method === "paypal" ? SAMPLE.handle : "@demo-candidate";
+      return [
+        "Hello,",
+        "",
+        "Please find my parking receipt attached for reimbursement.",
+        "",
+        "Name: " + SAMPLE.name,
+        "Receipt date: " + SAMPLE.date,
+        "Amount: " + state.currency + " " + Number(state.amount).toFixed(2),
+        "Payout: " + method + " " + handle,
+        "",
+        "This draft was prepared on this device. It has not been submitted, and it has not been paid.",
+        "",
+        "Thank you,",
+        SAMPLE.name
+      ].join("\n");
+    }
+
+    function thanksText() {
+      const lines = [
+        "Dear " + SAMPLE.giftName + ",",
+        "",
+        "Thank you for the time you gave this process. We enjoyed meeting you, and we are sorry this role is not the right match. We hope you will apply again when another opening fits what you want.",
+        "",
+        "One thing we wanted you to hear: " + SAMPLE.feedback
+      ];
+      if (state.includeGift) {
+        lines.push("", "As a thank-you, we would send a gift card for " + SAMPLE.giftAmount + " USD. The gift has no strings attached. Sample figure, not a company decision.");
+      }
+      if (state.keepInTouch) {
+        lines.push("", "If you would like a note when a matching role opens, reply and say so. We will not add you to a list unless you ask.");
+      }
+      lines.push("", "With appreciation,", "The recruiting team");
+      return lines.join("\n");
+    }
+
+    function declinedText() {
+      const lines = [
+        "Dear " + SAMPLE.giftName + ",",
+        "",
+        "Thank you for being direct with us, and for the care you put into the process. We are sorry not to be working together this time. The door is open if you want to talk again."
+      ];
+      if (state.includeGift) {
+        lines.push("", "As a thank-you, we would send a gift card for " + SAMPLE.giftAmount + " USD. The gift has no strings attached, and it does not depend on staying in touch. Sample figure, not a company decision.");
+      }
+      if (state.cadence === "months") {
+        lines.push("", "If you want to hear from us in a few months, reply and say so. We will wait for that reply before getting back in touch.");
+      }
+      if (state.cadence === "roles") {
+        lines.push("", "If you want a note when a matching role opens, tell us the kind of role and when to write. We will not start that until you ask.");
+      }
+      lines.push("", "With appreciation,", "The recruiting team");
+      return lines.join("\n");
+    }
+
+    function lateText() {
+      const lines = ["Running late for the onsite.", "Why: " + SAMPLE.why];
+      if (state.eta) lines.push("ETA: about " + state.eta + " minutes");
+      return lines.join("\n");
+    }
+
+    function panelReceipt() {
+      return '<div data-panel="receipt"><p class="kicker hand">Click here · the receipt</p><h2>One link from the acceptance email</h2><p>The public guide asks candidates to save a parking receipt and email a copy to their Talent Partner. This page would be that link. The sample below is not a real charge, and the photo is not read by OCR.</p><div class="split"><div class="hotspot">' + receiptSvg() + '</div><div class="card"><p><strong>What would be included</strong></p><p id="summary">Receipt: synthetic sample<br>Date: ' + SAMPLE.date + '<br>Amount: ' + state.currency + " " + Number(state.amount).toFixed(2) + '<br>Nothing has been sent or paid.</p><label for="amount">Amount <span class="muted">(already filled)</span></label><input id="amount" inputmode="decimal" value="' + state.amount + '"></div></div></div>';
+    }
+
+    function panelDraft() {
+      return '<div data-panel="draft"><p class="kicker hand">Click here · the email draft</p><h2>A draft, not a sent message</h2><p>The candidate reviews this text, then downloads an unsent email file with the receipt attached. Nothing leaves this page until they send it themselves. A mailto link cannot attach a file, so that path is only a fallback.</p><div class="hotspot"><pre class="note" id="email-preview"></pre><div class="row" style="margin-top:14px"><button class="cta" type="button" id="download">Download draft email (.eml)</button></div><p class="muted">The file uses X-Unsent: 1. Thunderbird often opens that as a draft. Outlook and Gmail in the browser often do not. It is not sent from here.</p></div></div>';
+    }
+
+    function panelPayout() {
+      const paypal = state.method === "paypal";
+      return '<div data-panel="payout"><p class="kicker hand">Click here · payout</p><h2>PayPal or Venmo, as a preference</h2><p>A real version would hand the candidate to the company’s own payout account. These buttons do not open PayPal or Venmo, and they do not move money. The handle is fake.</p><div class="hotspot"><div class="row"><button class="choice" type="button" data-method="paypal" aria-pressed="' + paypal + '">PayPal</button><button class="choice" type="button" data-method="venmo" aria-pressed="' + (!paypal) + '">Venmo</button></div><p id="handle-line" style="margin-top:14px"><strong>' + (paypal ? "PayPal" : "Venmo") + ' handle:</strong> ' + (paypal ? SAMPLE.handle : "@demo-candidate") + '</p><p class="muted">Do not type a real account. No bank or card number is collected.</p></div></div>';
+    }
+
+    function panelLate() {
+      const etas = [5, 10, 15, 30].map((n) => '<button class="choice" type="button" data-eta="' + n + '" aria-pressed="' + (state.eta === n) + '">' + n + ' min</button>').join("");
+      return '<div data-panel="late"><p class="kicker hand">Click here · running late</p><h2>One line for the team</h2><p>On the same page as the receipt. The candidate adds why they are late. This preview is what a Slack message could look like. It is not posted.</p><div class="split"><div class="hotspot"><p><strong>Why:</strong> ' + SAMPLE.why + '</p><div class="row" style="margin-top:10px">' + etas + '</div></div><div class="slack" id="slack"><small>Slack preview · not posted</small><p>#onsite-demo · placeholder channel</p><pre class="note" id="late-preview"></pre></div></div></div>';
+    }
+
+    function panelThanks() {
+      return '<div data-panel="thanks"><p class="kicker hand">Click here · not selected</p><h2>A thank-you that does not depend on a gift</h2><p>For a strong finalist who is not moving forward. The thank-you is always in the note. The $' + SAMPLE.giftAmount + ' figure is a sample so you can see the sentence. No amount has been chosen, and no card is purchased. If the company paid one, it would use its own account at Tremendous or PerfectGift.com. Neither is connected.</p><div class="hotspot"><label class="check"><input type="checkbox" id="keep"> Invite them to ask when a matching role opens. This does not subscribe anyone, and it does not change the thank-you.</label><pre class="note" id="thanks-preview"></pre></div></div>';
+    }
+
+    function panelDeclined() {
+      return '<div data-panel="declined"><p class="kicker hand">Click here · offer declined</p><h2>The door stays open</h2><p>For someone who turned the role down. A gift, if the company later chooses to send one, has no strings and does not depend on staying in touch. The vendor is still undecided.</p><div class="hotspot"><div class="row"><button class="choice" type="button" data-cadence="none" aria-pressed="' + (state.cadence === "none") + '">No cadence</button><button class="choice" type="button" data-cadence="months" aria-pressed="' + (state.cadence === "months") + '">A few months</button><button class="choice" type="button" data-cadence="roles" aria-pressed="' + (state.cadence === "roles") + '">When a role fits</button></div><pre class="note" id="declined-preview"></pre></div></div>';
+    }
+
+    function welcome() {
+      return '<section data-step="welcome"><h1>A candidate-experience proposal by Val Whitten</h1><p>A final interview in San Francisco still asks people to save a parking receipt and email it by hand. This is a shorter page for that, plus a late note and a warmer close.</p><div class="card sand"><p>You are about to walk the Talent team through four ideas. Every figure is synthetic. Nothing sends email, pays anyone, or stores what you see.</p></div><div class="row" style="margin-top:18px"><button class="cta big" type="button" id="start">Start the tour</button><button class="ghost" type="button" id="skip">Skip tour and explore freely</button></div></section>';
+    }
+
+    function closeScreen() {
+      return '<section data-step="close"><h1>That’s the proposal</h1><p>A candidate would open one link, add a parking receipt, point it at PayPal or Venmo, and tell the team if they are late. A recruiter could close with a thank-you that does not depend on a gift card.</p><div class="card"><p><strong>Still to decide, not decided here</strong></p><ul><li>Tremendous, PerfectGift.com, or neither.</li><li>Whether any gift is offered, and the amount.</li><li>Which Slack channel would see a late note.</li><li>Whether a payout handle belongs in the email the candidate sends.</li></ul></div><div class="row" style="margin-top:18px"><button class="cta big" type="button" id="explore">Look through it freely</button><button class="ghost" type="button" id="restart">Restart the tour</button></div></section>';
+    }
+
+    function bindCommon(root) {
+      const amount = root.querySelector("#amount");
+      if (amount) {
+        amount.addEventListener("input", () => {
+          state.amount = amount.value || SAMPLE.amount;
+          const summary = root.querySelector("#summary");
+          if (summary) summary.innerHTML = "Receipt: synthetic sample<br>Date: " + SAMPLE.date + "<br>Amount: " + state.currency + " " + (Number(state.amount) || 0).toFixed(2) + "<br>Nothing has been sent or paid.";
+        });
+      }
+      root.querySelectorAll("[data-method]").forEach((button) => {
+        button.addEventListener("click", () => {
+          state.method = button.getAttribute("data-method");
+          render();
+        });
+      });
+      root.querySelectorAll("[data-eta]").forEach((button) => {
+        button.addEventListener("click", () => {
+          state.eta = Number(button.getAttribute("data-eta"));
+          render();
+        });
+      });
+      root.querySelectorAll("[data-cadence]").forEach((button) => {
+        button.addEventListener("click", () => {
+          state.cadence = button.getAttribute("data-cadence");
+          render();
+        });
+      });
+      const keep = root.querySelector("#keep");
+      if (keep) {
+        keep.checked = state.keepInTouch;
+        keep.addEventListener("change", () => {
+          state.keepInTouch = keep.checked;
+          const preview = root.querySelector("#thanks-preview");
+          if (preview) preview.textContent = thanksText();
+        });
+      }
+      const download = root.querySelector("#download");
+      if (download) download.addEventListener("click", downloadEml);
+      const start = root.querySelector("#start");
+      if (start) start.addEventListener("click", () => { state.mode = "tour"; state.step = 1; render(); });
+      const skip = root.querySelector("#skip");
+      if (skip) skip.addEventListener("click", () => { state.mode = "explore"; render(); });
+      const explore = root.querySelector("#explore");
+      if (explore) explore.addEventListener("click", () => { state.mode = "explore"; render(); });
+      const restart = root.querySelector("#restart");
+      if (restart) restart.addEventListener("click", () => { state.mode = "tour"; state.step = 0; render(); });
+      const email = root.querySelector("#email-preview");
+      if (email) email.textContent = emailText();
+      const late = root.querySelector("#late-preview");
+      if (late) late.textContent = lateText();
+      const thanks = root.querySelector("#thanks-preview");
+      if (thanks) thanks.textContent = thanksText();
+      const declined = root.querySelector("#declined-preview");
+      if (declined) declined.textContent = declinedText();
+    }
+
+    function render() {
+      if (state.mode === "explore") {
+        bar.hidden = true;
+        stage.innerHTML = '<section data-step="explore"><h1>Explore the pieces</h1><p>Same proposal, no guided steps. Sample data is already filled in. Nothing is sent or saved.</p><p><button class="ghost" type="button" id="restart">Restart the tour</button></p></section>'
+          + '<div class="section">' + panelReceipt() + '</div>'
+          + '<div class="section">' + panelDraft() + '</div>'
+          + '<div class="section">' + panelPayout() + '</div>'
+          + '<div class="section">' + panelLate() + '</div>'
+          + '<div class="section">' + panelThanks() + '</div>'
+          + '<div class="section">' + panelDeclined() + '</div>';
+        bindCommon(stage);
+        window.scrollTo(0, 0);
+        return;
+      }
+      const id = STEPS[state.step];
+      const feature = {
+        receipt: panelReceipt,
+        draft: panelDraft,
+        payout: panelPayout,
+        late: panelLate,
+        thanks: panelThanks,
+        declined: panelDeclined
+      };
+      if (id === "welcome") stage.innerHTML = welcome();
+      else if (id === "close") stage.innerHTML = closeScreen();
+      else stage.innerHTML = '<section data-step="' + id + '">' + feature[id]() + '</section>';
+      bindCommon(stage);
+      const touring = state.step > 0 && state.step < STEPS.length - 1;
+      bar.hidden = state.step === 0 || state.step === STEPS.length - 1;
+      document.getElementById("back").disabled = state.step === 0;
+      document.getElementById("next").textContent = state.step === STEPS.length - 1 ? "Done" : "Next";
+      document.getElementById("next").disabled = state.step === STEPS.length - 1;
+      const shown = state.step + 1;
+      document.getElementById("stepnum").textContent = touring || state.step === STEPS.length - 1 ? "Step " + shown + " of " + STEPS.length : "";
+      document.getElementById("fill").style.width = (shown / STEPS.length * 100) + "%";
+      if (state.step === 0) document.getElementById("stepnum").textContent = "";
+      window.scrollTo(0, 0);
+    }
+
+    document.getElementById("back").addEventListener("click", () => {
+      if (state.mode !== "tour") return;
+      state.step = Math.max(0, state.step - 1);
+      render();
+    });
+    document.getElementById("next").addEventListener("click", () => {
+      if (state.mode !== "tour") return;
+      if (state.step < STEPS.length - 1) {
+        state.step += 1;
+        render();
+      }
+    });
+    document.getElementById("skip-bar").addEventListener("click", () => {
+      state.mode = "explore";
+      render();
+    });
+
+    function downloadEml() {
+      const body = emailText();
+      const pdf = buildPdf(["SYNTHETIC SAMPLE RECEIPT", "Not a real parking charge", "Date: 2026-11-02", "Total: $18.50"]);
+      const boundary = "----=_Draft_demo";
+      const eml = [
+        "To: " + SAMPLE.partner,
+        "Subject: Parking receipt - Jordan Example - 2026-11-02",
+        "MIME-Version: 1.0",
+        "X-Unsent: 1",
+        'Content-Type: multipart/mixed; boundary="' + boundary + '"',
+        "",
+        "--" + boundary,
+        "Content-Type: text/plain; charset=utf-8",
+        "Content-Transfer-Encoding: 8bit",
+        "",
+        body,
+        "",
+        "--" + boundary,
+        "Content-Type: application/pdf",
+        "Content-Transfer-Encoding: base64",
+        'Content-Disposition: attachment; filename="synthetic-parking-receipt.pdf"',
+        "",
+        toBase64(pdf),
+        "",
+        "--" + boundary + "--",
+        ""
+      ].join("\r\n");
+      const url = URL.createObjectURL(new Blob([eml], { type: "message/rfc822" }));
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "parking-receipt-draft.eml";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
+
+    function buildPdf(lines) {
+      const commands = ["BT", "/F1 12 Tf", "50 720 Td"];
+      lines.forEach((line, i) => {
+        if (i) commands.push("0 -18 Td");
+        commands.push("(" + line.replace(/[()\\]/g, "") + ") Tj");
+      });
+      commands.push("ET");
+      const content = commands.join("\n");
+      const objects = [
+        "1 0 obj << /Type /Catalog /Pages 2 0 R >> endobj\n",
+        "2 0 obj << /Type /Pages /Kids [3 0 R] /Count 1 >> endobj\n",
+        "3 0 obj << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >> endobj\n",
+        "4 0 obj << /Length " + content.length + " >> stream\n" + content + "\nendstream\nendobj\n",
+        "5 0 obj << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> endobj\n"
+      ];
+      let body = "%PDF-1.4\n";
+      const offsets = [0];
+      objects.forEach((object) => { offsets.push(body.length); body += object; });
+      const xref = body.length;
+      body += "xref\n0 " + (objects.length + 1) + "\n0000000000 65535 f \n";
+      for (let i = 1; i < offsets.length; i++) body += String(offsets[i]).padStart(10, "0") + " 00000 n \n";
+      body += "trailer << /Size " + (objects.length + 1) + " /Root 1 0 R >>\nstartxref\n" + xref + "\n%%EOF";
+      return new TextEncoder().encode(body);
+    }
+
+    function toBase64(bytes) {
+      let binary = "";
+      const chunk = 0x8000;
+      for (let i = 0; i < bytes.length; i += chunk) {
+        binary += String.fromCharCode.apply(null, bytes.subarray(i, i + chunk));
+      }
+      return btoa(binary).replace(/.{1,76}/g, "$&\r\n");
+    }
+
+    render();
+  </script>
+</body>
+</html>
