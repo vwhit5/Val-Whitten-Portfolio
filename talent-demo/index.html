@@ -608,10 +608,10 @@
         return '<p class="for-team">Sam picks a finalist and sends a thank-you note. The next screen is that person\'s inbox.</p>' + teamShell("Send a thank-you note", "The note is filled in and you can edit it. Nothing leaves this page.", composeBody());
       }
       if (id === "inbox") {
-        return '<p class="for-team">This is Jordan\'s inbox after Sam sends the note.</p>' + inboxBody();
+        return '<p class="for-team">This is ' + esc((state.sentTo || currentFinalist()).first) + '\'s inbox after Sam sends the note.</p>' + inboxBody();
       }
       if (id === "admin") {
-        return '<p class="for-team">These are the switches the Talent team would use.</p>' + teamShell("Settings", "Turn a piece off to hide it on the candidate page. Both gift providers are available. The proposed gift amount is $25.", adminBody());
+        return '<p class="for-team">These are the switches the Talent team would use.</p>' + teamShell("Settings", "Turn a piece off to hide it on the candidate page. Three gift options are available. The proposed gift amount is $25.", adminBody());
       }
       if (id === "queue") {
         return '<p class="for-team">Submitted receipts land here with the photo, the amount, the method, the handle and the status.</p>' + teamShell("Receipt submissions", "These three rows are synthetic samples.", queueBody());
